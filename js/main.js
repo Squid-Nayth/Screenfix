@@ -46,38 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
       rdvError.classList.add('hidden');
       rdvError.textContent = '';
     }
-    // Récupérer les infos du formulaire rendez-vous
+    // Récupérer les infos du formulaire
     const nom = rdvForm.querySelector('#name').value;
     const email = rdvForm.querySelector('#email').value;
     const date = rdvForm.querySelector('#date').value;
-    // Récupérer les infos de l'évaluation
-    const brand = document.getElementById('brand').value;
-    const model = document.getElementById('model').value;
-    const repair = document.getElementById('repair').value;
-    const prix = document.getElementById('service-coverage-value').textContent;
-    // Texte lisible pour l'élément à réparer
-    const repairLabel = {
-      ecran: 'Écran cassé',
-      batterie: 'Batterie à changer',
-      connecteur: 'Connecteur de charge',
-      hautparleur: 'Haut-parleur',
-      autre: 'Autre'
-    };
-    // Texte lisible pour le modèle
-    const modelLabel = {
-      'iphone-15': 'iPhone 15',
-      'iphone-14': 'iPhone 14',
-      'iphone-13': 'iPhone 13',
-      'iphone-12': 'iPhone 12',
-      'iphone-11': 'iPhone 11',
-      autre: 'Autre modèle'
-    };
     // Préparer le mail
     const sujet = encodeURIComponent('Confirmation de rendez-vous chez Screenfix');
-    const corps = encodeURIComponent(
-      `Bonjour ${nom},\n\nVotre demande de rendez-vous chez Screenfix a bien été prise en compte.\n\nDétails de la réparation :\n- Marque : ${brand === 'apple' ? 'Apple' : 'Autre'}\n- Modèle : ${modelLabel[model] || model}\n- Élément à réparer : ${repairLabel[repair] || repair}\n- Prix estimé : ${prix}\n\nDate du rendez-vous : ${date}\n\nMerci et à bientôt !`
-    );
+    const corps = encodeURIComponent(`Bonjour ${nom},\n\nVotre demande de rendez-vous chez Screenfix a bien été prise en compte.\n\nDate du rendez-vous : ${date}\n\nMerci et à bientôt !`);
+    // Ouvre le client mail de l'utilisateur
     window.location.href = `mailto:${email}?subject=${sujet}&body=${corps}`;
+    // Optionnel : afficher une confirmation à l'utilisateur
     setTimeout(() => {
       alert('Un mail de confirmation va vous être envoyé.');
     }, 500);
@@ -114,5 +92,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     });
+  });
+
+  // Gestion cookies Screenfix
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+    cookieBanner.style.display = 'flex';
+  }
+  acceptBtn && acceptBtn.addEventListener('click', function () {
+    localStorage.setItem('cookiesAccepted', 'yes');
+    cookieBanner.style.display = 'none';
   });
 });

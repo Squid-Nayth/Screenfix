@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screefix</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
 
-    <!-- Header Apple-like -->
+    <!-- Header -->
     <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         <span class="text-2xl font-semibold tracking-tight text-gray-900">Screenfix</span>
@@ -22,22 +20,22 @@
       </div>
     </header>
 
-    <!-- Section Hero Apple-like -->
+    <!-- Acceuil -->
     <section class="bg-gradient-to-b from-gray-100 to-white py-28 text-center">
       <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Réparez votre iPhone chez nous</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700">Prenez rendez-vous ou venez nous voir au <a href="#map-location" class="font-semibold text-blue-600 hover:underline">27 Boulevard de Port Royal, Paris</a>.</p>
-      <a href="#services" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer</a>
+      <a href="#services" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
     </section>
 
-    <!-- Nos Services Apple-like -->
+    <!-- Section Nos Services -->
     <section id="services" class="py-20 px-4 bg-white">
       <h2 class="text-4xl font-bold text-center mb-14 tracking-tight">Nos services</h2>
       <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Service 1 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
           <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="mx-auto mb-4 w-12 h-12">
-          <h3 class="text-2xl font-semibold mb-3">Changement d’écran</h3>
-          <p class="text-gray-600">Réparez votre écran cassé en moins d’une heure.</p>
+          <h3 class="text-2xl font-semibold mb-3">Écran</h3>
+          <p class="text-gray-600">Nous reconditionnons vos écrans ou les remplaçons si nécessaire.</p>
         </div>
         <!-- Service 2 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
@@ -47,9 +45,9 @@
         </div>
         <!-- Service 3 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
-          <img src="Assets/icons8-analyse-64.png" alt="Diagnostic" class="mx-auto mb-4 w-12 h-12">
-          <h3 class="text-2xl font-semibold mb-3">Diagnostic gratuit</h3>
-          <p class="text-gray-600">Un technicien vérifie votre appareil gratuitement.</p>
+          <img src="Assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Vitre arrière</h3>
+          <p class="text-gray-600">Vitre arrière brisée ? On la répare rapidement !.</p>
         </div>
         <!-- Service 4 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
@@ -59,19 +57,19 @@
         </div>
         <!-- Service 5 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
-          <img src="Assets/icons8-haut-parleur-24.png" alt="Haut-parleur" class="mx-auto mb-4 w-12 h-12">
-          <h3 class="text-2xl font-semibold mb-3">Réparation haut-parleur</h3>
-          <p class="text-gray-600">Problème de son ? Nous réparons ou remplaçons le haut-parleur.</p>
+          <img src="Assets/5620966.png" alt="Caméra" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Caméra</h3>
+          <p class="text-gray-600">Caméra floue ou cassée ? On la remplace</p>
         </div>
         <!-- Service 6 : Autres réparations sans icône -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100 flex flex-col justify-center">
           <h3 class="text-2xl font-semibold mb-3">Autres réparations</h3>
-          <p class="text-gray-600">Boutons, caméras, micro... Demandez un devis personnalisé.</p>
+          <p class="text-gray-600">Boutons, Haut-parleur, micro etc Demandez un devis personnalisé.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section Évaluation de réparation Apple-like -->
+    <!-- Section Évaluation de réparation -->
     <section id="eval" class="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
       <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
       <form id="eval-form" class="max-w-lg mx-auto bg-white/80 p-8 rounded-2xl shadow border border-gray-100 space-y-6">
@@ -100,20 +98,23 @@
           </select>
         </div>
         <div>
-          <label for="repair" class="block text-base font-medium mb-2">Élément à réparer</label>
+          <label for="repair" class="block text-base font-medium mb-2">Types de réparations</label>
           <select id="repair" name="repair" class="w-full p-3 border border-gray-300 rounded-lg" required>
-            <option value="">Sélectionnez un élément</option>
-            <option value="ecran">Écran cassé</option>
-            <option value="batterie">Batterie à changer</option>
-            <option value="connecteur">Connecteur de charge</option>
-            <option value="hautparleur">Haut-parleur</option>
+            <option value="">Sélectionnez un type</option>
+            <option value="recond_ecran">Reconditionnement d'écran</option>
+            <option value="chgmt_ecran">Changement d'écran complet </option>
+            <option value="vitre_arriere">Remplacement vitre arrière</option>
+            <option value="batterie">Remplacement batterie</option>
+            <option value="connecteur">Remplacement connecteur de charge</option>
+            <option value="camera">Remplacement caméra</option>
+            <option value="autre">Autre</option>
           </select>
         </div>
         <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Évaluer</button>
       </form>
     </section>
 
-    <!-- Section Prix estimé personnalisée Apple-like -->
+    <!-- Section Prix estimé personnalisée -->
     <div id="cost-section-container" class="cost-section-container" style="display:none;">
       <div class="cost-section bg-green-50 p-8 rounded-2xl shadow text-center max-w-lg mx-auto mt-6 border border-green-100">
         <div id="service-coverage-section" class="cost-info" style="display:block;">
@@ -126,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Section Contact Apple-like -->
+    <!-- Section Contact -->
     <section id="Prendre rendez vous" class="py-20 px-4 bg-white">
       <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
       <form id="rdv-form" class="max-w-lg mx-auto bg-gray-50 p-8 rounded-2xl shadow border border-gray-100 space-y-6">
@@ -147,7 +148,7 @@
       </form>
     </section>
 
-    <!-- Intégration Google Maps avec message -->
+    <!-- Intégration Google Maps -->
     <div id="map-location" class="w-full flex flex-col items-center py-10 bg-white scroll-mt-24">
       <h3 class="text-2xl font-bold mb-4 text-gray-800">Où nous retrouver&nbsp;?</h3>
       <iframe
@@ -164,6 +165,12 @@
         <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
       </span>
     </footer>
+
+    <!-- Bannière cookies Screenfix -->
+    <div id="cookie-banner" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 shadow-xl rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 z-50 transition-all duration-300" style="display:none;">
+      <span class="text-gray-800 text-base md:text-lg"><strong>Screenfix</strong> utilise des cookies pour améliorer votre expérience. <span class="hidden md:inline">Aucune donnée personnelle n'est collectée à des fins publicitaires.</span></span>
+      <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold shadow transition">J'accepte</button>
+    </div>
 
     <script src="js/main.js"></script>
 
