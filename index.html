@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réparation Smartphone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white p-6 shadow">
+      <h1 class="text-2xl font-bold text-center">Screenfix</h1>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="bg-blue-100 py-20 text-center">
+      <h2 class="text-4xl font-bold mb-4">Réparez votre téléphone en 30 minutes</h2>
+      <p class="text-lg mb-6">Trouvez un magasin près de chez vous en quelques clics.</p>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded">
+        Commencer
+      </button>
+    </section>
+    <!-- Nos Services -->
+<section class="py-16 px-4 bg-white">
+  <h2 class="text-3xl font-bold text-center mb-10">Nos services</h2>
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 justify-center">
+    
+    <!-- Service 1 -->
+    <div class="bg-gray-100 p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold mb-2">Changement d’écran</h3>
+      <p class="text-gray-700">Réparez votre écran cassé en moins d’une heure.</p>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="bg-gray-100 p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold mb-2">Remplacement de batterie</h3>
+      <p class="text-gray-700">Une nouvelle batterie pour tenir toute la journée.</p>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="bg-gray-100 p-6 rounded shadow text-center">
+      <h3 class="text-xl font-semibold mb-2">Diagnostic gratuit</h3>
+      <p class="text-gray-700">Un technicien vérifie votre appareil gratuitement.</p>
+    </div>
+
+  </div>
+</section>
+    <!-- Section Évaluation de réparation -->
+    <section class="py-16 px-4 bg-white">
+      <h2 class="text-3xl font-bold text-center mb-10">Évaluez votre réparation</h2>
+      <form id="eval-form" class="max-w-md mx-auto bg-gray-100 p-6 rounded shadow">
+        <div class="mb-4">
+          <label for="brand" class="block text-sm font-medium mb-2">Marque de l'appareil</label>
+          <select id="brand" name="brand" class="w-full p-2 border border-gray-300 rounded" required>
+            <option value="">Sélectionnez une marque</option>
+            <option value="apple">Apple</option>
+            <option value="samsung">Samsung</option>
+            <option value="huawei">Huawei</option>
+            <option value="xiaomi">Xiaomi</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="model" class="block text-sm font-medium mb-2">Modèle</label>
+          <select id="model" name="model" class="w-full p-2 border border-gray-300 rounded" required>
+            <option value="">Sélectionnez un modèle</option>
+            <optgroup label="Apple">
+              <option value="iphone-15">iPhone 15</option>
+              <option value="iphone-14">iPhone 14</option>
+              <option value="iphone-13">iPhone 13</option>
+              <option value="iphone-12">iPhone 12</option>
+              <option value="iphone-11">iPhone 11</option>
+            </optgroup>
+            <optgroup label="Samsung">
+              <option value="galaxy-s24">Galaxy S24</option>
+              <option value="galaxy-s23">Galaxy S23</option>
+              <option value="galaxy-s22">Galaxy S22</option>
+              <option value="galaxy-s21">Galaxy S21</option>
+              <option value="galaxy-a54">Galaxy A54</option>
+            </optgroup>
+            <optgroup label="Huawei">
+              <option value="p60">P60</option>
+              <option value="p50">P50</option>
+              <option value="mate-50">Mate 50</option>
+            </optgroup>
+            <optgroup label="Xiaomi">
+              <option value="mi-13">Mi 13</option>
+              <option value="mi-12">Mi 12</option>
+              <option value="redmi-note-12">Redmi Note 12</option>
+            </optgroup>
+            <optgroup label="Autre">
+              <option value="autre">Autre modèle</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="repair" class="block text-sm font-medium mb-2">Élément à réparer</label>
+          <select id="repair" name="repair" class="w-full p-2 border border-gray-300 rounded" required>
+            <option value="">Sélectionnez un élément</option>
+            <option value="ecran">Écran cassé</option>
+            <option value="batterie">Batterie à changer</option>
+            <option value="connecteur">Connecteur de charge</option>
+            <option value="hautparleur">Haut-parleur</option>
+          </select>
+        </div>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded w-full">
+          Évaluer
+        </button>
+      </form>
+    </section>
+
+    <!-- Section Prix estimé personnalisée -->
+    <div id="cost-section-container" class="cost-section-container" style="display:none;">
+      <div class="cost-section bg-green-100 p-6 rounded shadow text-center">
+        <div id="service-coverage-section" class="cost-info" style="display:block;">
+          <h4 class="cost-type text-xl font-bold mb-2">Votre coût estimé</h4>
+          <p class="cost-description mb-2">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
+          <figure class="cost-amount stat stat-reduced mb-4">
+            <span id="service-coverage-value" class="stat-value text-2xl font-semibold">-- €</span>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Contact -->
+    <section class="py-16 px-4 bg-gray-200">
+      <h2 class="text-3xl font-bold text-center mb-10">Contactez-nous</h2>
+      <form class="max-w-md mx-auto bg-white p-6 rounded shadow">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium mb-2">Nom</label>
+          <input type="text" id="name" class="w-full p-2 border border-gray-300 rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium mb-2">Email</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" required />
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-sm font-medium mb-2">Message</label>
+          <textarea id="message" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>  
+        </div>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+          Envoyer
+        </button>
+      </form>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-200 text-center py-4 mt-8">
+      &copy; 2025 Screenfix. Tous droits réservés.<br>
+      Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
