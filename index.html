@@ -3,67 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Réparation Smartphone</title>
+    <title>Screefix</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
 
-    <!-- Header -->
-    <header class="bg-white p-6 shadow">
-      <h1 class="text-2xl font-bold text-center">Screenfix</h1>
+    <!-- Header Apple-like -->
+    <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
+      <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+        <span class="text-2xl font-semibold tracking-tight text-gray-900">Screenfix</span>
+        <nav class="hidden md:flex gap-8 text-gray-700 text-base">
+          <a href="#eval" class="hover:text-blue-600 transition">Évaluation</a>
+          <a href="#Prendre rendez vous" class="hover:text-blue-600 transition">Rendez vous</a>
+          <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <!-- Section Hero -->
-    <section class="bg-blue-100 py-20 text-center">
-      <h2 class="text-4xl font-bold mb-4">Réparez votre téléphone en 30 minutes</h2>
-      <p class="text-lg mb-6">Trouvez un magasin près de chez vous en quelques clics.</p>
-      <button class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded">
-        Commencer
-      </button>
+    <!-- Section Hero Apple-like -->
+    <section class="bg-gradient-to-b from-gray-100 to-white py-28 text-center">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Réparez votre iPhone chez nous</h2>
+      <p class="text-xl md:text-2xl mb-8 text-gray-700">Prenez rendez-vous ou venez nous voir au <a href="#map-location" class="font-semibold text-blue-600 hover:underline">27 Boulevard de Port Royal, Paris</a>.</p>
+      <a href="#services" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer</a>
     </section>
-    <!-- Nos Services -->
-<section class="py-16 px-4 bg-white">
-  <h2 class="text-3xl font-bold text-center mb-10">Nos services</h2>
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 justify-center">
-    
-    <!-- Service 1 -->
-    <div class="bg-gray-100 p-6 rounded shadow text-center">
-      <h3 class="text-xl font-semibold mb-2">Changement d’écran</h3>
-      <p class="text-gray-700">Réparez votre écran cassé en moins d’une heure.</p>
-    </div>
 
-    <!-- Service 2 -->
-    <div class="bg-gray-100 p-6 rounded shadow text-center">
-      <h3 class="text-xl font-semibold mb-2">Remplacement de batterie</h3>
-      <p class="text-gray-700">Une nouvelle batterie pour tenir toute la journée.</p>
-    </div>
+    <!-- Nos Services Apple-like -->
+    <section id="services" class="py-20 px-4 bg-white">
+      <h2 class="text-4xl font-bold text-center mb-14 tracking-tight">Nos services</h2>
+      <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
+          <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Changement d’écran</h3>
+          <p class="text-gray-600">Réparez votre écran cassé en moins d’une heure.</p>
+        </div>
+        <!-- Service 2 -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
+          <img src="Assets/icons8-batterie-pleine-50.png" alt="Batterie" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Remplacement de batterie</h3>
+          <p class="text-gray-600">Une nouvelle batterie pour tenir toute la journée.</p>
+        </div>
+        <!-- Service 3 -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
+          <img src="Assets/icons8-analyse-64.png" alt="Diagnostic" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Diagnostic gratuit</h3>
+          <p class="text-gray-600">Un technicien vérifie votre appareil gratuitement.</p>
+        </div>
+        <!-- Service 4 -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
+          <img src="Assets/icons8-éclair-50.png" alt="Connecteur" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Remplacement connecteur de charge</h3>
+          <p class="text-gray-600">Votre téléphone ne charge plus ? Nous remplaçons le connecteur rapidement.</p>
+        </div>
+        <!-- Service 5 -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100">
+          <img src="Assets/icons8-haut-parleur-24.png" alt="Haut-parleur" class="mx-auto mb-4 w-12 h-12">
+          <h3 class="text-2xl font-semibold mb-3">Réparation haut-parleur</h3>
+          <p class="text-gray-600">Problème de son ? Nous réparons ou remplaçons le haut-parleur.</p>
+        </div>
+        <!-- Service 6 : Autres réparations sans icône -->
+        <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-lg transition text-center border border-gray-100 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-3">Autres réparations</h3>
+          <p class="text-gray-600">Boutons, caméras, micro... Demandez un devis personnalisé.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Service 3 -->
-    <div class="bg-gray-100 p-6 rounded shadow text-center">
-      <h3 class="text-xl font-semibold mb-2">Diagnostic gratuit</h3>
-      <p class="text-gray-700">Un technicien vérifie votre appareil gratuitement.</p>
-    </div>
-
-  </div>
-</section>
-    <!-- Section Évaluation de réparation -->
-    <section class="py-16 px-4 bg-white">
-      <h2 class="text-3xl font-bold text-center mb-10">Évaluez votre réparation</h2>
-      <form id="eval-form" class="max-w-md mx-auto bg-gray-100 p-6 rounded shadow">
-        <div class="mb-4">
-          <label for="brand" class="block text-sm font-medium mb-2">Marque de l'appareil</label>
-          <select id="brand" name="brand" class="w-full p-2 border border-gray-300 rounded" required>
+    <!-- Section Évaluation de réparation Apple-like -->
+    <section id="eval" class="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+      <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
+      <form id="eval-form" class="max-w-lg mx-auto bg-white/80 p-8 rounded-2xl shadow border border-gray-100 space-y-6">
+        <div>
+          <label for="brand" class="block text-base font-medium mb-2">Marque de l'appareil</label>
+          <select id="brand" name="brand" class="w-full p-3 border border-gray-300 rounded-lg" required>
             <option value="">Sélectionnez une marque</option>
             <option value="apple">Apple</option>
-            <option value="samsung">Samsung</option>
-            <option value="huawei">Huawei</option>
-            <option value="xiaomi">Xiaomi</option>
             <option value="autre">Autre</option>
           </select>
         </div>
-        <div class="mb-4">
-          <label for="model" class="block text-sm font-medium mb-2">Modèle</label>
-          <select id="model" name="model" class="w-full p-2 border border-gray-300 rounded" required>
+        <div>
+          <label for="model" class="block text-base font-medium mb-2">Modèle</label>
+          <select id="model" name="model" class="w-full p-3 border border-gray-300 rounded-lg" required>
             <option value="">Sélectionnez un modèle</option>
             <optgroup label="Apple">
               <option value="iphone-15">iPhone 15</option>
@@ -72,31 +94,14 @@
               <option value="iphone-12">iPhone 12</option>
               <option value="iphone-11">iPhone 11</option>
             </optgroup>
-            <optgroup label="Samsung">
-              <option value="galaxy-s24">Galaxy S24</option>
-              <option value="galaxy-s23">Galaxy S23</option>
-              <option value="galaxy-s22">Galaxy S22</option>
-              <option value="galaxy-s21">Galaxy S21</option>
-              <option value="galaxy-a54">Galaxy A54</option>
-            </optgroup>
-            <optgroup label="Huawei">
-              <option value="p60">P60</option>
-              <option value="p50">P50</option>
-              <option value="mate-50">Mate 50</option>
-            </optgroup>
-            <optgroup label="Xiaomi">
-              <option value="mi-13">Mi 13</option>
-              <option value="mi-12">Mi 12</option>
-              <option value="redmi-note-12">Redmi Note 12</option>
-            </optgroup>
             <optgroup label="Autre">
               <option value="autre">Autre modèle</option>
             </optgroup>
           </select>
         </div>
-        <div class="mb-4">
-          <label for="repair" class="block text-sm font-medium mb-2">Élément à réparer</label>
-          <select id="repair" name="repair" class="w-full p-2 border border-gray-300 rounded" required>
+        <div>
+          <label for="repair" class="block text-base font-medium mb-2">Élément à réparer</label>
+          <select id="repair" name="repair" class="w-full p-3 border border-gray-300 rounded-lg" required>
             <option value="">Sélectionnez un élément</option>
             <option value="ecran">Écran cassé</option>
             <option value="batterie">Batterie à changer</option>
@@ -104,50 +109,60 @@
             <option value="hautparleur">Haut-parleur</option>
           </select>
         </div>
-        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded w-full">
-          Évaluer
-        </button>
+        <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Évaluer</button>
       </form>
     </section>
 
-    <!-- Section Prix estimé personnalisée -->
+    <!-- Section Prix estimé personnalisée Apple-like -->
     <div id="cost-section-container" class="cost-section-container" style="display:none;">
-      <div class="cost-section bg-green-100 p-6 rounded shadow text-center">
+      <div class="cost-section bg-green-50 p-8 rounded-2xl shadow text-center max-w-lg mx-auto mt-6 border border-green-100">
         <div id="service-coverage-section" class="cost-info" style="display:block;">
-          <h4 class="cost-type text-xl font-bold mb-2">Votre coût estimé</h4>
-          <p class="cost-description mb-2">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
+          <h4 class="cost-type text-2xl font-bold mb-3">Votre coût estimé</h4>
+          <p class="cost-description mb-3 text-gray-700">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
           <figure class="cost-amount stat stat-reduced mb-4">
-            <span id="service-coverage-value" class="stat-value text-2xl font-semibold">-- €</span>
+            <span id="service-coverage-value" class="stat-value text-3xl font-semibold">-- €</span>
           </figure>
         </div>
       </div>
     </div>
 
-    <!-- Section Contact -->
-    <section class="py-16 px-4 bg-gray-200">
-      <h2 class="text-3xl font-bold text-center mb-10">Contactez-nous</h2>
-      <form class="max-w-md mx-auto bg-white p-6 rounded shadow">
-        <div class="mb-4">
-          <label for="name" class="block text-sm font-medium mb-2">Nom</label>
-          <input type="text" id="name" class="w-full p-2 border border-gray-300 rounded" required />
+    <!-- Section Contact Apple-like -->
+    <section id="Prendre rendez vous" class="py-20 px-4 bg-white">
+      <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
+      <form id="rdv-form" class="max-w-lg mx-auto bg-gray-50 p-8 rounded-2xl shadow border border-gray-100 space-y-6">
+        <div>
+          <label for="name" class="block text-base font-medium mb-2">Nom</label>
+          <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
         </div>
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium mb-2">Email</label>
-          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" required />
+        <div>
+          <label for="email" class="block text-base font-medium mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg" required />
         </div>
-        <div class="mb-4">
-          <label for="message" class="block text-sm font-medium mb-2">Message</label>
-          <textarea id="message" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>  
+        <div>
+          <label for="date" class="block text-base font-medium mb-2">Date du rendez-vous</label>
+          <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-lg" required />
         </div>
-        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
-          Envoyer
-        </button>
+        <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Envoyer</button>
+        <div id="rdv-error" class="hidden mt-4 text-center bg-red-100 text-red-700 px-4 py-3 rounded-lg border border-red-200"></div>
       </form>
     </section>
 
-    <footer class="bg-gray-900 text-gray-200 text-center py-4 mt-8">
+    <!-- Intégration Google Maps avec message -->
+    <div id="map-location" class="w-full flex flex-col items-center py-10 bg-white scroll-mt-24">
+      <h3 class="text-2xl font-bold mb-4 text-gray-800">Où nous retrouver&nbsp;?</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.349964964049!2d2.345964315674839!3d48.83670897928613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671e2e2e2e2e3%3A0x2e2e2e2e2e2e2e2e!2s27%20Boulevard%20du%20Port%20Royal%2C%2075005%20Paris!5e0!3m2!1sfr!2sfr!4v1688572800000!5m2!1sfr!2sfr"
+        width="600" height="350" style="border:0; border-radius:1rem; box-shadow:0 2px 16px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Emplacement Screenfix">
+      </iframe>
+    </div>
+
+    <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
       &copy; 2025 Screenfix. Tous droits réservés.<br>
-      Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a>
+      Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
+      <span class="block mt-2">Contact : 📞 <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
+        <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
+      </span>
     </footer>
 
     <script src="js/main.js"></script>
