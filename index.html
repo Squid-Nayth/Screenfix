@@ -28,12 +28,21 @@
     <img src="Assets/Screenfix promo 4.jpg" alt="Screenfix Promo" class="hidden md:block"/>
 
 
+
     <!-- Acceuil -->
     <section class="bg-gradient-to-b from-gray-100 to-white py-28 text-center">
       <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Réparez votre iPhone chez nous</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700">Prenez rendez-vous ou venez nous voir au <a href="#map-location" class="font-semibold text-blue-600 hover:underline">27 Boulevard de Port Royal, Paris</a>.</p>
-      <a href="#services" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
+      <a href="#services" id="start-btn" class="hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition">Commencer une réparation</a>
     </section>
+
+    <!-- Section Promo Réduction (mobile uniquement) -->
+    <section class="block md:hidden bg-gradient-to-b from-white to-gray-50 py-12 text-center">
+      <h2 class="text-2xl font-bold mb-3 tracking-tight text-gray-900">Profitez d'une réduction sur vos réparation</h2>
+      <p class="text-sm text-gray-700 max-w-2xl mx-auto mb-6">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
+      <a href="#services" id="start-btn-mobile" class="bg-blue-600 hover:bg-blue-700 text-white text-base font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
+    </section>
+
 
     <!-- Section Nos Services -->
     <section id="services" class="py-20 px-4 bg-white">
