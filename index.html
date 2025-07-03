@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screefix</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function(){
+      if(window.emailjs) emailjs.init('votre_public_key'); // Remplacez par votre clé publique EmailJS
+    });</script>
+    <script src="js/emailjs.keys.js"></script>
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
 
@@ -13,12 +19,14 @@
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         <span class="text-2xl font-semibold tracking-tight text-gray-900">Screenfix</span>
         <nav class="hidden md:flex gap-8 text-gray-700 text-base">
-          <a href="#eval" class="hover:text-blue-600 transition">Évaluation</a>
-          <a href="#Prendre rendez vous" class="hover:text-blue-600 transition">Rendez vous</a>
-          <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+          <a href="#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
+          <a href="#Prendre rendez vous" class="hover:text-blue-600 transition" id="nav-rdv">Rendez vous</a>
+          <a href="#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
         </nav>
       </div>
     </header>
+    <img src="Assets/Screenfix promo 4.jpg" alt="Screenfix Promo"/>
+
 
     <!-- Acceuil -->
     <section class="bg-gradient-to-b from-gray-100 to-white py-28 text-center">

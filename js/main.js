@@ -7,11 +7,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Table de prix pour chaque modèle d'iPhone et type de réparation
   const prixIphone = {
-    'iphone-15':   { ecran: 320, batterie: 139, connecteur: 109, hautparleur: 99 },
-    'iphone-14':   { ecran: 270, batterie: 119, connecteur: 99,  hautparleur: 89 },
-    'iphone-13':   { ecran: 220, batterie: 109, connecteur: 89,  hautparleur: 79 },
-    'iphone-12':   { ecran: 180, batterie: 99,  connecteur: 79,  hautparleur: 69 },
-    'iphone-11':   { ecran: 120, batterie: 75,  connecteur: 69,  hautparleur: 59 },
+    'iphone-15': {
+      recond_ecran: 320,
+      chgmt_ecran: 350,
+      vitre_arriere: 180,
+      batterie: 139,
+      connecteur: 109,
+      camera: 149
+    },
+    'iphone-14': {
+      recond_ecran: 270,
+      chgmt_ecran: 299,
+      vitre_arriere: 160,
+      batterie: 119,
+      connecteur: 99,
+      camera: 129
+    },
+    'iphone-13': {
+      recond_ecran: 220,
+      chgmt_ecran: 249,
+      vitre_arriere: 140,
+      batterie: 109,
+      connecteur: 89,
+      camera: 119
+    },
+    'iphone-12': {
+      recond_ecran: 180,
+      chgmt_ecran: 210,
+      vitre_arriere: 120,
+      batterie: 99,
+      connecteur: 79,
+      camera: 99
+    },
+    'iphone-11': {
+      recond_ecran: 120,
+      chgmt_ecran: 150,
+      vitre_arriere: 90,
+      batterie: 75,
+      connecteur: 69,
+      camera: 89
+    }
   };
 
   // Désactivation du bouton 'Envoyer' du formulaire de rendez-vous tant qu'aucune évaluation n'a été faite
@@ -50,17 +85,76 @@ document.addEventListener('DOMContentLoaded', function () {
     const nom = rdvForm.querySelector('#name').value;
     const email = rdvForm.querySelector('#email').value;
     const date = rdvForm.querySelector('#date').value;
-    // Préparer le mail
-    const sujet = encodeURIComponent('Confirmation de rendez-vous chez Screenfix');
-    const corps = encodeURIComponent(`Bonjour ${nom},\n\nVotre demande de rendez-vous chez Screenfix a bien été prise en compte.\n\nDate du rendez-vous : ${date}\n\nMerci et à bientôt !`);
-    // Ouvre le client mail de l'utilisateur
-    window.location.href = `mailto:${email}?subject=${sujet}&body=${corps}`;
-    // Optionnel : afficher une confirmation à l'utilisateur
-    setTimeout(() => {
-      alert('Un mail de confirmation va vous être envoyé.');
-    }, 500);
+    // Récupérer les infos d'évaluation
+    const marque = document.getElementById('brand')?.value || '';
+    const modele = document.getElementById('model')?.value || '';
+    const typeReparation = document.getElementById('repair-type')?.value || '';
+    const prix = document.getElementById('prix-estime')?.textContent || '';
+
+    // Préparer les variables pour EmailJS
+    const templateParams = {
+      nom,
+      email,
+      date,
+      marque,
+      modele,
+      typeReparation,
+      prix
+    };
+
+    // Afficher un loader ou désactiver le bouton
+    const rdvBtn = rdvForm.querySelector('button[type="submit"]');
+    if (rdvBtn) {
+      rdvBtn.disabled = true;
+      rdvBtn.textContent = 'Envoi en cours...';
+    }
+
+    // Envoyer l'email via EmailJS
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      .then(function(response) {
+        // Succès : afficher un message stylé
+        afficherMessageConfirmation('Confirmation envoyée ! Vous allez recevoir un mail récapitulatif.');
+        rdvForm.reset();
+        if (rdvBtn) {
+          rdvBtn.disabled = false;
+          rdvBtn.textContent = 'Envoyer';
+        }
+      }, function(error) {
+        // Erreur : afficher un message d'erreur stylé
+        afficherMessageErreur("Erreur lors de l'envoi du mail. Merci de réessayer ou de nous contacter directement.");
+        if (rdvBtn) {
+          rdvBtn.disabled = false;
+          rdvBtn.textContent = 'Envoyer';
+        }
+      });
     e.preventDefault();
   });
+
+  // Affichage message confirmation/erreur stylé
+  function afficherMessageConfirmation(msg) {
+    let el = document.getElementById('rdv-confirm');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'rdv-confirm';
+      el.className = 'mt-4 p-4 rounded-xl bg-green-100 text-green-800 text-center font-semibold shadow';
+      rdvForm.parentNode.insertBefore(el, rdvForm.nextSibling);
+    }
+    el.textContent = msg;
+    el.style.display = 'block';
+    setTimeout(() => { el.style.display = 'none'; }, 7000);
+  }
+  function afficherMessageErreur(msg) {
+    let el = document.getElementById('rdv-confirm');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'rdv-confirm';
+      el.className = 'mt-4 p-4 rounded-xl bg-red-100 text-red-800 text-center font-semibold shadow';
+      rdvForm.parentNode.insertBefore(el, rdvForm.nextSibling);
+    }
+    el.textContent = msg;
+    el.style.display = 'block';
+    setTimeout(() => { el.style.display = 'none'; }, 7000);
+  }
 
   evalForm && evalForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -71,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (brand === 'apple' && prixIphone[model] && prixIphone[model][repair]) {
       prix = prixIphone[model][repair] + ' €';
     } else if (brand === 'apple' && prixIphone[model]) {
-      prix = 'Veuillez sélectionner un élément à réparer';
+      prix = '-- €';
     } else {
       prix = 'Sur devis'; // Pour les autres marques, on peut adapter plus tard
     }
@@ -92,6 +186,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     });
+  });
+
+  // Smooth scroll navbar (liens)
+  const navEval = document.getElementById('nav-eval');
+  const navRdv = document.getElementById('nav-rdv');
+  const navContact = document.getElementById('nav-contact');
+  navEval && navEval.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('eval').scrollIntoView({behavior:'smooth'});
+  });
+  navRdv && navRdv.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('Prendre rendez vous').scrollIntoView({behavior:'smooth'});
+  });
+  navContact && navContact.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
   });
 
   // Gestion cookies Screenfix
