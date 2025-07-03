@@ -43,7 +43,7 @@
 
     <!-- Bouton Commencer une réparation (toujours visible) -->
     <div class="w-full text-center my-4">
-      <a href="#services" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
+      <a href="#eval" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
     </div>
     
 
@@ -96,25 +96,18 @@
         <div>
           <label for="brand" class="block text-base font-medium mb-2">Marque de l'appareil</label>
           <select id="brand" name="brand" class="w-full p-3 border border-gray-300 rounded-lg" required>
-            <option value="">Sélectionnez une marque</option>
-            <option value="apple">Apple</option>
-            <option value="autre">Autre</option>
+            <option value="apple" selected>Apple</option>
           </select>
         </div>
         <div>
           <label for="model" class="block text-base font-medium mb-2">Modèle</label>
           <select id="model" name="model" class="w-full p-3 border border-gray-300 rounded-lg" required>
             <option value="">Sélectionnez un modèle</option>
-            <optgroup label="Apple">
-              <option value="iphone-15">iPhone 15</option>
-              <option value="iphone-14">iPhone 14</option>
-              <option value="iphone-13">iPhone 13</option>
-              <option value="iphone-12">iPhone 12</option>
-              <option value="iphone-11">iPhone 11</option>
-            </optgroup>
-            <optgroup label="Autre">
-              <option value="autre">Autre modèle</option>
-            </optgroup>
+            <option value="iphone-15">iPhone 15</option>
+            <option value="iphone-14">iPhone 14</option>
+            <option value="iphone-13">iPhone 13</option>
+            <option value="iphone-12">iPhone 12</option>
+            <option value="iphone-11">iPhone 11</option>
           </select>
         </div>
         <div>
