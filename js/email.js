@@ -1,10 +1,9 @@
-// email.js — gestion de l'envoi EmailJS pour Screenfix
-// Remplir les valeurs suivantes avec vos identifiants EmailJS
+
 const EMAILJS_USER_ID = 'jRRj-yIH7JJxNkXO0';
 const EMAILJS_SERVICE_ID = 'service_95urihm';
-const EMAILJS_TEMPLATE_USER = 'template_pvowh8p'; // ID du template pour l'utilisateur
-const EMAILJS_TEMPLATE_ADMIN = 'template_szlgmdo'; // ID du template pour l'admin
-const ADMIN_EMAIL = 'nathannkombe@gmail.com'; // À personnaliser
+const EMAILJS_TEMPLATE_USER = 'template_pvowh8p'; 
+const EMAILJS_TEMPLATE_ADMIN = 'template_szlgmdo'; 
+const ADMIN_EMAIL = 'cineeffrance@gmail.com';
 
 
 // Charger EmailJS SDK et indiquer quand il est prêt
