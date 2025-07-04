@@ -1,3 +1,27 @@
+// Menu mobile déroulant (3 points)
+function setupMobileMenu() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if(menuBtn && menu) {
+    menuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+    // Fermer le menu si on clique ailleurs
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupMobileMenu);
+} else {
+  setupMobileMenu();
+}
+
 // Logique d'affichage du prix pour tous les modèles d'iPhone
 
 document.addEventListener('DOMContentLoaded', function () {
