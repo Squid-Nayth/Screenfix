@@ -18,6 +18,22 @@
           <a href="#Prendre rendez vous" class="hover:text-blue-600 transition" id="nav-rdv">Rendez vous</a>
           <a href="#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
         </nav>
+        <!-- Menu mobile (3 points) -->
+        <div class="md:hidden relative">
+          <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            <span class="sr-only">Ouvrir le menu</span>
+            <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="5" r="1.5"/>
+              <circle cx="12" cy="12" r="1.5"/>
+              <circle cx="12" cy="19" r="1.5"/>
+            </svg>
+          </button>
+          <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-100 z-50 animate-fade-in">
+            <a href="#eval" class="block px-6 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 font-medium rounded-t-xl transition">Évaluation</a>
+            <a href="#Prendre rendez vous" class="block px-6 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 font-medium transition">Rendez vous</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 font-medium rounded-b-xl transition">Contact</a>
+          </div>
+        </div>
       </div>
     </header>
     <img src="Assets/Screenfix promo 4.jpg" alt="Screenfix Promo" class="hidden md:block"/>
