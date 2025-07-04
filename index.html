@@ -12,7 +12,7 @@
     <!-- Header -->
     <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-        <span class="text-2xl font-semibold tracking-tight text-gray-900">Screenfix</span>
+        <a href="#" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
         <nav class="hidden md:flex gap-8 text-gray-700 text-base">
           <a href="#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
           <a href="#Prendre rendez vous" class="hover:text-blue-600 transition" id="nav-rdv">Rendez vous</a>
@@ -29,16 +29,11 @@
             </svg>
           </button>
           <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
-            <form id="mobile-nav-form" class="space-y-6">
-              <div>
-                <label for="mobile-nav-choice" class="block text-base font-medium mb-2 text-gray-800">Où souhaitez-vous aller ?</label>
-                <select id="mobile-nav-choice" name="mobile-nav-choice" class="w-full p-3 border border-gray-300 rounded-lg">
-                  <option value="eval">Évaluation</option>
-                  <option value="rdv">Prendre rendez-vous</option>
-                  <option value="contact">Contact</option>
-                </select>
-              </div>
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Aller à la section</button>
+            <form id="mobile-nav-form" class="flex flex-col gap-4">
+              <label class="block text-base font-medium mb-2 text-gray-800 text-center">Où souhaitez-vous aller ?</label>
+              <button type="button" data-target="eval" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Évaluation</button>
+              <button type="button" data-target="rdv" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Prendre rendez-vous</button>
+              <button type="button" data-target="contact" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Contact</button>
             </form>
           </div>
         </div>
@@ -59,9 +54,8 @@
       <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900">Profitez d'une réduction sur vos réparation</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-2xl mx-auto">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
     </section>
-
     <!-- Bouton Commencer une réparation (toujours visible) -->
-    <div class="w-full text-center my-4">
+    <div class="text-center mt-2 mb-4">
       <a href="#eval" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
     </div>
     

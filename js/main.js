@@ -1,3 +1,13 @@
+// Scroll vers le haut quand on clique sur "Screenfix" dans le header
+document.addEventListener('DOMContentLoaded', function () {
+  const navHome = document.getElementById('nav-home');
+  if (navHome) {
+    navHome.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
 // Menu mobile déroulant (3 points)
 function setupMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
@@ -13,6 +23,26 @@ function setupMobileMenu() {
         menu.classList.add('hidden');
       }
     });
+
+    // Ajout navigation par boutons dans le menu mobile
+    const mobileNavForm = document.getElementById('mobile-nav-form');
+    if (mobileNavForm) {
+      mobileNavForm.querySelectorAll('button[data-target]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          menu.classList.add('hidden');
+          const target = btn.getAttribute('data-target');
+          let sectionId = '';
+          if (target === 'eval') sectionId = 'eval';
+          else if (target === 'rdv') sectionId = 'Prendre rendez vous';
+          else if (target === 'contact') sectionId = 'contact';
+          if (sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) section.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    }
   }
 }
 
