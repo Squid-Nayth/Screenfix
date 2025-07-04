@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Empêcher l'envoi du formulaire si pas d'évaluation
+  // Empêcher l'envoi du formulaire si pas d'évaluation et envoyer via EmailJS
   rdvForm && rdvForm.addEventListener('submit', function (e) {
     const rdvError = document.getElementById('rdv-error');
     if (!evaluationFaite) {
@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
       rdvError.classList.add('hidden');
       rdvError.textContent = '';
     }
+    e.preventDefault();
     // Récupérer les infos du formulaire
     const nom = rdvForm.querySelector('#name').value;
     const email = rdvForm.querySelector('#email').value;
@@ -142,10 +143,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Récupérer les infos d'évaluation
     const marque = document.getElementById('brand')?.value || '';
     const modele = document.getElementById('model')?.value || '';
-    const typeReparation = document.getElementById('repair-type')?.value || '';
-    const prix = document.getElementById('prix-estime')?.textContent || '';
+    const typeReparation = document.getElementById('repair')?.value || '';
+    const prix = document.getElementById('service-coverage-value')?.textContent || '';
 
-    // Ici, vous pouvez remettre l'ancien comportement ou laisser vide si plus d'envoi automatique
+    // Appel EmailJS
+    if (typeof sendScreenfixEmails === 'function') {
+      sendScreenfixEmails(
+        { brand: marque, model: modele, repair: typeReparation, price: prix },
+        { name: nom, email: email, date: date },
+        function() {
+          afficherMessageConfirmation('Votre demande a bien été envoyée. Vous recevrez un email de confirmation.');
+          rdvForm.reset();
+        },
+        function(err) {
+          afficherMessageErreur('Erreur lors de l’envoi du mail. Merci de réessayer.');
+          console.error('EmailJS error:', err);
+        }
+      );
+    } else {
+      afficherMessageErreur('Service email non disponible.');
+    }
   });
 
   // Affichage message confirmation/erreur stylé
