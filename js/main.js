@@ -91,43 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const typeReparation = document.getElementById('repair-type')?.value || '';
     const prix = document.getElementById('prix-estime')?.textContent || '';
 
-    // Préparer les variables pour EmailJS
-    const templateParams = {
-      nom,
-      email,
-      date,
-      marque,
-      modele,
-      typeReparation,
-      prix
-    };
-
-    // Afficher un loader ou désactiver le bouton
-    const rdvBtn = rdvForm.querySelector('button[type="submit"]');
-    if (rdvBtn) {
-      rdvBtn.disabled = true;
-      rdvBtn.textContent = 'Envoi en cours...';
-    }
-
-    // Envoyer l'email via EmailJS
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
-      .then(function(response) {
-        // Succès : afficher un message stylé
-        afficherMessageConfirmation('Confirmation envoyée ! Vous allez recevoir un mail récapitulatif.');
-        rdvForm.reset();
-        if (rdvBtn) {
-          rdvBtn.disabled = false;
-          rdvBtn.textContent = 'Envoyer';
-        }
-      }, function(error) {
-        // Erreur : afficher un message d'erreur stylé
-        afficherMessageErreur("Erreur lors de l'envoi du mail. Merci de réessayer ou de nous contacter directement.");
-        if (rdvBtn) {
-          rdvBtn.disabled = false;
-          rdvBtn.textContent = 'Envoyer';
-        }
-      });
-    e.preventDefault();
+    // Ici, vous pouvez remettre l'ancien comportement ou laisser vide si plus d'envoi automatique
   });
 
   // Affichage message confirmation/erreur stylé
@@ -205,14 +169,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('contact').scrollIntoView({behavior:'smooth'});
   });
 
-  // Gestion cookies Screenfix
-  const cookieBanner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('accept-cookies');
-  if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.style.display = 'flex';
-  }
-  acceptBtn && acceptBtn.addEventListener('click', function () {
-    localStorage.setItem('cookiesAccepted', 'yes');
-    cookieBanner.style.display = 'none';
-  });
+
 });

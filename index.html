@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screefix</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>window.addEventListener('DOMContentLoaded', function(){
-      if(window.emailjs) emailjs.init('votre_public_key'); // Remplacez par votre clé publique EmailJS
-    });</script>
-    <script src="js/emailjs.keys.js"></script>
+    
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
 
@@ -29,16 +24,16 @@
 
 
 
-    <!-- Acceuil -->
-    <section class="bg-gradient-to-b from-gray-100 to-white py-28 text-center">
+    <!-- Acceuil (PC uniquement) -->
+    <section class="hidden md:block bg-gradient-to-b from-gray-100 to-white py-28 text-center">
       <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Réparez votre iPhone chez nous</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700">Prenez rendez-vous ou venez nous voir au <a href="#map-location" class="font-semibold text-blue-600 hover:underline">27 Boulevard de Port Royal, Paris</a>.</p>
     </section>
 
     <!-- Section Promo Réduction (mobile uniquement) -->
-    <section class="block md:hidden bg-gradient-to-b from-white to-gray-50 py-12 text-center">
-      <h2 class="text-2xl font-bold mb-3 tracking-tight text-gray-900">Profitez d'une réduction sur vos réparation</h2>
-      <p class="text-sm text-gray-700 max-w-2xl mx-auto mb-6">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
+    <section class="block md:hidden bg-gradient-to-b from-white to-gray-50 py-28 text-center">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900">Profitez d'une réduction sur vos réparation</h2>
+      <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-2xl mx-auto">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
     </section>
 
     <!-- Bouton Commencer une réparation (toujours visible) -->
@@ -179,11 +174,7 @@
       </span>
     </footer>
 
-    <!-- Bannière cookies Screenfix -->
-    <div id="cookie-banner" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 shadow-xl rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 z-50 transition-all duration-300" style="display:none;">
-      <span class="text-gray-800 text-base md:text-lg"><strong>Screenfix</strong> utilise des cookies pour améliorer votre expérience. <span class="hidden md:inline">Aucune donnée personnelle n'est collectée à des fins publicitaires.</span></span>
-      <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold shadow transition">J'accepte</button>
-    </div>
+
 
     <script src="js/main.js"></script>
 
