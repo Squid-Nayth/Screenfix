@@ -24,8 +24,8 @@
             <span class="sr-only">Ouvrir le menu</span>
             <svg class="w-7 h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="5" r="1.5" />
-              <circle cx="12" cy="12" r="1.5" />
-              <circle cx="12" cy="19" r="1.5" />
+              <circle cx="12" cy="12" r="1.5"/>
+              <circle cx="12" cy="19" r="1.5"/>
             </svg>
           </button>
           <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
@@ -123,17 +123,48 @@
           </select>
         </div>
         <div>
-          <label for="repair" class="block text-base font-medium mb-2">Types de réparations</label>
-          <select id="repair" name="repair" class="w-full p-3 border border-gray-300 rounded-lg" required>
-            <option value="">Sélectionnez un type</option>
-            <option value="recond_ecran">Reconditionnement d'écran</option>
-            <option value="chgmt_ecran">Changement d'écran complet </option>
-            <option value="vitre_arriere">Remplacement vitre arrière</option>
-            <option value="batterie">Remplacement batterie</option>
-            <option value="connecteur">Remplacement connecteur de charge</option>
-            <option value="camera">Remplacement caméra</option>
-            <option value="autre">Autre</option>
-          </select>
+          <label class="block text-base font-medium mb-2">Types de réparations</label>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
+            <span id="repair-count" class="text-xs font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
+          </div>
+          <div id="repair-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="recond_ecran" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Reconditionnement d'écran</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-iphone13-50.png" alt="Changement écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="chgmt_ecran" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Changement d'écran complet</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="vitre_arriere" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Remplacement vitre arrière</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-batterie-pleine-50.png" alt="Batterie" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="batterie" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Remplacement batterie</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-éclair-50.png" alt="Connecteur" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="connecteur" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Remplacement connecteur de charge</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/5620966.png" alt="Caméra" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="camera" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Remplacement caméra</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
+              <img src="Assets/icons8-iphone13-50.png" alt="Autre" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
+              <input type="checkbox" name="repair" value="autre" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
+              <span>Autre</span>
+            </label>
+          </div>
         </div>
         <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Évaluer</button>
       </form>
@@ -189,7 +220,7 @@
     <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
       &copy; 2025 Screenfix. Tous droits réservés.<br>
       Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
-      <span class="block mt-2">Contact : 📞 <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
+      <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
         <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
       </span>
     </footer>

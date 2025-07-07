@@ -1,0 +1,9 @@
+/* Animation pour le compteur de sélection */
+#repair-count {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1), color 0.2s;
+}
+#repair-count.scale-110 {
+  transform: scale(1.15);
+  color: #2563eb;
+}

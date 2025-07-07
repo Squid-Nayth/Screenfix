@@ -1,3 +1,19 @@
+// Affichage dynamique du nombre de réparations sélectionnées
+document.addEventListener('DOMContentLoaded', function () {
+  const checkboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
+  const countSpan = document.getElementById('repair-count');
+  function updateRepairCount() {
+    const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+    countSpan.textContent = checked === 0 ? '0 sélectionnée' : `${checked} sélectionnée${checked > 1 ? 's' : ''}`;
+    countSpan.classList.remove('scale-110');
+    void countSpan.offsetWidth; // force reflow for animation
+    countSpan.classList.add('scale-110');
+    setTimeout(() => countSpan.classList.remove('scale-110'), 200);
+  }
+  checkboxes.forEach(cb => cb.addEventListener('change', updateRepairCount));
+  updateRepairCount();
+});
+// ...existing code...
 // Scroll vers le haut quand on clique sur "Screenfix" dans le header
 document.addEventListener('DOMContentLoaded', function () {
   const navHome = document.getElementById('nav-home');
@@ -143,7 +159,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Récupérer les infos d'évaluation
     const marque = document.getElementById('brand')?.value || '';
     const modele = document.getElementById('model')?.value || '';
-    const typeReparation = document.getElementById('repair')?.value || '';
+    // Récupérer toutes les réparations sélectionnées
+    const repairSelect = document.getElementById('repair');
+    let typeReparation = '';
+    if (repairSelect) {
+      let selected = [];
+      for (let option of repairSelect.options) {
+        if (option.selected) selected.push(option.textContent);
+      }
+      typeReparation = selected.join(', ');
+    }
     const prix = document.getElementById('service-coverage-value')?.textContent || '';
 
     // Appel EmailJS
@@ -195,19 +220,51 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const brand = document.getElementById('brand').value;
     const model = document.getElementById('model').value;
-    const repair = document.getElementById('repair').value;
+    // Nouvelle logique : checkboxes au lieu de select
+    const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
     let prix = '--';
-    if (brand === 'apple' && prixIphone[model] && prixIphone[model][repair]) {
-      prix = prixIphone[model][repair] + ' €';
+    let total = 0;
+    let selectedRepairs = [];
+    let details = [];
+    repairCheckboxes.forEach(cb => {
+      if (cb.checked) selectedRepairs.push(cb.value);
+    });
+    if (brand === 'apple' && prixIphone[model] && selectedRepairs.length > 0) {
+      selectedRepairs.forEach(function(rep) {
+        if (prixIphone[model][rep]) {
+          total += prixIphone[model][rep];
+          // Texte lisible pour le détail
+          let label = cbLabelFromValue(rep);
+          details.push(prixIphone[model][rep] + ' € : ' + label);
+        }
+      });
+      prix = total > 0 ? total + ' €' : '-- €';
+      if (details.length > 1) {
+        prix += ' (' + details.join(' + ') + ')';
+      }
     } else if (brand === 'apple' && prixIphone[model]) {
       prix = '-- €';
     } else {
-      prix = 'Sur devis'; // Pour les autres marques, on peut adapter plus tard
+      prix = 'Sur devis';
     }
     serviceCoverageValue.textContent = prix;
     costSection.style.display = 'block';
     costSection.scrollIntoView({ behavior: 'smooth' });
   });
+
+  // Fonction utilitaire pour retrouver le label lisible d'une checkbox
+  function cbLabelFromValue(val) {
+    switch(val) {
+      case 'recond_ecran': return "Reconditionnement d'écran";
+      case 'chgmt_ecran': return "Changement d'écran complet";
+      case 'vitre_arriere': return "Remplacement vitre arrière";
+      case 'batterie': return "Remplacement batterie";
+      case 'connecteur': return "Remplacement connecteur de charge";
+      case 'camera': return "Remplacement caméra";
+      case 'autre': return "Autre";
+      default: return val;
+    }
+  }
 
   // Smooth scroll pour tous les liens internes commençant par #
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
