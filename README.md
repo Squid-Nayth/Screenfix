@@ -10,6 +10,7 @@ Ce projet a pour objectif de proposer une interface moderne, responsive et facil
 - CSS3
 - JavaScript
 - Tailwind CSS
+- Email.js
 
 ## Installation
 1. Clonez le dépôt :
