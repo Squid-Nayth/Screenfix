@@ -133,31 +133,37 @@
               <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="recond_ecran" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Reconditionnement d'écran</span>
+              <span id="prix-recond_ecran" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/icons8-iphone13-50.png" alt="Changement écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="chgmt_ecran" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Changement d'écran complet</span>
+              <span id="prix-chgmt_ecran" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="vitre_arriere" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Remplacement vitre arrière</span>
+              <span id="prix-vitre_arriere" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/icons8-batterie-pleine-50.png" alt="Batterie" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="batterie" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Remplacement batterie</span>
+              <span id="prix-batterie" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/icons8-éclair-50.png" alt="Connecteur" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="connecteur" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Remplacement connecteur de charge</span>
+              <span id="prix-connecteur" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/5620966.png" alt="Caméra" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
               <input type="checkbox" name="repair" value="camera" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               <span>Remplacement caméra</span>
+              <span id="prix-camera" class="ml-auto text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors">-- €</span>
             </label>
             <label class="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
               <img src="Assets/icons8-iphone13-50.png" alt="Autre" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -165,6 +171,9 @@
               <span>Autre</span>
             </label>
           </div>
+          <!-- Affichage dynamique des prix par type de réparation -->
+          <div id="repair-prices" class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          <!-- Les prix sont désormais intégrés dans chaque checkbox ci-dessus -->
         </div>
         <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Évaluer</button>
       </form>

@@ -1,5 +1,59 @@
 // Affichage dynamique du nombre de réparations sélectionnées
 document.addEventListener('DOMContentLoaded', function () {
+  // Affichage dynamique des prix sous les checkboxes
+  function updateRepairPrices() {
+    const model = document.getElementById('model').value;
+    const prixIphone = {
+      'iphone-15': { recond_ecran: 320, chgmt_ecran: 350, vitre_arriere: 180, batterie: 139, connecteur: 109, camera: 149 },
+      'iphone-14': { recond_ecran: 270, chgmt_ecran: 299, vitre_arriere: 160, batterie: 119, connecteur: 99, camera: 129 },
+      'iphone-13': { recond_ecran: 220, chgmt_ecran: 249, vitre_arriere: 140, batterie: 109, connecteur: 89, camera: 119 },
+      'iphone-12': { recond_ecran: 180, chgmt_ecran: 210, vitre_arriere: 120, batterie: 99, connecteur: 79, camera: 99 },
+      'iphone-11': { recond_ecran: 120, chgmt_ecran: 150, vitre_arriere: 90, batterie: 75, connecteur: 69, camera: 89 }
+    };
+    const types = ['recond_ecran','chgmt_ecran','vitre_arriere','batterie','connecteur','camera'];
+    types.forEach(type => {
+      const el = document.getElementById('prix-' + type);
+      if (el) {
+        if (prixIphone[model] && typeof prixIphone[model][type] !== 'undefined') {
+          el.textContent = prixIphone[model][type] + ' €';
+          el.classList.remove('text-gray-400');
+        } else {
+          el.textContent = '-- €';
+          el.classList.add('text-gray-400');
+        }
+      }
+    });
+  }
+  document.getElementById('model')?.addEventListener('change', updateRepairPrices);
+  updateRepairPrices();
+  // Désactivation du bouton "Évaluer" tant que toutes les options ne sont pas remplies
+  const evalBtn = document.querySelector('#eval-form button[type="submit"]');
+  const brandSelect = document.getElementById('brand');
+  const modelSelect = document.getElementById('model');
+  const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
+
+  function checkEvalFormValidity() {
+    const brandOk = brandSelect && brandSelect.value;
+    const modelOk = modelSelect && modelSelect.value;
+    const repairsOk = Array.from(repairCheckboxes).some(cb => cb.checked);
+    if (evalBtn) {
+      if (brandOk && modelOk && repairsOk) {
+        evalBtn.disabled = false;
+        evalBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        evalBtn.disabled = true;
+        evalBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+  }
+  if (evalBtn) {
+    evalBtn.disabled = true;
+    evalBtn.classList.add('opacity-50', 'cursor-not-allowed');
+  }
+  brandSelect && brandSelect.addEventListener('change', checkEvalFormValidity);
+  modelSelect && modelSelect.addEventListener('change', checkEvalFormValidity);
+  repairCheckboxes.forEach(cb => cb.addEventListener('change', checkEvalFormValidity));
+  checkEvalFormValidity();
   const checkboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
   const countSpan = document.getElementById('repair-count');
   function updateRepairCount() {
