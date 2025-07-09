@@ -131,46 +131,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Table de prix pour chaque modèle d'iPhone et type de réparation
   const prixIphone = {
-    'iphone-15': {
-      recond_ecran: 320,
-      chgmt_ecran: 350,
-      vitre_arriere: 180,
-      batterie: 139,
-      connecteur: 109,
-      camera: 149
-    },
-    'iphone-14': {
-      recond_ecran: 270,
-      chgmt_ecran: 299,
-      vitre_arriere: 160,
-      batterie: 119,
-      connecteur: 99,
-      camera: 129
-    },
-    'iphone-13': {
-      recond_ecran: 220,
-      chgmt_ecran: 249,
-      vitre_arriere: 140,
-      batterie: 109,
-      connecteur: 89,
-      camera: 119
-    },
-    'iphone-12': {
-      recond_ecran: 180,
-      chgmt_ecran: 210,
-      vitre_arriere: 120,
-      batterie: 99,
-      connecteur: 79,
-      camera: 99
-    },
-    'iphone-11': {
-      recond_ecran: 120,
-      chgmt_ecran: 150,
-      vitre_arriere: 90,
-      batterie: 75,
-      connecteur: 69,
-      camera: 89
-    }
+    'iphone-15': { recond_ecran: 152, chgmt_ecran: 350, vitre_arriere: 180, batterie: 115, connecteur: 109, camera: 149 },
+    'iphone-15-plus': { recond_ecran: 183, batterie: 125 },
+    'iphone-15-pro': { recond_ecran: 0, batterie: 125 },
+    'iphone-15-pro-max': { recond_ecran: 0, batterie: 135 },
+    'iphone-14': { recond_ecran: 132, chgmt_ecran: 299, vitre_arriere: 160, batterie: 95, connecteur: 99, camera: 129 },
+    'iphone-14-plus': { recond_ecran: 161, batterie: 115 },
+    'iphone-14-pro': { recond_ecran: 183, batterie: 115 },
+    'iphone-14-pro-max': { recond_ecran: 201, batterie: 125 },
+    'iphone-13': { recond_ecran: 108, chgmt_ecran: 249, vitre_arriere: 140, batterie: 85, connecteur: 89, camera: 119 },
+    'iphone-13-mini': { recond_ecran: 51, batterie: 75 },
+    'iphone-13-pro': { recond_ecran: 103, batterie: 95 },
+    'iphone-13-pro-max': { recond_ecran: 165, batterie: 115 },
+    'iphone-12': { recond_ecran: 84, chgmt_ecran: 210, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
+    'iphone-12-mini': { recond_ecran: 84, batterie: 75 },
+    'iphone-12-pro': { recond_ecran: 89, batterie: 75 },
+    'iphone-12-pro-max': { recond_ecran: 89, batterie: 95 },
+    'iphone-11': { recond_ecran: 69, chgmt_ecran: 150, vitre_arriere: 90, batterie: 75, connecteur: 69, camera: 89 },
+    'iphone-11-pro': { recond_ecran: 62, batterie: 75 },
+    'iphone-11-pro-max': { recond_ecran: 89, batterie: 85 },
+    'iphone-x': { recond_ecran: 59, batterie: 75 },
+    'iphone-xs': { recond_ecran: 50, batterie: 75 },
+    'iphone-xr': { recond_ecran: 59, batterie: 75 },
+    'iphone-xs-max': { recond_ecran: 50, batterie: 85 },
+    'iphone-se-2022': { recond_ecran: 108, batterie: 65 }
   };
 
   // Désactivation du bouton 'Envoyer' du formulaire de rendez-vous tant qu'aucune évaluation n'a été faite
@@ -270,38 +254,84 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => { el.style.display = 'none'; }, 7000);
   }
 
+  // --- LOGIQUE DE REDUCTION ---
+  function updateReductions() {
+    const model = document.getElementById('model').value;
+    const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
+    // Liste des types de réparation dans l'ordre de sélection
+    let selectedRepairs = [];
+    repairCheckboxes.forEach(cb => {
+      if (cb.checked) selectedRepairs.push(cb.value);
+    });
+    // Réductions à appliquer
+    const reductions = [-0.15, -0.10, -0.10];
+    // Réinitialise tous les messages de réduction
+    const types = ['recond_ecran','chgmt_ecran','vitre_arriere','batterie','connecteur','camera','autre'];
+    types.forEach(type => {
+      const reducDiv = document.getElementById('reduc-' + type);
+      if (reducDiv) {
+        reducDiv.style.display = 'none';
+        reducDiv.textContent = '';
+      }
+    });
+    // Affiche la réduction au-dessus de chaque prix sélectionné
+    selectedRepairs.forEach((type, idx) => {
+      const reducDiv = document.getElementById('reduc-' + type);
+      if (reducDiv && idx < reductions.length) {
+        let txt = '';
+        if (idx === 0) txt = '-15% de réduction';
+        else if (idx === 1) txt = '-25% de réduction';
+        else if (idx === 2) txt = '-35% de réduction';
+        reducDiv.textContent = txt;
+        reducDiv.style.display = 'block';
+      }
+    });
+  }
+
+  // Met à jour l'affichage des réductions à chaque changement de checkbox
+  const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
+  repairCheckboxes.forEach(cb => cb.addEventListener('change', updateReductions));
+  document.getElementById('model')?.addEventListener('change', updateReductions);
+  updateReductions();
+
+  // Soumission du formulaire d'évaluation avec calcul des réductions
   evalForm && evalForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const brand = document.getElementById('brand').value;
     const model = document.getElementById('model').value;
-    // Nouvelle logique : checkboxes au lieu de select
     const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
     let prix = '--';
-    let total = 0;
+    let totalSansReduc = 0;
+    let totalAvecReduc = 0;
     let selectedRepairs = [];
-    let details = [];
     repairCheckboxes.forEach(cb => {
       if (cb.checked) selectedRepairs.push(cb.value);
     });
+    // Réductions à appliquer
+    const reductions = [-0.15, -0.10, -0.10];
     if (brand === 'apple' && prixIphone[model] && selectedRepairs.length > 0) {
-      selectedRepairs.forEach(function(rep) {
+      selectedRepairs.forEach(function(rep, idx) {
         if (prixIphone[model][rep]) {
-          total += prixIphone[model][rep];
-          // Texte lisible pour le détail
-          let label = cbLabelFromValue(rep);
-          details.push(prixIphone[model][rep] + ' € : ' + label);
+          const prixBase = prixIphone[model][rep];
+          totalSansReduc += prixBase;
+          let reduc = 0;
+          if (idx < reductions.length) {
+            reduc = reductions[idx];
+          }
+          totalAvecReduc += prixBase * (1 + reduc);
         }
       });
-      prix = total > 0 ? total + ' €' : '-- €';
-      if (details.length > 1) {
-        prix += ' (' + details.join(' + ') + ')';
+      if (totalSansReduc > 0) {
+        prix = `<span class="line-through text-gray-400 mr-2">${totalSansReduc.toFixed(2)} €</span><span class="text-blue-700 font-bold">${totalAvecReduc.toFixed(2)} €</span>`;
+      } else {
+        prix = '-- €';
       }
     } else if (brand === 'apple' && prixIphone[model]) {
       prix = '-- €';
     } else {
       prix = 'Sur devis';
     }
-    serviceCoverageValue.textContent = prix;
+    serviceCoverageValue.innerHTML = prix;
     costSection.style.display = 'block';
     costSection.scrollIntoView({ behavior: 'smooth' });
   });
