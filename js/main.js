@@ -1,33 +1,34 @@
+
+// Déclaration unique de prixIphone (fusionnée, la plus complète) -- portée globale
+const prixIphone = {
+  'iphone-15': { recond_ecran: 152, chgmt_ecran: 350, vitre_arriere: 180, batterie: 115, connecteur: 109, camera: 149 },
+  'iphone-15-plus': { recond_ecran: 183, batterie: 125 },
+  'iphone-15-pro': { recond_ecran: 0, batterie: 125 },
+  'iphone-15-pro-max': { recond_ecran: 0, batterie: 135 },
+  'iphone-14': { recond_ecran: 132, chgmt_ecran: 299, vitre_arriere: 160, batterie: 95, connecteur: 99, camera: 129 },
+  'iphone-14-plus': { recond_ecran: 161, batterie: 115 },
+  'iphone-14-pro': { recond_ecran: 183, batterie: 115 },
+  'iphone-14-pro-max': { recond_ecran: 201, batterie: 125 },
+  'iphone-13': { recond_ecran: 108, chgmt_ecran: 249, vitre_arriere: 140, batterie: 85, connecteur: 89, camera: 119 },
+  'iphone-13-mini': { recond_ecran: 51, batterie: 75 },
+  'iphone-13-pro': { recond_ecran: 103, batterie: 95 },
+  'iphone-13-pro-max': { recond_ecran: 165, batterie: 115 },
+  'iphone-12': { recond_ecran: 84, chgmt_ecran: 210, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
+  'iphone-12-mini': { recond_ecran: 84, batterie: 75 },
+  'iphone-12-pro': { recond_ecran: 89, batterie: 75 },
+  'iphone-12-pro-max': { recond_ecran: 89, batterie: 95 },
+  'iphone-11': { recond_ecran: 69, chgmt_ecran: 150, vitre_arriere: 90, batterie: 75, connecteur: 69, camera: 89 },
+  'iphone-11-pro': { recond_ecran: 62, batterie: 75 },
+  'iphone-11-pro-max': { recond_ecran: 89, batterie: 85 },
+  'iphone-x': { recond_ecran: 59, batterie: 75 },
+  'iphone-xs': { recond_ecran: 50, batterie: 75 },
+  'iphone-xr': { recond_ecran: 59, batterie: 75 },
+  'iphone-xs-max': { recond_ecran: 50, batterie: 85 },
+  'iphone-se-2022': { recond_ecran: 108, batterie: 65 }
+};
+
 // Affichage dynamique du nombre de réparations sélectionnées
 document.addEventListener('DOMContentLoaded', function () {
-  // Affichage dynamique des prix sous les checkboxes
-  // Déclaration unique de prixIphone (fusionnée, la plus complète)
-  const prixIphone = {
-    'iphone-15': { recond_ecran: 152, chgmt_ecran: 350, vitre_arriere: 180, batterie: 115, connecteur: 109, camera: 149 },
-    'iphone-15-plus': { recond_ecran: 183, batterie: 125 },
-    'iphone-15-pro': { recond_ecran: 0, batterie: 125 },
-    'iphone-15-pro-max': { recond_ecran: 0, batterie: 135 },
-    'iphone-14': { recond_ecran: 132, chgmt_ecran: 299, vitre_arriere: 160, batterie: 95, connecteur: 99, camera: 129 },
-    'iphone-14-plus': { recond_ecran: 161, batterie: 115 },
-    'iphone-14-pro': { recond_ecran: 183, batterie: 115 },
-    'iphone-14-pro-max': { recond_ecran: 201, batterie: 125 },
-    'iphone-13': { recond_ecran: 108, chgmt_ecran: 249, vitre_arriere: 140, batterie: 85, connecteur: 89, camera: 119 },
-    'iphone-13-mini': { recond_ecran: 51, batterie: 75 },
-    'iphone-13-pro': { recond_ecran: 103, batterie: 95 },
-    'iphone-13-pro-max': { recond_ecran: 165, batterie: 115 },
-    'iphone-12': { recond_ecran: 84, chgmt_ecran: 210, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
-    'iphone-12-mini': { recond_ecran: 84, batterie: 75 },
-    'iphone-12-pro': { recond_ecran: 89, batterie: 75 },
-    'iphone-12-pro-max': { recond_ecran: 89, batterie: 95 },
-    'iphone-11': { recond_ecran: 69, chgmt_ecran: 150, vitre_arriere: 90, batterie: 75, connecteur: 69, camera: 89 },
-    'iphone-11-pro': { recond_ecran: 62, batterie: 75 },
-    'iphone-11-pro-max': { recond_ecran: 89, batterie: 85 },
-    'iphone-x': { recond_ecran: 59, batterie: 75 },
-    'iphone-xs': { recond_ecran: 50, batterie: 75 },
-    'iphone-xr': { recond_ecran: 59, batterie: 75 },
-    'iphone-xs-max': { recond_ecran: 50, batterie: 85 },
-    'iphone-se-2022': { recond_ecran: 108, batterie: 65 }
-  };
 
   function updateRepairPrices() {
     const model = document.getElementById('model').value;
@@ -292,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Soumission du formulaire d'évaluation avec calcul des réductions
   evalForm && evalForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    const brand = document.getElementById('brand').value;
+    const brand = document.getElementById('brand').value.toLowerCase();
     const model = document.getElementById('model').value;
     const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
     let prix = '--';
