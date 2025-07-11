@@ -51,14 +51,6 @@
     </div>
     </section>
 
-    <!-- Section Promo Réduction (mobile uniquement) -->
-    <section class="block md:hidden bg-gradient-to-b from-white to-gray-50 py-20 px-2 text-center">
-      <h2 class="text-4xl font-bold mb-4 tracking-tight text-gray-900 leading-tight">Profitez d'une réduction sur vos réparation</h2>
-      <p class="text-lg mb-6 text-gray-700 max-w-md mx-auto leading-snug">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
-    <section class="block md:hidden bg-gradient-to-b from-white to-gray-50 py-28 text-center">
-      <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900">Profitez d'une réduction sur vos réparation</h2>
-      <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-2xl mx-auto">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-bold text-green-600">-35% de remise</span></p>
-    </section>
 
     
     <!-- Section Évaluation de réparation -->
@@ -109,9 +101,10 @@
               <span class="text-base text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
               <span id="repair-count" class="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
             </div>
+            <!-- Début de la section promo réduction : chaque div avec id="reduc-..." affiche la promo réduction si applicable -->
             <div id="repair-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 w-5/6 text-base">
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-recond_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-recond_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour reconditionnement écran -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -122,7 +115,7 @@
               <span id="prix-recond_ecran" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-chgmt_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-chgmt_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour changement écran -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-iphone13-50.png" alt="Changement écran" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -133,7 +126,7 @@
               <span id="prix-chgmt_ecran" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-vitre_arriere" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-vitre_arriere" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour vitre arrière -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -144,7 +137,7 @@
               <span id="prix-vitre_arriere" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-batterie" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-batterie" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour batterie -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-batterie-pleine-50.png" alt="Batterie" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -155,7 +148,7 @@
               <span id="prix-batterie" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-connecteur" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-connecteur" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour connecteur -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-éclair-50.png" alt="Connecteur" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -166,7 +159,7 @@
               <span id="prix-connecteur" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-camera" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-camera" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour caméra -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/5620966.png" alt="Caméra" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -177,7 +170,7 @@
               <span id="prix-camera" class="text-blue-700 font-semibold text-sm px-2 py-1 rounded transition-colors mt-1">-- €</span>
             </label>
             <label class="flex flex-col items-start gap-1 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-transform duration-200 group">
-              <div id="reduc-autre" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div>
+              <div id="reduc-autre" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em]" style="display:none;"></div> <!-- Promo réduction pour autre type de réparation -->
               <div class="flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                   <img src="Assets/icons8-iphone13-50.png" alt="Autre" class="w-6 h-6 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform duration-200">
@@ -186,7 +179,10 @@
                 <input type="checkbox" name="repair" value="autre" class="accent-blue-600 h-5 w-5 transition-transform duration-200">
               </div>
             </label>
+            <!-- Fin de la section promo réduction -->
+            </label>
           </div>
+          <!-- Fin de la section promo réduction -->
           <!-- Affichage dynamique des prix par type de réparation -->
           <div id="repair-prices" class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
           <!-- Les prix sont désormais intégrés dans chaque checkbox ci-dessus -->
