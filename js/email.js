@@ -48,7 +48,9 @@ function sendScreenfixEmails(evaluation, rdv, onSuccess, onError) {
     eval_brand: evaluation.brand,
     eval_model: evaluation.model,
     eval_repair: repairStr,
-    eval_price: evaluation.price
+    eval_price: evaluation.price,
+    eval_total_sans_reduc: evaluation.totalSansReduc || evaluation.price,
+    eval_total_reduction_percent: evaluation.reductionPercent || '0'
   };
   const adminParams = {
     to_email: ADMIN_EMAIL,
@@ -58,7 +60,9 @@ function sendScreenfixEmails(evaluation, rdv, onSuccess, onError) {
     eval_brand: evaluation.brand,
     eval_model: evaluation.model,
     eval_repair: repairStr,
-    eval_price: evaluation.price
+    eval_price: evaluation.price,
+    eval_total_sans_reduc: evaluation.totalSansReduc || evaluation.price,
+    eval_total_reduction_percent: evaluation.reductionPercent || '0'
   };
   // Envoi à l'utilisateur
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_USER, userParams)
