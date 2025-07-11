@@ -1,4 +1,3 @@
-
 // Déclaration unique de prixIphone (fusionnée, la plus complète) -- portée globale
 const prixIphone = {
   'iphone-15': { recond_ecran: 152, chgmt_ecran: 350, vitre_arriere: 180, batterie: 115, connecteur: 109, camera: 149 },
@@ -89,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
   checkboxes.forEach(cb => cb.addEventListener('change', updateRepairCount));
   updateRepairCount();
 });
-// ...existing code...
 // Scroll vers le haut quand on clique sur "Screenfix" dans le header
 document.addEventListener('DOMContentLoaded', function () {
   const navHome = document.getElementById('nav-home');
@@ -378,4 +376,141 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
+});
+// --- UX MENU DÉROULANT CUSTOM MODÈLE IPHONE ---
+document.addEventListener('DOMContentLoaded', function () {
+  // Liste des modèles (label, value, icône)
+  const iphoneModels = [
+    { value: '', label: 'Sélectionnez un modèle', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-15', label: 'iPhone 15', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-15-plus', label: 'iPhone 15 Plus', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-15-pro', label: 'iPhone 15 Pro', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-15-pro-max', label: 'iPhone 15 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-14', label: 'iPhone 14', icon: 'Assets/icons8-iphone14-pro-50.png' },
+    { value: 'iphone-14-plus', label: 'iPhone 14 Plus', icon: 'Assets/icons8-iphone14-pro-50.png' },
+    { value: 'iphone-14-pro', label: 'iPhone 14 Pro', icon: 'Assets/icons8-iphone14-pro-50.png' },
+    { value: 'iphone-14-pro-max', label: 'iPhone 14 Pro Max', icon: 'Assets/icons8-iphone14-pro-50.png' },
+    { value: 'iphone-13', label: 'iPhone 13', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-13-mini', label: 'iPhone 13 Mini', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-13-pro', label: 'iPhone 13 Pro', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-13-pro-max', label: 'iPhone 13 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-12', label: 'iPhone 12', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-12-mini', label: 'iPhone 12 Mini', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-12-pro', label: 'iPhone 12 Pro', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-12-pro-max', label: 'iPhone 12 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-11', label: 'iPhone 11', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-11-pro', label: 'iPhone 11 Pro', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-11-pro-max', label: 'iPhone 11 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-x', label: 'iPhone X', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-xs', label: 'iPhone XS', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-xr', label: 'iPhone XR', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-xs-max', label: 'iPhone XS Max', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-se-2022', label: 'iPhone SE 2022', icon: 'Assets/icons8-iphone13-50.png' }
+  ];
+
+  const btn = document.getElementById('custom-model-select-btn');
+  const dropdown = document.getElementById('custom-model-dropdown');
+  const list = document.getElementById('custom-model-list');
+  const search = document.getElementById('custom-model-search');
+  const selectedLabel = document.getElementById('custom-model-selected-label');
+  const selectedIcon = document.getElementById('custom-model-selected-icon');
+  const hiddenInput = document.getElementById('model');
+
+  let isOpen = false;
+  let currentValue = '';
+
+  // Injection dynamique des modèles
+  function renderList(filter = '') {
+    list.innerHTML = '';
+    iphoneModels.filter(m => m.label.toLowerCase().includes(filter.toLowerCase())).forEach(model => {
+      const li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.setAttribute('tabindex', '0');
+      li.className = 'flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none';
+      if (model.value === currentValue) {
+        li.classList.add('bg-blue-100', 'font-semibold');
+      }
+      li.dataset.value = model.value;
+      li.innerHTML = `<img src="${model.icon}" alt="" class="w-6 h-6 opacity-70"> <span>${model.label}</span>`;
+      li.addEventListener('click', () => selectModel(model));
+      li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectModel(model); closeDropdown(); } });
+      list.appendChild(li);
+    });
+    if (list.children.length === 0) {
+      const li = document.createElement('li');
+      li.className = 'px-4 py-2 text-gray-400';
+      li.textContent = 'Aucun modèle trouvé';
+      list.appendChild(li);
+    }
+  }
+
+  function openDropdown() {
+    dropdown.classList.remove('hidden');
+    dropdown.classList.add('animate-fade-in');
+    btn.setAttribute('aria-expanded', 'true');
+    isOpen = true;
+    setTimeout(() => { dropdown.classList.remove('animate-fade-out'); }, 10);
+    search.focus();
+    renderList(search.value);
+  }
+  function closeDropdown() {
+    dropdown.classList.add('animate-fade-out');
+    dropdown.classList.remove('animate-fade-in');
+    btn.setAttribute('aria-expanded', 'false');
+    isOpen = false;
+    setTimeout(() => { dropdown.classList.add('hidden'); dropdown.classList.remove('animate-fade-out'); }, 180);
+  }
+  function selectModel(model) {
+    currentValue = model.value;
+    selectedLabel.textContent = model.label;
+    selectedIcon.src = model.icon;
+    hiddenInput.value = model.value;
+    btn.classList.remove('ring-2', 'ring-blue-400');
+    renderList(search.value);
+    // Déclenche les events pour la logique de prix/réparations
+    hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+    closeDropdown();
+  }
+
+  btn && btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (isOpen) closeDropdown(); else openDropdown();
+  });
+  btn && btn.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+      e.preventDefault();
+      openDropdown();
+    } else if (e.key === 'Escape' && isOpen) {
+      closeDropdown();
+    }
+  });
+  document.addEventListener('click', function(e) {
+    if (isOpen && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+      closeDropdown();
+    }
+  });
+  search && search.addEventListener('input', function() {
+    renderList(this.value);
+  });
+  // Accessibilité : navigation clavier dans la liste
+  list && list.addEventListener('keydown', function(e) {
+    const items = Array.from(list.querySelectorAll('li[role=option]'));
+    const idx = items.findIndex(li => li.classList.contains('bg-blue-100'));
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = items[idx + 1] || items[0];
+      next && next.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prev = items[idx - 1] || items[items.length - 1];
+      prev && prev.focus();
+    }
+  });
+  // Initialisation
+  renderList();
+  // Si déjà sélectionné (reload), synchronise l'affichage
+  if (hiddenInput.value) {
+    const found = iphoneModels.find(m => m.value === hiddenInput.value);
+    if (found) selectModel(found);
+  }
 });
