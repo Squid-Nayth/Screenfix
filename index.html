@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
   </head>
-  <body class="bg-gray-100 text-gray-900 font-sans">
+  <body class="bg-white text-gray-900 font-sans">
 
     <!-- Header -->
-    <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
+    <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         <a href="#" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
         <nav class="hidden md:flex gap-8 text-gray-700 text-base">
@@ -41,7 +41,7 @@
     
 
     <!-- Section Promo Réduction (remplace l'accueil) -->
-    <section class="block bg-gradient-to-b from-white to-gray-50 py-20 md:py-28 text-center font-sans">
+    <section class="block bg-white py-20 md:py-28 text-center font-sans">
       <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight">Profitez d'une réduction sur vos réparation</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-md mx-auto leading-snug">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-semibold text-blue-600">-35% de remise</span></p>
       <div class="text-center mt-2 mb-4">
@@ -52,10 +52,10 @@
 
     
     <!-- Section Évaluation de réparation -->
-    <section id="eval" class="w-screen max-w-none py-20 px-0 bg-gradient-to-b from-white to-gray-50 flex justify-center">
+    <section id="eval" class="w-screen max-w-none py-20 px-0 bg-white flex justify-center">
       <div class="w-full max-w-none">
         <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
-        <form id="eval-form" class="w-full max-w-5xl mx-auto bg-white/80 p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 space-y-6">
+        <form id="eval-form" class="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 space-y-6">
         <div class="flex flex-col items-center gap-2">
           <label for="brand" class="block text-base font-medium mb-2 text-center">Marque de l'appareil</label>
           <select id="brand" name="brand" class="w-5/6 h-11 text-base border border-gray-300 rounded-lg mx-auto" required>
@@ -181,31 +181,36 @@
               </figure>
             </div>
           </div>
+          <!-- Séparateur visuel -->
+          <div class="w-full flex justify-center my-10">
+            <div class="h-0.5 w-32 bg-gray-200 rounded-full"></div>
+          </div>
+          <!-- Section Contact -->
+          <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
+          <form id="rdv-form" class="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6">
+            <div>
+              <label for="name" class="block text-base font-medium mb-2">Nom</label>
+              <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
+            </div>
+            <div>
+              <label for="email" class="block text-base font-medium mb-2">Email</label>
+              <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg" required />
+            </div>
+            <div>
+              <label for="date" class="block text-base font-medium mb-2">Date du rendez-vous</label>
+              <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-lg" required />
+            </div>
+            <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Envoyer</button>
+            <div id="rdv-error" class="hidden mt-4 text-center bg-red-100 text-red-700 px-4 py-3 rounded-lg border border-red-200"></div>
+          </form>
         </div>
-      </div>
     </section>
 
     
 
     <!-- Section Contact -->
     <section id="Prendre rendez vous" class="py-20 px-4 bg-white">
-      <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
-      <form id="rdv-form" class="max-w-lg mx-auto bg-gray-50 p-8 rounded-2xl shadow border border-gray-100 space-y-6">
-        <div>
-          <label for="name" class="block text-base font-medium mb-2">Nom</label>
-          <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
-        </div>
-        <div>
-          <label for="email" class="block text-base font-medium mb-2">Email</label>
-          <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg" required />
-        </div>
-        <div>
-          <label for="date" class="block text-base font-medium mb-2">Date du rendez-vous</label>
-          <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-lg" required />
-        </div>
-        <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Envoyer</button>
-        <div id="rdv-error" class="hidden mt-4 text-center bg-red-100 text-red-700 px-4 py-3 rounded-lg border border-red-200"></div>
-      </form>
+      
     </section>
 
     <!-- Nouvelle section localisation/infos atelier, UX harmonisée Screenfix -->
@@ -230,9 +235,9 @@
             Passez à l’atelier ou appelez-nous, <span class="text-blue-600">nous sommes dispo !</span>
           </h2>
           <div class="text-gray-700 space-y-2 text-base md:text-lg">
-            <p><strong>Screenfix – Paris 5ᵉ</strong><br>27 Boulevard de Port Royal, 75005 Paris<br>À deux pas de <strong>Port Royal</strong> et <strong>Les Gobelins</strong></p>
+            <p><strong>Screenfix – Paris 13ᵉ</strong><br>27 Boulevard de Port Royal, 75005 Paris<br>À deux pas de <strong>Port Royal</strong> et <strong>Les Gobelins</strong></p>
             <p><strong>Accès facile</strong> :<br>RER B : Port Royal<br>Métro : lignes 6 et 7<br>Bus & vélos à proximité</p>
-            <p><strong>Horaires d’ouverture</strong> :<br>Lundi → Samedi : <strong>10h00 – 19h00</strong><br> Avec ou sans rendez-vous</p>
+            <p><strong>Horaires d’ouverture</strong> :<br>Lundi → Samedi : <strong>9h00 – 19h00</strong><br> Avec ou sans rendez-vous</p>
             <p><strong>Appelez-nous au <a href="tel:0622188574" class="text-blue-600 hover:underline">06 22 18 85 74</a></strong>, réponse directe.<br>
             Ou passez nous voir : accueil rapide et réparation express !</p>
       </div>
