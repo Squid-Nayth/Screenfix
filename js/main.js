@@ -1,29 +1,35 @@
-// Déclaration unique de prixIphone (fusionnée, la plus complète) -- portée globale
+// Déclaration unique de prixIphone 
 const prixIphone = {
-  'iphone-15': { recond_ecran: 152, chgmt_ecran: 350, vitre_arriere: 180, batterie: 115, connecteur: 109, camera: 149 },
-  'iphone-15-plus': { recond_ecran: 183, batterie: 125 },
-  'iphone-15-pro': { recond_ecran: 0, batterie: 125 },
-  'iphone-15-pro-max': { recond_ecran: 0, batterie: 135 },
-  'iphone-14': { recond_ecran: 132, chgmt_ecran: 299, vitre_arriere: 160, batterie: 95, connecteur: 99, camera: 129 },
-  'iphone-14-plus': { recond_ecran: 161, batterie: 115 },
-  'iphone-14-pro': { recond_ecran: 183, batterie: 115 },
-  'iphone-14-pro-max': { recond_ecran: 201, batterie: 125 },
-  'iphone-13': { recond_ecran: 108, chgmt_ecran: 249, vitre_arriere: 140, batterie: 85, connecteur: 89, camera: 119 },
-  'iphone-13-mini': { recond_ecran: 51, batterie: 75 },
-  'iphone-13-pro': { recond_ecran: 103, batterie: 95 },
-  'iphone-13-pro-max': { recond_ecran: 165, batterie: 115 },
-  'iphone-12': { recond_ecran: 84, chgmt_ecran: 210, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
-  'iphone-12-mini': { recond_ecran: 84, batterie: 75 },
-  'iphone-12-pro': { recond_ecran: 89, batterie: 75 },
-  'iphone-12-pro-max': { recond_ecran: 89, batterie: 95 },
-  'iphone-11': { recond_ecran: 69, chgmt_ecran: 150, vitre_arriere: 90, batterie: 75, connecteur: 69, camera: 89 },
-  'iphone-11-pro': { recond_ecran: 62, batterie: 75 },
-  'iphone-11-pro-max': { recond_ecran: 89, batterie: 85 },
-  'iphone-x': { recond_ecran: 59, batterie: 75 },
-  'iphone-xs': { recond_ecran: 50, batterie: 75 },
-  'iphone-xr': { recond_ecran: 59, batterie: 75 },
-  'iphone-xs-max': { recond_ecran: 50, batterie: 85 },
-  'iphone-se-2022': { recond_ecran: 108, batterie: 65 }
+  // iPhone 16 series (ajoutés, prix fictifs ou placeholders)
+  'iphone-16': { recond_ecran: 170, chgmt_ecran: 280, vitre_arriere: 190, batterie: 85, connecteur: 120, camera: 160 },
+  'iphone-16-plus': { recond_ecran: 200, chgmt_ecran: 330, vitre_arriere: 210, batterie: 95, connecteur: 130, camera: 180 },
+  'iphone-16-pro': { recond_ecran: 210, chgmt_ecran: 350, vitre_arriere: 220, batterie: 100, connecteur: 140, camera: 200 },
+  'iphone-16-pro-max': { recond_ecran: 230, chgmt_ecran: 380, vitre_arriere: 240, batterie: 110, connecteur: 150, camera: 220 },
+  // iPhone 15 et antérieurs (complétés)
+  'iphone-15': { recond_ecran: 152, chgmt_ecran: 253, vitre_arriere: 180, batterie: 75, connecteur: 109, camera: 149 },
+  'iphone-15-plus': { recond_ecran: 183, chgmt_ecran: 305, vitre_arriere: 185, batterie: 85, connecteur: 115, camera: 155 },
+  'iphone-15-pro': { recond_ecran: 190, chgmt_ecran: 320, vitre_arriere: 200, batterie: 85, connecteur: 120, camera: 170 },
+  'iphone-15-pro-max': { recond_ecran: 210, chgmt_ecran: 350, vitre_arriere: 220, batterie: 95, connecteur: 130, camera: 190 },
+  'iphone-14': { recond_ecran: 132, chgmt_ecran: 220, vitre_arriere: 160, batterie: 75, connecteur: 99, camera: 129 },
+  'iphone-14-plus': { recond_ecran: 161, chgmt_ecran: 269, vitre_arriere: 170, batterie: 85, connecteur: 105, camera: 135 },
+  'iphone-14-pro': { recond_ecran: 183, chgmt_ecran: 305, vitre_arriere: 190, batterie: 85, connecteur: 110, camera: 150 },
+  'iphone-14-pro-max': { recond_ecran: 201, chgmt_ecran: 335, vitre_arriere: 210, batterie: 95, connecteur: 120, camera: 170 },
+  'iphone-13': { recond_ecran: 103, chgmt_ecran: 172, vitre_arriere: 140, batterie: 75, connecteur: 89, camera: 119 },
+  'iphone-13-mini': { recond_ecran: 108, chgmt_ecran: 180, vitre_arriere: 145, batterie: 65, connecteur: 80, camera: 110 },
+  'iphone-13-pro': { recond_ecran: 152, chgmt_ecran: 253, vitre_arriere: 160, batterie: 75, connecteur: 95, camera: 130 },
+  'iphone-13-pro-max': { recond_ecran: 165, chgmt_ecran: 275, vitre_arriere: 170, batterie: 85, connecteur: 100, camera: 140 },
+  'iphone-12': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
+  'iphone-12-mini': { recond_ecran: 84, chgmt_ecran: 139, vitre_arriere: 110, batterie: 75, connecteur: 70, camera: 90 },
+  'iphone-12-pro': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 130, batterie: 75, connecteur: 80, camera: 105 },
+  'iphone-12-pro-max': { recond_ecran: 108, chgmt_ecran: 180, vitre_arriere: 140, batterie: 95, connecteur: 90, camera: 120 },
+  'iphone-11': { recond_ecran: 62, chgmt_ecran: 103, vitre_arriere: 90, batterie: 55, connecteur: 69, camera: 89 },
+  'iphone-11-pro': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 100, batterie: 55, connecteur: 70, camera: 95 },
+  'iphone-11-pro-max': { recond_ecran: 84, chgmt_ecran: 139, vitre_arriere: 110, batterie: 65, connecteur: 75, camera: 100 },
+  'iphone-x': { recond_ecran: 59, chgmt_ecran: 99, vitre_arriere: 80, batterie: 45, connecteur: 60, camera: 80 },
+  'iphone-xs': { recond_ecran: 59, chgmt_ecran: 99, vitre_arriere: 85, batterie: 45, connecteur: 65, camera: 85 },
+  'iphone-xr': { recond_ecran: 50, chgmt_ecran: 83, vitre_arriere: 75, batterie: 45, connecteur: 55, camera: 75 },
+  'iphone-xs-max': { recond_ecran: 69, chgmt_ecran: 115, vitre_arriere: 90, batterie: 60, connecteur: 70, camera: 90 },
+  'iphone-se-2022': { recond_ecran: 52, chgmt_ecran: 85, vitre_arriere: 70, batterie: 45, connecteur: 50, camera: 70 }
 };
 
 // Affichage dynamique du nombre de réparations sélectionnées
@@ -382,6 +388,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Liste des modèles (label, value, icône)
   const iphoneModels = [
     { value: '', label: 'Sélectionnez un modèle', icon: 'Assets/icons8-iphone13-50.png' },
+    // iPhone 16 series (icônes temporaires, à remplacer si besoin)
+    { value: 'iphone-16', label: 'iPhone 16', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-16-plus', label: 'iPhone 16 Plus', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-16-pro', label: 'iPhone 16 Pro', icon: 'Assets/icons8-iphone13-50.png' },
+    { value: 'iphone-16-pro-max', label: 'iPhone 16 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
+    // iPhone 15 et antérieurs
     { value: 'iphone-15', label: 'iPhone 15', icon: 'Assets/icons8-iphone13-50.png' },
     { value: 'iphone-15-plus', label: 'iPhone 15 Plus', icon: 'Assets/icons8-iphone13-50.png' },
     { value: 'iphone-15-pro', label: 'iPhone 15 Pro', icon: 'Assets/icons8-iphone13-50.png' },
@@ -518,33 +530,23 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const boutiqueCards = document.getElementById('boutique-cards');
   if (boutiqueCards) {
-    const produits = [
-      {
-        image: "Assets/boutique/Écran d'iphone 11.webp",
-        nom: "Écran iPhone 11",
-        prix: "49 €"
-      },
-      {
-        image: "Assets/boutique/Écran d'iphone 14.webp",
-        nom: "Écran iPhone 14",
-        prix: "89 €"
-      },
-      {
-        image: "Assets/boutique/Écran d'iphone SE.webp",
-        nom: "Écran iPhone SE",
-        prix: "39 €"
-      }
-    ];
-    boutiqueCards.innerHTML = produits.map(prod => `
-      <div class=\"bg-white rounded-xl shadow-md overflow-hidden flex flex-col\">
-        <div class=\"w-full bg-white flex items-center justify-center\">
-          <img src=\"${prod.image}\" alt=\"${prod.nom}\" class=\"max-h-56 w-auto object-contain mx-auto my-4 bg-white\">
-        </div>
-        <div class=\"p-4 flex-1 flex flex-col justify-between\">
-          <h3 class=\"text-xl font-semibold text-gray-900 mb-1\">${prod.nom}</h3>
-          <p class=\"text-lg text-blue-700 font-bold\">${prod.prix}</p>
+    boutiqueCards.innerHTML = `
+      <div class="w-full flex justify-center items-center">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row max-w-3xl w-full">
+          <div class="md:w-1/2 w-full flex flex-row md:flex-col items-center justify-center gap-2 md:gap-6 p-4 bg-white">
+            <img src="Assets/boutique/Écran d'iphone 11.webp" alt="Écran iPhone 11" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
+            <img src="Assets/boutique/Écran d'iphone 14.webp" alt="Écran iPhone 14" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
+            <img src="Assets/boutique/Écran d'iphone SE.webp" alt="Écran iPhone SE" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
+          </div>
+          <div class="md:w-1/2 w-full flex flex-col justify-center p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">La Boutique Screenfix</h3>
+            <p class="text-gray-700 text-lg mb-2">
+              Découvrez notre sélection de pièces détachées de qualité pour iPhone, disponibles directement en atelier. Que vous soyez un particulier souhaitant réparer vous-même votre appareil ou un professionnel à la recherche de composants fiables, notre boutique propose des écrans, batteries et accessoires adaptés à de nombreux modèles récents.<br><br>
+              Profitez de conseils personnalisés et d’un stock immédiatement disponible sur place. Nos produits sont testés et garantis pour assurer la meilleure expérience de réparation possible. Passez en boutique pour découvrir l’ensemble de notre offre et bénéficiez de l’expertise Screenfix !
+            </p>
+          </div>
         </div>
       </div>
-    `).join('');
+    `;
   }
 });
