@@ -528,25 +528,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // --- Section Boutique : affichage dynamique des produits (gestion 100% JS) ---
 document.addEventListener('DOMContentLoaded', function () {
-  const boutiqueCards = document.getElementById('boutique-cards');
-  if (boutiqueCards) {
-    boutiqueCards.innerHTML = `
-      <div class="w-full flex justify-center items-center">
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row max-w-3xl w-full">
-          <div class="md:w-1/2 w-full flex flex-row md:flex-col items-center justify-center gap-2 md:gap-6 p-4 bg-white">
-            <img src="Assets/boutique/Écran d'iphone 11.webp" alt="Écran iPhone 11" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
-            <img src="Assets/boutique/Écran d'iphone 14.webp" alt="Écran iPhone 14" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
-            <img src="Assets/boutique/Écran d'iphone SE.webp" alt="Écran iPhone SE" class="h-24 w-auto object-contain bg-white rounded shadow-sm">
-          </div>
-          <div class="md:w-1/2 w-full flex flex-col justify-center p-6">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">La Boutique Screenfix</h3>
-            <p class="text-gray-700 text-lg mb-2">
-              Découvrez notre sélection de pièces détachées de qualité pour iPhone, disponibles directement en atelier. Que vous soyez un particulier souhaitant réparer vous-même votre appareil ou un professionnel à la recherche de composants fiables, notre boutique propose des écrans, batteries et accessoires adaptés à de nombreux modèles récents.<br><br>
-              Profitez de conseils personnalisés et d’un stock immédiatement disponible sur place. Nos produits sont testés et garantis pour assurer la meilleure expérience de réparation possible. Passez en boutique pour découvrir l’ensemble de notre offre et bénéficiez de l’expertise Screenfix !
-            </p>
-          </div>
-        </div>
-      </div>
-    `;
-  }
+  // Section boutique désormais codée en HTML statique, plus de génération JS ici
+  // (voir le fichier HTML principal pour la nouvelle section boutique)
 });
