@@ -514,3 +514,37 @@ document.addEventListener('DOMContentLoaded', function () {
     if (found) selectModel(found);
   }
 });
+// --- Section Boutique : affichage dynamique des produits (gestion 100% JS) ---
+document.addEventListener('DOMContentLoaded', function () {
+  const boutiqueCards = document.getElementById('boutique-cards');
+  if (boutiqueCards) {
+    const produits = [
+      {
+        image: "Assets/boutique/Écran d'iphone 11.webp",
+        nom: "Écran iPhone 11",
+        prix: "49 €"
+      },
+      {
+        image: "Assets/boutique/Écran d'iphone 14.webp",
+        nom: "Écran iPhone 14",
+        prix: "89 €"
+      },
+      {
+        image: "Assets/boutique/Écran d'iphone SE.webp",
+        nom: "Écran iPhone SE",
+        prix: "39 €"
+      }
+    ];
+    boutiqueCards.innerHTML = produits.map(prod => `
+      <div class=\"bg-white rounded-xl shadow-md overflow-hidden flex flex-col\">
+        <div class=\"w-full bg-white flex items-center justify-center\">
+          <img src=\"${prod.image}\" alt=\"${prod.nom}\" class=\"max-h-56 w-auto object-contain mx-auto my-4 bg-white\">
+        </div>
+        <div class=\"p-4 flex-1 flex flex-col justify-between\">
+          <h3 class=\"text-xl font-semibold text-gray-900 mb-1\">${prod.nom}</h3>
+          <p class=\"text-lg text-blue-700 font-bold\">${prod.prix}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+});
