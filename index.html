@@ -208,18 +208,35 @@
       </form>
     </section>
 
-    <!-- Intégration Google Maps -->
-    <div id="map-location" class="w-full flex flex-col items-center py-10 bg-white scroll-mt-24">
-      <h3 class="text-2xl font-bold mb-4 text-gray-800">Où nous retrouver&nbsp;?</h3>
-      <div class="w-full flex justify-center">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.349964964049!2d2.345964315674839!3d48.83670897928613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671e2e2e2e2e3%3A0x2e2e2e2e2e2e2e2e!2s27%20Boulevard%20du%20Port%20Royal%2C%2075005%20Paris!5e0!3m2!1sfr!2sfr!4v1688572800000!5m2!1sfr!2sfr"
-          class="w-full max-w-md md:max-w-2xl h-64 md:h-[350px] rounded-xl shadow"
-          style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Emplacement Screenfix">
-        </iframe>
+    <!-- Nouvelle section localisation/infos atelier, UX harmonisée Screenfix -->
+    <section id="map-location" class="bg-white py-12 px-4 md:px-16 scroll-mt-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+        <!-- Carte Google Maps -->
+        <div class="w-full aspect-video shadow-lg rounded-xl overflow-hidden">
+          <iframe 
+            class="w-full h-full"
+            loading="lazy"
+            src="https://maps.google.com/maps?q=27%20Boulevard%20de%20Port%20Royal%2C%20Paris&t=m&z=15&output=embed&iwloc=near"
+            title="Screenfix Paris 5e"
+            aria-label="Screenfix Paris 5e"
+            style="border:0;"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <!-- Informations et CTA -->
+        <div class="space-y-6">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+            Passez à l’atelier ou appelez-nous, <span class="text-blue-600">nous sommes dispo !</span>
+          </h2>
+          <div class="text-gray-700 space-y-2 text-base md:text-lg">
+            <p><strong>Screenfix – Paris 5ᵉ</strong><br>27 Boulevard de Port Royal, 75005 Paris<br>À deux pas de <strong>Port Royal</strong> et <strong>Les Gobelins</strong></p>
+            <p><strong>Accès facile</strong> :<br>RER B : Port Royal<br>Métro : lignes 6 et 7<br>Bus & vélos à proximité</p>
+            <p><strong>Horaires d’ouverture</strong> :<br>Lundi → Samedi : <strong>10h00 – 19h00</strong><br> Avec ou sans rendez-vous</p>
+            <p><strong>Appelez-nous au <a href="tel:0622188574" class="text-blue-600 hover:underline">06 22 18 85 74</a></strong>, réponse directe.<br>
+            Ou passez nous voir : accueil rapide et réparation express !</p>
       </div>
-    </div>
+    </section>
 
     <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
       &copy; 2025 Screenfix. Tous droits réservés.<br>
