@@ -1,11 +1,9 @@
-// Déclaration unique de prixIphone 
+// Déclaration prixIphone 
 const prixIphone = {
-  // iPhone 16 series (ajoutés, prix fictifs ou placeholders)
   'iphone-16': { recond_ecran: 170, chgmt_ecran: 280, vitre_arriere: 190, batterie: 85, connecteur: 120, camera: 160 },
   'iphone-16-plus': { recond_ecran: 200, chgmt_ecran: 330, vitre_arriere: 210, batterie: 95, connecteur: 130, camera: 180 },
   'iphone-16-pro': { recond_ecran: 210, chgmt_ecran: 350, vitre_arriere: 220, batterie: 100, connecteur: 140, camera: 200 },
   'iphone-16-pro-max': { recond_ecran: 230, chgmt_ecran: 380, vitre_arriere: 240, batterie: 110, connecteur: 150, camera: 220 },
-  // iPhone 15 et antérieurs (complétés)
   'iphone-15': { recond_ecran: 152, chgmt_ecran: 253, vitre_arriere: 180, batterie: 75, connecteur: 109, camera: 149 },
   'iphone-15-plus': { recond_ecran: 183, chgmt_ecran: 305, vitre_arriere: 185, batterie: 85, connecteur: 115, camera: 155 },
   'iphone-15-pro': { recond_ecran: 190, chgmt_ecran: 320, vitre_arriere: 200, batterie: 85, connecteur: 120, camera: 170 },
@@ -32,7 +30,7 @@ const prixIphone = {
   'iphone-se-2022': { recond_ecran: 52, chgmt_ecran: 85, vitre_arriere: 70, batterie: 45, connecteur: 50, camera: 70 }
 };
 
-// Affichage dynamique du nombre de réparations sélectionnées
+// Affichage du nombre de réparations sélectionnées
 document.addEventListener('DOMContentLoaded', function () {
 
   function updateRepairPrices() {
@@ -104,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-// Menu mobile déroulant (3 points)
+// Menu mobile déroulant 
 function setupMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
@@ -383,9 +381,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
-// --- UX MENU DÉROULANT CUSTOM MODÈLE IPHONE ---
+// --- MENU DÉROULANT ---
 document.addEventListener('DOMContentLoaded', function () {
-  // Liste des modèles (label, value, icône)
+  // Liste des modèles
   const iphoneModels = [
     { value: '', label: 'Sélectionnez un modèle', icon: 'Assets/icons8-iphone13-50.png' },
     // iPhone 16 series (icônes temporaires, à remplacer si besoin)
@@ -525,9 +523,4 @@ document.addEventListener('DOMContentLoaded', function () {
     const found = iphoneModels.find(m => m.value === hiddenInput.value);
     if (found) selectModel(found);
   }
-});
-// --- Section Boutique : affichage dynamique des produits (gestion 100% JS) ---
-document.addEventListener('DOMContentLoaded', function () {
-  // Section boutique désormais codée en HTML statique, plus de génération JS ici
-  // (voir le fichier HTML principal pour la nouvelle section boutique)
 });
