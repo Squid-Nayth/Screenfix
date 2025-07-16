@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
-    <title>Screefix</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <title>Screenfix</title>
+      <link href="css/output.css" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body class="bg-white text-gray-900 font-sans">
 
@@ -42,7 +43,7 @@
     
 
     <!-- Section Promo Réduction -->
-    <section class="block bg-white py-20 md:py-28 text-center font-sans">
+    <section class="block bg-white py-20 md:py-28 text-center font-sans" data-aos="fade-up">
       <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight">Profitez d'une réduction sur vos réparation</h2>
       <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-md mx-auto leading-snug">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-semibold text-blue-600">-35% de remise</span></p>
       <div class="text-center mt-2 mb-4">
@@ -52,7 +53,7 @@
     
     
     <!-- Section Évaluation de réparation -->
-    <section id="eval" class="w-screen max-w-none py-20 px-0 bg-white flex justify-center">
+    <section id="eval" class="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up">
       <div class="w-full max-w-none">
         <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
         <form id="eval-form" class="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 space-y-6">
@@ -208,7 +209,7 @@
     
 
     <!-- Section Formation -->
-    <section id="formation" class="bg-white py-16 px-6">
+    <section id="formation" class="bg-white py-16 px-6" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Formation professionnelle</h2>
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Nous formons les professionnels aux techniques de réparation d’iPhone</p>
       <div class="flex flex-col items-center justify-center w-full">
@@ -242,7 +243,7 @@
     </section>
 
     <!-- Section Qui sommes-nous ? -->
-    <section id="about" class="bg-white py-16 px-6">
+    <section id="about" class="bg-white py-16 px-6" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Qui sommes-nous&nbsp;?</h2>
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez l’équipe et l’atelier derrière Screenfix</p>
       <div class="flex flex-col items-center justify-center w-full">
@@ -265,7 +266,7 @@
     </section>
 
     <!-- Section Satisfaction clients -->
-    <section id="satisfaction" class="bg-white py-16 px-6">
+    <section id="satisfaction" class="bg-white py-16 px-6" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Satisfaction de nos clients</h2>
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez les avis Google laissés par nos clients Screenfix</p>
       <div class="flex flex-col items-center justify-center w-full">
@@ -278,7 +279,7 @@
     </section>
 
     <!-- Section localisation -->
-    <section id="map-location" class="bg-white py-12 px-4 md:px-16 scroll-mt-24">
+    <section id="map-location" class="bg-white py-12 px-4 md:px-16 scroll-mt-24" data-aos="fade-up">
       <div class="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
         <!-- Carte Google Maps -->
         <div class="w-full aspect-video shadow-lg rounded-xl overflow-hidden">
@@ -307,7 +308,7 @@
       </div>
     </section>
 
-    <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
+    <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base" data-aos="fade-up">
       &copy; 2025 Screenfix. Tous droits réservés.<br>
       Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
       <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
@@ -317,6 +318,9 @@
 
 
 
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
 
