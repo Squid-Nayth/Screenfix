@@ -153,13 +153,10 @@ function setupMobileMenu() {
           e.preventDefault();
           menu.classList.add('hidden');
           const target = btn.getAttribute('data-target');
-          let sectionId = '';
-          if (target === 'eval') sectionId = 'eval';
-          else if (target === 'rdv') sectionId = 'Prendre rendez vous';
-          else if (target === 'contact') sectionId = 'contact';
-          if (sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) section.scrollIntoView({ behavior: 'smooth' });
+          // Mapping direct entre data-target et id de section
+          const section = document.getElementById(target);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
           }
         });
       });
