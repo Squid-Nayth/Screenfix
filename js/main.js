@@ -1,3 +1,30 @@
+// Animation pop à l'apparition + tooltip long survol
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var btn = document.getElementById('whatsapp-float');
+    if(btn) {
+      btn.classList.remove('scale-0','opacity-0');
+      btn.classList.add('scale-100','opacity-100');
+    }
+  }, 800);
+
+  // Affichage du tooltip après un long survol (600ms)
+  var floatBtn = document.getElementById('whatsapp-float');
+  var tooltip = document.getElementById('whatsapp-tooltip');
+  var hoverTimeout;
+  if(floatBtn && tooltip) {
+    floatBtn.addEventListener('mouseenter', function() {
+      hoverTimeout = setTimeout(function() {
+        tooltip.classList.add('opacity-100','scale-100','pointer-events-auto');
+      }, 600);
+    });
+    floatBtn.addEventListener('mouseleave', function() {
+      clearTimeout(hoverTimeout);
+      tooltip.classList.remove('opacity-100','scale-100','pointer-events-auto');
+    });
+  }
+});
+
 // Déclaration prixIphone 
 const prixIphone = {
   'iphone-16': { recond_ecran: 170, chgmt_ecran: 280, vitre_arriere: 190, batterie: 85, connecteur: 120, camera: 160 },

@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body class="bg-white text-gray-900 font-sans">
-    <!-- Bouton WhatsApp flottant -->
+    
     <a href="https://wa.me/33622188574?text=Bonjour%20Screenfix%2C%20j'ai%20une%20question%20!" target="_blank" aria-label="Contact WhatsApp" id="whatsapp-float" class="fixed z-50 bottom-6 right-6 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out scale-0 opacity-0 group" style="box-shadow:0 4px 24px 0 rgba(37,211,102,0.25);">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.2 5.077 4.366.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 5.617h-.001a8.807 8.807 0 0 1-4.773-1.389l-.342-.204-3.561.934.951-3.468-.223-.355a8.807 8.807 0 0 1-1.352-4.792c.001-4.84 3.946-8.784 8.787-8.784 2.346 0 4.555.916 6.217 2.577a8.726 8.726 0 0 1 2.566 6.207c-.003 4.84-3.947 8.784-8.788 8.784m7.149-15.933A10.92 10.92 0 0 0 12.051 0C5.495 0 .001 5.495.001 12.053c0 2.123.555 4.199 1.607 6.032L0 24l6.064-1.589a11.948 11.948 0 0 0 5.987 1.527h.005c6.557 0 11.95-5.494 11.95-12.051 0-2.397-.676-4.725-1.957-6.749a11.892 11.892 0 0 0-3.428-3.762"/></svg>
       <span class="font-semibold text-base">Discuter sur WhatsApp</span>
@@ -20,36 +20,8 @@
         <span class="block mt-2 text-green-600 font-semibold">Réponse rapide&nbsp;: 10h-19h, lundi à samedi</span>
       </span>
     </a>
-    <script>
-      // Animation pop à l'apparition + tooltip long survol
-      window.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          var btn = document.getElementById('whatsapp-float');
-          if(btn) {
-            btn.classList.remove('scale-0','opacity-0');
-            btn.classList.add('scale-100','opacity-100');
-          }
-        }, 800);
 
-        // Affichage du tooltip après un long survol (600ms)
-        var floatBtn = document.getElementById('whatsapp-float');
-        var tooltip = document.getElementById('whatsapp-tooltip');
-        var hoverTimeout;
-        if(floatBtn && tooltip) {
-          floatBtn.addEventListener('mouseenter', function() {
-            hoverTimeout = setTimeout(function() {
-              tooltip.classList.add('opacity-100','scale-100','pointer-events-auto');
-            }, 600);
-          });
-          floatBtn.addEventListener('mouseleave', function() {
-            clearTimeout(hoverTimeout);
-            tooltip.classList.remove('opacity-100','scale-100','pointer-events-auto');
-          });
-        }
-      });
-    </script>
-
-    <!-- Header -->
+    
     <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
         <a href="#" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
@@ -61,7 +33,7 @@
           <a href="#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
           <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition" id="nav-boutique">Visitez la boutique</a>
         </nav>
-        <!-- Menu mobile -->
+        
         <div class="md:hidden relative">
           <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
             <span class="sr-only">Ouvrir le menu</span>
@@ -106,7 +78,7 @@
         </div>
         <div class="flex flex-col items-center gap-2">
           <label for="model" class="block text-base font-medium mb-2 text-center">Modèle</label>
-          <!-- Début UX custom : menu déroulant avec recherche et icônes -->
+          
           <div class="relative w-5/6 mx-auto" id="custom-model-select-container">
             <button type="button" id="custom-model-select-btn" class="w-full h-11 text-base border border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" aria-haspopup="listbox" aria-expanded="false">
               <span id="custom-model-selected" class="flex items-center gap-2 text-gray-700">
@@ -120,12 +92,12 @@
                 <input type="text" id="custom-model-search" placeholder="Rechercher un modèle..." class="w-full p-2 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-400" autocomplete="off">
               </div>
               <ul id="custom-model-list" class="divide-y divide-gray-100">
-                <!-- Les modèles seront injectés ici par JS -->
+              
               </ul>
             </div>
             <input type="hidden" id="model" name="model" required>
           </div>
-          <!-- Fin UX custom -->
+          
         </div>
         <div class="flex flex-col items-center gap-2">
           <label class="block text-base font-medium mb-2 text-center">Types de réparations</label>
@@ -135,7 +107,7 @@
               <span id="repair-count" class="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
             </div>
             <div id="repair-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base">
-              <!-- UX améliorée : cartes interactives, effet focus, survol, sélection claire -->
+          
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="recond_ecran" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
@@ -206,12 +178,12 @@
                 <span class="absolute top-2 right-2 hidden peer-checked:inline-block text-blue-600"><svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /></svg></span>
               </label>
             </div>
-          <!-- Affichage des prix par type de réparation -->
+          
           <div id="repair-prices" class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
         </div>
         <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition">Évaluer</button>
         </form>
-        <!-- Section Prix estimé  -->
+        
         <div id="cost-section-container" class="cost-section-container" style="display:none;">
           <div class="cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200">
             <div id="service-coverage-section" class="cost-info" style="display:block;">
@@ -222,11 +194,11 @@
               </figure>
             </div>
           </div>
-          <!-- Séparateur -->
+          
           <div class="w-full flex justify-center my-10">
             <div class="h-0.5 w-32 bg-gray-200 rounded-full"></div>
           </div>
-          <!-- Section Contact -->
+          
           <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
           <form id="rdv-form" class="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6">
             <div>
@@ -255,7 +227,7 @@
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Nous formons les professionnels aux techniques de réparation d’iPhone</p>
       <div class="flex flex-col items-center justify-center w-full">
         <div class="w-full max-w-6xl flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-          <!-- Illustration à gauche (remplacer par une image de formation si disponible) -->
+          
           <div class="flex flex-row md:flex-col md:w-1/2 w-full items-center justify-center bg-white p-6 md:p-10">
             <video 
               src="assets/video/processus-separation-verre.mp4"
@@ -268,7 +240,7 @@
               title="Processus de séparation du verre cassé d’un écran iPhone"
             ></video>
           </div>
-          <!-- Description à droite -->
+          
           <div class="flex flex-col justify-center items-start md:w-1/2 w-full p-8 md:p-12 text-left">
             <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Devenez expert en réparation iPhone</h3>
             <p class="text-gray-700 text-lg md:text-xl mb-4">
@@ -289,11 +261,11 @@
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez l’équipe et l’atelier derrière Screenfix</p>
       <div class="flex flex-col items-center justify-center w-full">
         <div class="w-full max-w-6xl flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-          <!-- Photo à gauche -->
+          
           <div class="flex flex-row md:flex-col md:w-1/2 w-full items-center justify-center bg-white p-6 md:p-10">
             <img src="assets/Identité/M.DAO-modified.jpg" alt="Photo de l'équipe Screenfix" class="h-64 w-64 object-cover bg-white rounded-full shadow-md border border-gray-200">
           </div>
-          <!-- Description à droite -->
+          
           <div class="flex flex-col justify-center items-start md:w-1/2 w-full p-8 md:p-12 text-left">
             <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">L’atelier Screenfix</h3>
             <p class="text-gray-700 text-lg md:text-xl mb-6">
@@ -312,7 +284,7 @@
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez les avis Google laissés par nos clients Screenfix</p>
       <div class="flex flex-col items-center justify-center w-full">
         <div class="w-full max-w-4xl mx-auto">
-          <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+          
           <script src="https://static.elfsight.com/platform/platform.js" async></script>
           <div class="elfsight-app-0a909a90-74f4-49cc-b370-76a3de40d476" data-elfsight-app-lazy></div>
         </div>
@@ -322,7 +294,7 @@
     <!-- Section localisation -->
     <section id="map-location" class="bg-white py-12 px-4 md:px-16 scroll-mt-24" data-aos="fade-up">
       <div class="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
-        <!-- Carte Google Maps -->
+        
         <div class="w-full aspect-video shadow-lg rounded-xl overflow-hidden">
           <iframe 
             class="w-full h-full"
@@ -335,7 +307,7 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <!-- Informations -->
+        
         <div class="space-y-6">
           <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
             Passez à l’atelier ou appelez-nous, <span class="text-blue-600">nous sommes dispo !</span>
