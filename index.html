@@ -270,7 +270,11 @@
         <div class="w-full max-w-6xl flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           
           <div class="flex flex-row md:flex-col md:w-1/2 w-full items-center justify-center bg-white p-6 md:p-10">
-            <img src="assets/Identité/M.DAO-modified.jpg" alt="Photo de l'équipe Screenfix" class="h-64 w-64 object-cover bg-white rounded-full shadow-md border border-gray-200">
+            <div id="about-carousel" class="relative w-full max-w-2xl h-80 flex items-center justify-center">
+              <button id="about-prev" aria-label="Image précédente" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+              <img id="about-img" src="assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58 (1).jpeg" alt="Équipe Screenfix" class="w-full h-80 object-cover bg-white rounded-2xl shadow-md border border-gray-200 transition-all duration-700 opacity-100" style="will-change: opacity, transform;" />
+              <button id="about-next" aria-label="Image suivante" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+            </div>
           </div>
           
           <div class="flex flex-col justify-center items-start md:w-1/2 w-full p-8 md:p-12 text-left">
@@ -334,6 +338,10 @@
       <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
         <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
       </span>
+      <span class="block mt-2">
+        <a href="/mentions-legales.html" class="text-gray-300 hover:text-white underline mr-4" target="_blank">Mentions légales</a>
+        <a href="/politique-confidentialite.html" class="text-gray-300 hover:text-white underline" target="_blank">Politique de confidentialité</a>
+      </span>
     </footer>
 
 
@@ -343,6 +351,65 @@
     <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    // Diaporama section "À propos" avec animation smooth
+    (function() {
+      const images = [
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58 (1).jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58.jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.07.23.jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56 (1).jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56.jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48 (1).jpeg',
+        'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48.jpeg'
+      ];
+      let idx = 0;
+      let timer = null;
+      let direction = 1; // 1 = next, -1 = prev
+      function animateImgChange(newIdx, dir) {
+        const img = document.getElementById('about-img');
+        if (!img) return;
+        img.style.transition = 'opacity 0.5s, transform 0.5s';
+        img.style.opacity = '0';
+        img.style.transform = `translateX(${dir * 40}px)`;
+        setTimeout(() => {
+          img.src = images[newIdx];
+          img.style.transition = 'none';
+          img.style.transform = `translateX(${-dir * 40}px)`;
+          setTimeout(() => {
+            img.style.transition = 'opacity 0.5s, transform 0.5s';
+            img.style.opacity = '1';
+            img.style.transform = 'translateX(0)';
+          }, 20);
+        }, 500);
+      }
+      function showImg(i, dir = 1) {
+        animateImgChange(i, dir);
+      }
+      function nextImg() {
+        direction = 1;
+        idx = (idx + 1) % images.length;
+        showImg(idx, direction);
+      }
+      function prevImg() {
+        direction = -1;
+        idx = (idx - 1 + images.length) % images.length;
+        showImg(idx, direction);
+      }
+      function startAuto() {
+        timer = setInterval(nextImg, 3500);
+      }
+      function stopAuto() {
+        if (timer) clearInterval(timer);
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('about-next')?.addEventListener('click', function() { stopAuto(); nextImg(); startAuto(); });
+        document.getElementById('about-prev')?.addEventListener('click', function() { stopAuto(); prevImg(); startAuto(); });
+        showImg(idx, 1);
+        startAuto();
+      });
+    })();
+    </script>
 
   </body>
 </html>
