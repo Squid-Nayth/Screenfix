@@ -63,10 +63,11 @@
     
 
     <!-- Section Promo Réduction -->
-    <section class="block bg-white py-20 md:py-28 text-center font-sans" data-aos="fade-up">
-      <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight">Profitez d'une réduction sur vos réparation</h2>
-      <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-md mx-auto leading-snug">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-semibold text-blue-600">-35% de remise</span></p>
-      <div class="text-center mt-2 mb-4">
+    <section class="block bg-white py-20 md:py-28 text-center font-sans relative overflow-visible" data-aos="fade-up" id="promo-reduc-section">
+      <div id="logo-anim-container" class="pointer-events-none select-none absolute inset-0 w-full h-full z-10"></div>
+      <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight relative z-20">Profitez d'une réduction sur vos réparation</h2>
+      <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-md mx-auto leading-snug relative z-20">Cumulez vos réparation et bénéficiez jusqu'à <span class="font-semibold text-blue-600">-35% de remise</span></p>
+      <div class="text-center mt-2 mb-4 relative z-20">
         <a href="#eval" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
       </div>
     </section>
@@ -351,6 +352,88 @@
     <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    // Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
+    (function() {
+      const logos = [
+        'assets/Iphones/Iphone 15.png',
+        'assets/Iphones/iphone SE 2022.png',
+        'assets/Iphones/iphone X.png',
+        'assets/Iphones/iphone13,12,11.png',
+        'assets/Iphones/logo-apple.png'
+      ];
+      const favicon = 'assets/Iphones/favicon.png';
+      const logoCount = 18;
+      const faviconRatio = 0.22; // ~22% des logos seront des favicons
+      const logoAnimContainer = document.getElementById('logo-anim-container');
+      let logoElements = [];
+      let rotateAngles = [];
+      let animFrame = null;
+      // Génère des positions et tailles aléatoires pour chaque logo, mais évite le centre (40%-60%)
+      function randomizeLogoStyles() {
+        const section = document.getElementById('promo-reduc-section');
+        const rect = section.getBoundingClientRect();
+        logoElements.forEach((el, i) => {
+          // Limite la position verticale à 10%-55% pour éviter le bas
+          const top = Math.random() * 45 + 10; // 10% à 55% de la hauteur
+          let left;
+          if (Math.random() < 0.5) {
+            left = Math.random() * 33 + 5;
+          } else {
+            left = Math.random() * 33 + 62;
+          }
+          const size = Math.random() * 40 + 40;
+          el.style.top = top + '%';
+          el.style.left = left + '%';
+          el.style.width = size + 'px';
+          el.style.height = size + 'px';
+          el.style.opacity = 0.32;
+        });
+      }
+      // Ajoute les logos dans le DOM (avec quelques favicons)
+      function createLogos() {
+        logoAnimContainer.innerHTML = '';
+        logoElements = [];
+        rotateAngles = [];
+        for (let i = 0; i < logoCount; i++) {
+          const img = document.createElement('img');
+          // On répartit quelques favicons de façon aléatoire
+          if (Math.random() < faviconRatio) {
+            img.src = favicon;
+          } else {
+            img.src = logos[i % logos.length];
+          }
+          img.alt = 'Logo iPhone/Apple';
+          img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
+          img.style.zIndex = 10;
+          img.style.opacity = 0.32;
+          logoAnimContainer.appendChild(img);
+          logoElements.push(img);
+          rotateAngles.push(Math.random() * 360);
+        }
+        randomizeLogoStyles();
+      }
+      // Animation continue (rotation + léger flottement)
+      function animateLogos() {
+        logoElements.forEach((el, i) => {
+          rotateAngles[i] += 0.7 + Math.random() * 0.5;
+          const floatY = Math.sin(Date.now()/700 + i) * 12;
+          el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
+          el.style.opacity = 0.32;
+        });
+        animFrame = requestAnimationFrame(animateLogos);
+      }
+      function stopAnimation() {
+        if (animFrame) cancelAnimationFrame(animFrame);
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        createLogos();
+        animateLogos();
+        window.addEventListener('resize', randomizeLogoStyles);
+      });
+      window.addEventListener('beforeunload', stopAnimation);
+    })();
+    </script>
     <script>
     // Diaporama section "À propos" avec animation smooth
     (function() {
