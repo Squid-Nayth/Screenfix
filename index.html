@@ -71,6 +71,89 @@
         <a href="#eval" id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">Commencer une réparation</a>
       </div>
     </section>
+    <script>
+    // Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
+    (function() {
+      const logos = [
+        'assets/Iphones/Iphone 15.png',
+        'assets/Iphones/iphone SE 2022.png',
+        'assets/Iphones/iphone X.png',
+        'assets/Iphones/iphone13,12,11.png',
+        'assets/Iphones/logo-apple.png'
+      ];
+      const favicon = 'assets/Iphones/favicon.png';
+      const logoCount = 18;
+      const faviconRatio = 0.22; // ~22% des logos seront des favicons
+      const logoAnimContainer = document.getElementById('logo-anim-container');
+      let logoElements = [];
+      let rotateAngles = [];
+      let animFrame = null;
+      // Génère des positions et tailles aléatoires pour chaque logo, mais évite le centre (40%-60%)
+      function randomizeLogoStyles() {
+        const section = document.getElementById('promo-reduc-section');
+        if (!section) return;
+        logoElements.forEach((el, i) => {
+          // Limite la position verticale à 10%-55% pour éviter le bas
+          const top = Math.random() * 45 + 10; // 10% à 55% de la hauteur
+          let left;
+          if (Math.random() < 0.5) {
+            left = Math.random() * 33 + 5;
+          } else {
+            left = Math.random() * 33 + 62;
+          }
+          const size = Math.random() * 40 + 40;
+          el.style.top = top + '%';
+          el.style.left = left + '%';
+          el.style.width = size + 'px';
+          el.style.height = size + 'px';
+          el.style.opacity = 0.32;
+        });
+      }
+      // Ajoute les logos dans le DOM (avec quelques favicons)
+      function createLogos() {
+        if (!logoAnimContainer) return;
+        logoAnimContainer.innerHTML = '';
+        logoElements = [];
+        rotateAngles = [];
+        for (let i = 0; i < logoCount; i++) {
+          const img = document.createElement('img');
+          // On répartit quelques favicons de façon aléatoire
+          if (Math.random() < faviconRatio) {
+            img.src = favicon;
+          } else {
+            img.src = logos[i % logos.length];
+          }
+          img.alt = 'Logo iPhone/Apple';
+          img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
+          img.style.zIndex = 10;
+          img.style.opacity = 0.32;
+          logoAnimContainer.appendChild(img);
+          logoElements.push(img);
+          rotateAngles.push(Math.random() * 360);
+        }
+        randomizeLogoStyles();
+      }
+      // Animation continue (rotation + léger flottement)
+      function animateLogos() {
+        logoElements.forEach((el, i) => {
+          rotateAngles[i] += 0.7 + Math.random() * 0.5;
+          const floatY = Math.sin(Date.now()/700 + i) * 12;
+          el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
+          el.style.opacity = 0.32;
+        });
+        animFrame = requestAnimationFrame(animateLogos);
+      }
+      function stopAnimation() {
+        if (animFrame) cancelAnimationFrame(animFrame);
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        createLogos();
+        animateLogos();
+        window.addEventListener('resize', randomizeLogoStyles);
+      });
+      window.addEventListener('beforeunload', stopAnimation);
+    })();
+    </script>
     
     
     <!-- Section Évaluation de réparation -->
@@ -231,8 +314,8 @@
 
     <!-- Section Formation -->
     <section id="formation" class="bg-white py-16 px-6" data-aos="fade-up">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Formation professionnelle</h2>
-      <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Nous formons les professionnels aux techniques de réparation d’iPhone</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Formation reconditionnement</h2>
+      <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Nous formons les professionnels aux techniques de réparation d’écran d'iPhone</p>
       <div class="flex flex-col items-center justify-center w-full">
         <div class="w-full max-w-6xl flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           
@@ -250,14 +333,19 @@
           </div>
           
           <div class="flex flex-col justify-center items-start md:w-1/2 w-full p-8 md:p-12 text-left">
-            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Devenez expert en réparation iPhone</h3>
+            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Devenez expert en réparation d'écran d'iPhone</h3>
             <p class="text-gray-700 text-lg md:text-xl mb-4">
-              Screenfix propose des formations dédiées aux professionnels souhaitant maîtriser les techniques avancées de réparation d’iPhone. Nos sessions, animées par des techniciens expérimentés, couvrent l’ensemble des interventions&nbsp;: remplacement d’écran, batterie, connecteurs, diagnostics, micro-soudure et gestion des outils spécialisés.
+              Screenfix propose des formations dédiées aux professionnels souhaitant maîtriser les techniques avancées de réparation d’écran d'iPhone. Nos sessions, animées par des techniciens expérimentés, couvrent le reconditionnement des écrans des différents modèles d'Iphones et les outils spécialisé pour y parvenir.
             </p>
             <p class="text-gray-700 text-lg md:text-xl mb-6">
               <span class="font-semibold text-blue-700">Bénéficiez d’un accompagnement personnalisé</span> dans un atelier équipé, avec des cas pratiques sur les modèles les plus récents. Repartez avec un savoir-faire reconnu et la confiance pour développer votre activité de réparation.
             </p>
-            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full shadow transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">En savoir plus</a>
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
+              <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
+                <a href="reconditionnement-ecran.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full shadow transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">C'est quoi le reconditionnement d'écran&nbsp;?</a>
+                <a href="formation-reconditionnement.html" class="inline-block bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 text-lg font-semibold py-3 px-8 rounded-full shadow transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">Programme de la formation</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -352,87 +440,6 @@
     <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
-    <script>
-    // Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
-    (function() {
-      const logos = [
-        'assets/Iphones/Iphone 15.png',
-        'assets/Iphones/iphone SE 2022.png',
-        'assets/Iphones/iphone X.png',
-        'assets/Iphones/iphone13,12,11.png',
-        'assets/Iphones/logo-apple.png'
-      ];
-      const favicon = 'assets/Iphones/favicon.png';
-      const logoCount = 18;
-      const faviconRatio = 0.22; // ~22% des logos seront des favicons
-      const logoAnimContainer = document.getElementById('logo-anim-container');
-      let logoElements = [];
-      let rotateAngles = [];
-      let animFrame = null;
-      // Génère des positions et tailles aléatoires pour chaque logo, mais évite le centre (40%-60%)
-      function randomizeLogoStyles() {
-        const section = document.getElementById('promo-reduc-section');
-        const rect = section.getBoundingClientRect();
-        logoElements.forEach((el, i) => {
-          // Limite la position verticale à 10%-55% pour éviter le bas
-          const top = Math.random() * 45 + 10; // 10% à 55% de la hauteur
-          let left;
-          if (Math.random() < 0.5) {
-            left = Math.random() * 33 + 5;
-          } else {
-            left = Math.random() * 33 + 62;
-          }
-          const size = Math.random() * 40 + 40;
-          el.style.top = top + '%';
-          el.style.left = left + '%';
-          el.style.width = size + 'px';
-          el.style.height = size + 'px';
-          el.style.opacity = 0.32;
-        });
-      }
-      // Ajoute les logos dans le DOM (avec quelques favicons)
-      function createLogos() {
-        logoAnimContainer.innerHTML = '';
-        logoElements = [];
-        rotateAngles = [];
-        for (let i = 0; i < logoCount; i++) {
-          const img = document.createElement('img');
-          // On répartit quelques favicons de façon aléatoire
-          if (Math.random() < faviconRatio) {
-            img.src = favicon;
-          } else {
-            img.src = logos[i % logos.length];
-          }
-          img.alt = 'Logo iPhone/Apple';
-          img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
-          img.style.zIndex = 10;
-          img.style.opacity = 0.32;
-          logoAnimContainer.appendChild(img);
-          logoElements.push(img);
-          rotateAngles.push(Math.random() * 360);
-        }
-        randomizeLogoStyles();
-      }
-      // Animation continue (rotation + léger flottement)
-      function animateLogos() {
-        logoElements.forEach((el, i) => {
-          rotateAngles[i] += 0.7 + Math.random() * 0.5;
-          const floatY = Math.sin(Date.now()/700 + i) * 12;
-          el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
-          el.style.opacity = 0.32;
-        });
-        animFrame = requestAnimationFrame(animateLogos);
-      }
-      function stopAnimation() {
-        if (animFrame) cancelAnimationFrame(animFrame);
-      }
-      document.addEventListener('DOMContentLoaded', () => {
-        createLogos();
-        animateLogos();
-        window.addEventListener('resize', randomizeLogoStyles);
-      });
-      window.addEventListener('beforeunload', stopAnimation);
-    })();
     </script>
     <script>
     // Diaporama section "À propos" avec animation smooth

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reconditionnement d’écran iPhone – Screenfix</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="css/output.css" rel="stylesheet">
+  <style>
+    .fade-out {
+      animation: fadeOutScreenfix 0.4s forwards;
+    }
+    @keyframes fadeOutScreenfix {
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans flex flex-col min-h-screen">
+  <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+      <a href="index.html" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
+      <nav class="hidden md:flex gap-8 text-gray-700 text-base items-center">
+        <a href="index.html#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
+        <a href="index.html#about" class="hover:text-blue-600 transition" id="nav-about">À propos</a>
+        <a href="index.html#satisfaction" class="hover:text-blue-600 transition" id="nav-avis">Avis</a>
+        <a href="index.html#formation" class="hover:text-blue-600 transition" id="nav-formation">Formation</a>
+        <a href="index.html#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
+        <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
+      </nav>
+      <!-- Icône panier mobile -->
+      <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="flex md:hidden items-center justify-center text-blue-600 hover:text-blue-800 transition ml-1" id="nav-boutique-mobile" aria-label="Boutique">
+        <img src="assets/boutique/sac-de-courses.png" alt="Boutique" class="w-8 h-8 object-contain" />
+      </a>
+      <div class="md:hidden relative">
+        <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="sr-only">Ouvrir le menu</span>
+          <svg class="w-7 h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="1.5" />
+            <circle cx="12" cy="12" r="1.5"/>
+            <circle cx="12" cy="19" r="1.5"/>
+          </svg>
+        </button>
+        <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
+          <form id="mobile-nav-form" class="flex flex-col gap-4">
+            <button type="button" data-target="eval" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Évaluation</button>
+            <button type="button" data-target="about" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">À propos</button>
+            <button type="button" data-target="satisfaction" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Avis</button>
+            <button type="button" data-target="formation" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Formation</button>
+            <button type="button" data-target="contact" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Contact</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="flex-1 py-12 px-4">
+    <section id="comment-ca-marche" class="bg-gray-50 py-16 w-full">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">🔧 Reconditionnement d’écran iPhone : une solution économique et responsable</h1>
+        <p class="text-gray-600 mb-8 text-lg" data-aos="fade-up" data-aos-delay="100">Votre vitre est fissurée, mais l’image s’affiche encore parfaitement ? Inutile de changer tout l’écran : grâce au reconditionnement, nous remplaçons uniquement la vitre tout en conservant la dalle d’origine Apple.</p>
+        
+        <h2 class="text-2xl font-bold mb-6" data-aos="fade-up" data-aos-delay="200">Comment ça marche ? 🤔</h2>
+        <div class="grid gap-10 md:grid-cols-3 text-left mb-12">
+          <!-- Étape 1 -->
+          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-stretch justify-between h-full" data-aos="fade-up" data-aos-delay="0">
+            <div class="flex flex-col items-center flex-1 w-full">
+              <div class="mb-4">
+                <span class="inline-block bg-blue-600 text-white text-base font-semibold rounded-full px-5 py-2 shadow">Étape 1</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Séparation de la vitre cassée</h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li>Démontage précis de l’écran</li>
+                <li>Nettoyage et vérification de la dalle</li>
+              </ul>
+            </div>
+            <video src="assets/video/WhatsApp Video 2025-07-19 at 16.54.47.mp4" class="w-full max-w-xs h-48 object-cover rounded-xl border border-gray-200 shadow step-video mt-4" loop muted playsinline></video>
+          </div>
+          <!-- Étape 2 -->
+          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-stretch justify-between h-full" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex flex-col items-center flex-1 w-full">
+              <div class="mb-4">
+                <span class="inline-block bg-blue-600 text-white text-base font-semibold rounded-full px-5 py-2 shadow">Étape 2</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Pose d’une nouvelle vitre</h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li>Colle optique (OCA) professionnelle</li>
+                <li>Laminage en chambre à vide</li>
+              </ul>
+            </div>
+            <video src="assets/video/WhatsApp Video 2025-07-19 at 16.54.48.mp4" class="w-full max-w-xs h-48 object-cover rounded-xl border border-gray-200 shadow step-video mt-4" loop muted playsinline></video>
+          </div>
+          <!-- Étape 3 -->
+          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-stretch justify-between h-full" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex flex-col items-center flex-1 w-full">
+              <div class="mb-4">
+                <span class="inline-block bg-blue-600 text-white text-base font-semibold rounded-full px-5 py-2 shadow">Étape 3</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Tests & restitution</h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li>Tests complets (tactile, couleurs, Face ID...)</li>
+                <li>Remise en main rapide</li>
+              </ul>
+            </div>
+            <video src="assets/video/WhatsApp Video 2025-07-19 at 16.54.49.mp4" class="w-full max-w-xs h-48 object-cover rounded-xl border border-gray-200 shadow step-video mt-4" loop muted playsinline></video>
+          </div>
+        </div>
+        <div class="mb-10" data-aos="fade-up" data-aos-delay="300">
+          <h2 class="text-2xl font-bold mb-2">Pourquoi choisir cette solution&nbsp;?</h2>
+          <ul class="list-disc pl-6 text-gray-800 space-y-2 text-left max-w-xl mx-auto">
+            <li><strong>Qualité d’origine préservée</strong> : couleurs, luminosité et tactile restent parfaits</li>
+            <li>Moins cher qu’un écran complet</li>
+            <li>Écologique : on réutilise la dalle, on évite du gaspillage</li>
+            <li>Face ID, True Tone, 3D Touch restent fonctionnels si non endommagés</li>
+          </ul>
+        </div>
+        <div class="mb-10" data-aos="fade-up" data-aos-delay="400">
+          <h2 class="text-2xl font-bold mb-2">Pour quels modèles&nbsp;?</h2>
+          <p class="text-gray-800">Disponible pour la majorité des iPhones (du X au 13 Pro Max).</p>
+        </div>
+        <div class="mt-12" data-aos="zoom-in" data-aos-delay="500">
+          <a href="index.html#eval"
+             class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full shadow transition inline-block">
+            Évaluer un reconditionnement
+          </a>
+        </div>
+      </div>
+    </section>
+    <script>
+      // Lecture/pause vidéo au survol pour les vidéos d'étape
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.step-video').forEach(function(video) {
+          video.addEventListener('mouseenter', function() {
+            video.play();
+          });
+          video.addEventListener('mouseleave', function() {
+            video.pause();
+            video.currentTime = 0;
+          });
+        });
+
+        // Animation fade-out sur le bouton Formation du menu mobile
+        var mobileNavForm = document.getElementById('mobile-nav-form');
+        if (mobileNavForm) {
+          mobileNavForm.querySelectorAll('button[data-target]').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+              var target = btn.getAttribute('data-target');
+              if (target === 'formation') {
+                // Animation fade-out sur le body
+                document.body.classList.add('fade-out');
+                setTimeout(function() {
+                  // Redirection vers la page formation
+                  window.location.href = 'formation-reconditionnement.html';
+                }, 400);
+                e.preventDefault();
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </main>
+  <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
+    &copy; 2025 Screenfix. Tous droits réservés.<br>
+    Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
+    <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
+      <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
+    </span>
+    <span class="block mt-2">
+      <a href="./mentions-legales.html" class="text-gray-300 hover:text-white underline mr-4" target="_blank">Mentions légales</a>
+      <a href="./politique-confidentialite.html" class="text-gray-300 hover:text-white underline" target="_blank">Politique de confidentialité</a>
+    </span>
+  </footer>
+  <!-- AOS Animation JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
+  <script src="js/email.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
