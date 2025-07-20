@@ -25,20 +25,7 @@
         <a href="index.html#satisfaction" class="hover:text-blue-600 transition" id="nav-avis">Avis</a>
         <a href="index.html#formation" class="hover:text-blue-600 transition" id="nav-formation">Formation</a>
         <a href="index.html#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
-        <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
-      </nav>
-      <!-- Icône panier mobile -->
-      <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="flex md:hidden items-center justify-center text-blue-600 hover:text-blue-800 transition ml-1" id="nav-boutique-mobile" aria-label="Boutique">
-        <img src="assets/boutique/sac-de-courses.png" alt="Boutique" class="w-8 h-8 object-contain" />
-      </a>
-      <div class="md:hidden relative">
-        <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-          <span class="sr-only">Ouvrir le menu</span>
-          <svg class="w-7 h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-            <circle cx="12" cy="5" r="1.5" />
-            <circle cx="12" cy="12" r="1.5"/>
-            <circle cx="12" cy="19" r="1.5"/>
-          </svg>
+    <!-- JS vidéo au survol déplacé dans main.js -->
         </button>
         <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
           <form id="mobile-nav-form" class="flex flex-col gap-4">
@@ -124,39 +111,7 @@
         </div>
       </div>
     </section>
-    <script>
-      // Lecture/pause vidéo au survol pour les vidéos d'étape
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.step-video').forEach(function(video) {
-          video.addEventListener('mouseenter', function() {
-            video.play();
-          });
-          video.addEventListener('mouseleave', function() {
-            video.pause();
-            video.currentTime = 0;
-          });
-        });
-
-        // Animation fade-out sur le bouton Formation du menu mobile
-        var mobileNavForm = document.getElementById('mobile-nav-form');
-        if (mobileNavForm) {
-          mobileNavForm.querySelectorAll('button[data-target]').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-              var target = btn.getAttribute('data-target');
-              if (target === 'formation') {
-                // Animation fade-out sur le body
-                document.body.classList.add('fade-out');
-                setTimeout(function() {
-                  // Redirection vers la page formation
-                  window.location.href = 'formation-reconditionnement.html';
-                }, 400);
-                e.preventDefault();
-              }
-            });
-          });
-        }
-      });
-    </script>
+    <!-- JS déplacé dans main.js -->
   </main>
   <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base">
     &copy; 2025 Screenfix. Tous droits réservés.<br>

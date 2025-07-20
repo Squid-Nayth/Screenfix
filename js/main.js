@@ -1,3 +1,268 @@
+// Diaporama section "À propos" (carousel)
+document.addEventListener('DOMContentLoaded', function() {
+  const images = [
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58 (1).jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58.jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.07.23.jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56 (1).jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56.jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48 (1).jpeg',
+    'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48.jpeg'
+  ];
+  let idx = 0;
+  let timer = null;
+  let direction = 1;
+  function animateImgChange(newIdx, dir) {
+    const img = document.getElementById('about-img');
+    if (!img) return;
+    img.style.transition = 'opacity 0.5s, transform 0.5s';
+    img.style.opacity = '0';
+    img.style.transform = `translateX(${dir * 40}px)`;
+    setTimeout(() => {
+      img.src = images[newIdx];
+      img.style.transition = 'none';
+      img.style.transform = `translateX(${-dir * 40}px)`;
+      setTimeout(() => {
+        img.style.transition = 'opacity 0.5s, transform 0.5s';
+        img.style.opacity = '1';
+        img.style.transform = 'translateX(0)';
+      }, 20);
+    }, 500);
+  }
+  function showImg(i, dir = 1) {
+    animateImgChange(i, dir);
+  }
+  function nextImg() {
+    direction = 1;
+    idx = (idx + 1) % images.length;
+    showImg(idx, direction);
+  }
+  function prevImg() {
+    direction = -1;
+    idx = (idx - 1 + images.length) % images.length;
+    showImg(idx, direction);
+  }
+  function startAuto() {
+    timer = setInterval(nextImg, 3500);
+  }
+  function stopAuto() {
+    if (timer) clearInterval(timer);
+  }
+  if (document.getElementById('about-img')) {
+    document.getElementById('about-next')?.addEventListener('click', function() { stopAuto(); nextImg(); startAuto(); });
+    document.getElementById('about-prev')?.addEventListener('click', function() { stopAuto(); prevImg(); startAuto(); });
+    showImg(idx, 1);
+    startAuto();
+  }
+});
+// Animation logos iPhone/Apple (section promo réduction)
+function screenfixLogoAnimation() {
+  const logos = [
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
+  ];
+  const favicon = 'assets/Iphones/favicon.png';
+  const logoCount = 18;
+  const faviconRatio = 0.22;
+  const logoAnimContainer = document.getElementById('logo-anim-container');
+  let logoElements = [];
+  let rotateAngles = [];
+  let animFrame = null;
+  function randomizeLogoStyles() {
+    const section = document.getElementById('promo-reduc-section');
+    if (!section) return;
+    logoElements.forEach((el, i) => {
+      const top = Math.random() * 45 + 10;
+      let left;
+      if (Math.random() < 0.5) {
+        left = Math.random() * 33 + 5;
+      } else {
+        left = Math.random() * 33 + 62;
+      }
+      const size = Math.random() * 40 + 40;
+      el.style.top = top + '%';
+      el.style.left = left + '%';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.opacity = 0.32;
+    });
+  }
+  function createLogos() {
+    if (!logoAnimContainer) return;
+    logoAnimContainer.innerHTML = '';
+    logoElements = [];
+    rotateAngles = [];
+    for (let i = 0; i < logoCount; i++) {
+      const img = document.createElement('img');
+      if (Math.random() < faviconRatio) {
+        img.src = favicon;
+      } else {
+        img.src = logos[i % logos.length];
+      }
+      img.alt = 'Logo iPhone/Apple';
+      img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
+      img.style.zIndex = 10;
+      img.style.opacity = 0.32;
+      logoAnimContainer.appendChild(img);
+      logoElements.push(img);
+      rotateAngles.push(Math.random() * 360);
+    }
+    randomizeLogoStyles();
+  }
+  function animateLogos() {
+    logoElements.forEach((el, i) => {
+      rotateAngles[i] += 0.7 + Math.random() * 0.5;
+      const floatY = Math.sin(Date.now()/700 + i) * 12;
+      el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
+      el.style.opacity = 0.32;
+    });
+    animFrame = requestAnimationFrame(animateLogos);
+  }
+  function stopAnimation() {
+    if (animFrame) cancelAnimationFrame(animFrame);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    if (logoAnimContainer && document.getElementById('promo-reduc-section')) {
+      createLogos();
+      animateLogos();
+      window.addEventListener('resize', randomizeLogoStyles);
+    }
+  });
+  window.addEventListener('beforeunload', stopAnimation);
+}
+if (document.getElementById('logo-anim-container') && document.getElementById('promo-reduc-section')) {
+  screenfixLogoAnimation();
+}
+
+// Animation fade-out sur le bouton Formation du menu mobile (toutes pages)
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileNavForm = document.getElementById('mobile-nav-form');
+  if (mobileNavForm) {
+    mobileNavForm.querySelectorAll('button[data-target]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var target = btn.getAttribute('data-target');
+        if (target === 'formation') {
+          document.body.classList.add('fade-out');
+          setTimeout(function() {
+            window.location.href = 'formation-reconditionnement.html';
+          }, 400);
+          e.preventDefault();
+        }
+      });
+    });
+  }
+});
+
+// Lecture/pause vidéo au survol pour les vidéos d'étape (toutes pages)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.step-video').forEach(function(video) {
+    video.addEventListener('mouseenter', function() {
+      video.play();
+    });
+    video.addEventListener('mouseleave', function() {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+});
+
+// Initialisation AOS (une seule fois, toutes pages)
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.AOS && typeof AOS.init === 'function') {
+    AOS.init({ once: true, duration: 700, offset: 80 });
+  }
+});
+// Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
+function screenfixLogoAnimation() {
+  const logos = [
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
+  ];
+  const favicon = 'assets/Iphones/favicon.png';
+  const logoCount = 18;
+  const faviconRatio = 0.22; // ~22% des logos seront des favicons
+  const logoAnimContainer = document.getElementById('logo-anim-container');
+  let logoElements = [];
+  let rotateAngles = [];
+  let animFrame = null;
+
+  function randomizeLogoStyles() {
+    const section = document.getElementById('promo-reduc-section');
+    if (!section) return;
+    logoElements.forEach((el, i) => {
+      const top = Math.random() * 45 + 10;
+      let left;
+      if (Math.random() < 0.5) {
+        left = Math.random() * 33 + 5;
+      } else {
+        left = Math.random() * 33 + 62;
+      }
+      const size = Math.random() * 40 + 40;
+      el.style.top = top + '%';
+      el.style.left = left + '%';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.opacity = 0.32;
+    });
+  }
+
+  function createLogos() {
+    if (!logoAnimContainer) return;
+    logoAnimContainer.innerHTML = '';
+    logoElements = [];
+    rotateAngles = [];
+    for (let i = 0; i < logoCount; i++) {
+      const img = document.createElement('img');
+      if (Math.random() < faviconRatio) {
+        img.src = favicon;
+      } else {
+        img.src = logos[i % logos.length];
+      }
+      img.alt = 'Logo iPhone/Apple';
+      img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
+      img.style.zIndex = 10;
+      img.style.opacity = 0.32;
+      logoAnimContainer.appendChild(img);
+      logoElements.push(img);
+      rotateAngles.push(Math.random() * 360);
+    }
+    randomizeLogoStyles();
+  }
+
+  function animateLogos() {
+    logoElements.forEach((el, i) => {
+      rotateAngles[i] += 0.7 + Math.random() * 0.5;
+      const floatY = Math.sin(Date.now()/700 + i) * 12;
+      el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
+      el.style.opacity = 0.32;
+    });
+    animFrame = requestAnimationFrame(animateLogos);
+  }
+
+  function stopAnimation() {
+    if (animFrame) cancelAnimationFrame(animFrame);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (logoAnimContainer && document.getElementById('promo-reduc-section')) {
+      createLogos();
+      animateLogos();
+      window.addEventListener('resize', randomizeLogoStyles);
+    }
+  });
+  window.addEventListener('beforeunload', stopAnimation);
+}
+
+// Lancer l'animation si la section existe sur la page
+if (document.getElementById('logo-anim-container') && document.getElementById('promo-reduc-section')) {
+  screenfixLogoAnimation();
+}
 // Animation pop à l'apparition + tooltip long survol
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
