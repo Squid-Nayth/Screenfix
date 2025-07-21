@@ -159,12 +159,25 @@ document.addEventListener('DOMContentLoaded', function() {
 // Lecture/pause vidéo au survol pour les vidéos d'étape (toutes pages)
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.step-video').forEach(function(video) {
+    const container = video.closest('.relative');
+    const playIcon = container ? container.querySelector('.step-play-icon') : null;
+    if (playIcon) playIcon.style.opacity = 0;
     video.addEventListener('mouseenter', function() {
       video.play();
+      if (playIcon) {
+        playIcon.style.opacity = 1;
+        setTimeout(function() {
+          playIcon.style.opacity = 0;
+        }, 2000);
+      }
     });
     video.addEventListener('mouseleave', function() {
       video.pause();
       video.currentTime = 0;
+      if (playIcon) playIcon.style.opacity = 0;
+    });
+    video.addEventListener('ended', function() {
+      if (playIcon) playIcon.style.opacity = 0;
     });
   });
 });
@@ -249,37 +262,30 @@ function screenfixLogoAnimation() {
     if (animFrame) cancelAnimationFrame(animFrame);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (logoAnimContainer && document.getElementById('promo-reduc-section')) {
-      createLogos();
-      animateLogos();
-      window.addEventListener('resize', randomizeLogoStyles);
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.step-video').forEach(function(video) {
+    const container = video.closest('.relative');
+    const playIcon = container ? container.querySelector('.step-play-icon') : null;
+    if (playIcon) playIcon.style.opacity = 0;
+    video.addEventListener('mouseenter', function() {
+      video.play();
+      if (playIcon) {
+        playIcon.style.opacity = 1;
+        setTimeout(function() {
+          playIcon.style.opacity = 0;
+        }, 2000);
+      }
+    });
+    video.addEventListener('mouseleave', function() {
+      video.pause();
+      video.currentTime = 0;
+      if (playIcon) playIcon.style.opacity = 0;
+    });
+    video.addEventListener('ended', function() {
+      if (playIcon) playIcon.style.opacity = 0;
+    });
   });
-  window.addEventListener('beforeunload', stopAnimation);
-}
-
-// Lancer l'animation si la section existe sur la page
-if (document.getElementById('logo-anim-container') && document.getElementById('promo-reduc-section')) {
-  screenfixLogoAnimation();
-}
-// Animation pop à l'apparition + tooltip long survol
-window.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    var btn = document.getElementById('whatsapp-float');
-    if(btn) {
-      btn.classList.remove('scale-0','opacity-0');
-      btn.classList.add('scale-100','opacity-100');
-    }
-  }, 800);
-
-  // Affichage du tooltip après un long survol (600ms)
-  var floatBtn = document.getElementById('whatsapp-float');
-  var tooltip = document.getElementById('whatsapp-tooltip');
-  var hoverTimeout;
-  if(floatBtn && tooltip) {
-    floatBtn.addEventListener('mouseenter', function() {
-      hoverTimeout = setTimeout(function() {
+});
         tooltip.classList.add('opacity-100','scale-100','pointer-events-auto');
       }, 600);
     });
