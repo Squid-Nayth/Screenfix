@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.png',
-    'assets/Iphones/iphone SE 2022.png',
-    'assets/Iphones/iphone X.png',
-    'assets/Iphones/iphone13,12,11.png',
-    'assets/Iphones/logo-apple.png'
+    'assets/Iphones/Iphone 15.jpg',
+    'assets/Iphones/iphone SE 2022.jpg',
+    'assets/Iphones/iphone X.jpg',
+    'assets/Iphones/iphone13,12,11.jpg',
+    'assets/Iphones/logo-apple.jpg'
   ];
   const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
@@ -559,32 +559,41 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalSansReduc = 0;
     let totalAvecReduc = 0;
     let selectedRepairs = [];
+    let isDiagnostic = false;
     repairCheckboxes.forEach(cb => {
       if (cb.checked) selectedRepairs.push(cb.value);
+      if (cb.checked && cb.value === 'diagnostic') isDiagnostic = true;
     });
-    // Réductions à appliquer
-    const reductions = [-0.15, -0.10, -0.10];
-    if (brand === 'apple' && prixIphone[model] && selectedRepairs.length > 0) {
-      selectedRepairs.forEach(function(rep, idx) {
-        if (prixIphone[model][rep]) {
-          const prixBase = prixIphone[model][rep];
-          totalSansReduc += prixBase;
-          let reduc = 0;
-          if (idx < reductions.length) {
-            reduc = reductions[idx];
-          }
-          totalAvecReduc += prixBase * (1 + reduc);
-        }
-      });
-      if (totalSansReduc > 0) {
-        prix = `<span class="line-through text-gray-400 mr-2">${totalSansReduc.toFixed(2)} €</span><span class="text-blue-700 font-bold">${totalAvecReduc.toFixed(2)} €</span>`;
-      } else {
-        prix = '-- €';
-      }
-    } else if (brand === 'apple' && prixIphone[model]) {
-      prix = '-- €';
+    // Si diagnostic personnalisé, prix fixe 35€
+    if (isDiagnostic) {
+      prix = '<span class="text-blue-700 font-bold">35 €</span>';
+      window.prixEstimeBrut = '35';
     } else {
-      prix = 'Sur devis';
+      // Réductions à appliquer
+      const reductions = [-0.15, -0.10, -0.10];
+      window.prixEstimeBrut = null;
+      if (brand === 'apple' && prixIphone[model] && selectedRepairs.length > 0) {
+        selectedRepairs.forEach(function(rep, idx) {
+          if (prixIphone[model][rep]) {
+            const prixBase = prixIphone[model][rep];
+            totalSansReduc += prixBase;
+            let reduc = 0;
+            if (idx < reductions.length) {
+              reduc = reductions[idx];
+            }
+            totalAvecReduc += prixBase * (1 + reduc);
+          }
+        });
+        if (totalSansReduc > 0) {
+          prix = `<span class="line-through text-gray-400 mr-2">${totalSansReduc.toFixed(2)} €</span><span class="text-blue-700 font-bold">${totalAvecReduc.toFixed(2)} €</span>`;
+        } else {
+          prix = '-- €';
+        }
+      } else if (brand === 'apple' && prixIphone[model]) {
+        prix = '-- €';
+      } else {
+        prix = 'Sur devis';
+      }
     }
     serviceCoverageValue.innerHTML = prix;
     costSection.style.display = 'block';

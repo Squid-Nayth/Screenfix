@@ -33,6 +33,7 @@
           <a href="#formation" class="hover:text-blue-600 transition" id="nav-formation">Formation</a>
           <a href="#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
           <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
+          <a href="#revendre" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-revendre">Revendre</a>
         </nav>
         <!-- Icône panier mobile -->
         <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="flex md:hidden items-center justify-center text-blue-600 hover:text-blue-800 transition ml-1" id="nav-boutique-mobile" aria-label="Boutique">
@@ -116,6 +117,18 @@
               <span id="repair-count" class="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
             </div>
             <div id="repair-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base">
+              <!-- Carte Diagnostic personnalisé -->
+              <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
+                <input type="checkbox" name="repair" value="diagnostic" class="peer sr-only">
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/Iphones cassés/curiosite.png" alt="Diagnostic personnalisé" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <span class="font-semibold">Vous ne connaissez pas la panne ?</span>
+                  <span class="text-gray-600 text-sm text-center">Prenez un diagnostic personnalisé</span>
+                </div>
+                <div class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
+                <span class="text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1">35 €</span>
+                <span class="absolute top-2 right-2 hidden peer-checked:inline-block text-blue-600"><svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7' /></svg></span>
+              </label>
           
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="recond_ecran" class="peer sr-only">
