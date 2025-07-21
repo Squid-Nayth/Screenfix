@@ -170,80 +170,11 @@
     </section>
   </main>
 <script>
-// Liste des modèles d'iPhone
-const iphoneModels = [
-  "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max",
-  "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
-  "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
-  "iPhone 13", "iPhone 13 Mini", "iPhone 13 Pro", "iPhone 13 Pro Max",
-  "iPhone 12", "iPhone 12 Mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
-  "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max",
-  "iPhone X", "iPhone XS", "iPhone XR", "iPhone XS Max",
-  "iPhone SE 2022"
-];
 
-const modelBtn = document.getElementById('custom-model-select-btn');
-const modelDropdown = document.getElementById('custom-model-dropdown');
-const modelList = document.getElementById('custom-model-list');
-const modelSearch = document.getElementById('custom-model-search');
-const modelInput = document.getElementById('model');
-const selectedLabel = document.getElementById('custom-model-selected-label');
-const selectedIcon = document.getElementById('custom-model-selected-icon');
+// Utilisation du script principal pour le choix des modèles d'iPhone
+// (La logique est maintenant dans js/main.js)
+// Veuillez vous assurer que les IDs/classes HTML du sélecteur de modèle sont identiques à ceux attendus par main.js
 
-function renderModelList(filter = "") {
-  modelList.innerHTML = "";
-  iphoneModels.filter(m => m.toLowerCase().includes(filter.toLowerCase())).forEach(model => {
-    const li = document.createElement('li');
-    li.className = "cursor-pointer px-4 py-3 hover:bg-blue-50 flex items-center gap-2 text-gray-800";
-    li.innerHTML = `<img src='assets/icons8-iphone13-50.png' alt='iPhone' class='w-5 h-5 opacity-70 mr-2'>${model}`;
-    li.onclick = () => selectModel(model);
-    modelList.appendChild(li);
-  });
-  if (modelList.innerHTML === "") {
-    const li = document.createElement('li');
-    li.className = "px-4 py-3 text-gray-400";
-    li.textContent = "Aucun modèle trouvé";
-    modelList.appendChild(li);
-  }
-}
-
-function selectModel(model) {
-  selectedLabel.textContent = model;
-  selectedIcon.src = "assets/icons8-iphone13-50.png";
-  modelInput.value = model;
-  modelDropdown.classList.add('hidden');
-  modelBtn.setAttribute('aria-expanded', 'false');
-}
-
-modelBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  const expanded = modelDropdown.classList.contains('hidden');
-  document.querySelectorAll('#custom-model-dropdown').forEach(d => d.classList.add('hidden'));
-  if (expanded) {
-    modelDropdown.classList.remove('hidden');
-    modelBtn.setAttribute('aria-expanded', 'true');
-    modelSearch.value = "";
-    renderModelList();
-    modelSearch.focus();
-  } else {
-    modelDropdown.classList.add('hidden');
-    modelBtn.setAttribute('aria-expanded', 'false');
-  }
-});
-
-modelSearch.addEventListener('input', function() {
-  renderModelList(this.value);
-});
-
-document.addEventListener('click', function(e) {
-  if (!modelBtn.contains(e.target) && !modelDropdown.contains(e.target)) {
-    modelDropdown.classList.add('hidden');
-    modelBtn.setAttribute('aria-expanded', 'false');
-  }
-});
-
-// Initialisation
-renderModelList();
 
 // Gestion des étapes du formulaire
 const step1 = document.getElementById('step-1');
@@ -328,4 +259,15 @@ step3.querySelector('button[type="submit"]').addEventListener('click', function(
 });
 </script>
 </body>
-</html>
+  <footer id="contact" class="bg-gray-900 text-gray-200 text-center py-6 mt-12 text-base" data-aos="fade-up">
+    &copy; 2025 Screenfix. Tous droits réservés.<br>
+    Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
+    <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
+      <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
+    </span>
+    <span class="block mt-2">
+      <a href="./mentions-legales.html" class="text-gray-300 hover:text-white underline mr-4" target="_blank">Mentions légales</a>
+      <a href="./politique-confidentialite.html" class="text-gray-300 hover:text-white underline" target="_blank">Politique de confidentialité</a>
+    </span>
+  </footer>
+  <script src="js/main.js"></script>
