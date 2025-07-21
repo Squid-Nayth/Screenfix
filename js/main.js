@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.jpg',
-    'assets/Iphones/iphone SE 2022.jpg',
-    'assets/Iphones/iphone X.jpg',
-    'assets/Iphones/iphone13,12,11.jpg',
-    'assets/Iphones/logo-apple.jpg'
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
   ];
   const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.jpg',
-    'assets/Iphones/iphone SE 2022.jpg',
-    'assets/Iphones/iphone X.jpg',
-    'assets/Iphones/iphone13,12,11.jpg',
-    'assets/Iphones/logo-apple.jpg'
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
   ];
-  const favicon = 'assets/Iphones/favicon.jpg';
+  const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
   const faviconRatio = 0.22; // ~22% des logos seront des favicons
   const logoAnimContainer = document.getElementById('logo-anim-container');
