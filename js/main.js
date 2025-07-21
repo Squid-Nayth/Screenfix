@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     startAuto();
   }
 });
+
+// Contrôle Play/Pause vidéos reconditionnement
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
