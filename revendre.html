@@ -175,87 +175,93 @@
 // (La logique est maintenant dans js/main.js)
 // Veuillez vous assurer que les IDs/classes HTML du sélecteur de modèle sont identiques à ceux attendus par main.js
 
-
-// Gestion des étapes du formulaire
-const step1 = document.getElementById('step-1');
-const step2 = document.getElementById('step-2');
-const step3 = document.getElementById('step-3');
-const continueBtn = document.getElementById('step-continue');
-const stepForm = document.getElementById('step-form');
-const progressStepLabel = document.getElementById('progress-step-label');
-const progressBar = document.getElementById('progress-bar');
-const step4 = document.getElementById('step-4');
-let continueBtn2 = document.getElementById('step2-continue');
-if (!continueBtn2) {
-  continueBtn2 = document.createElement('button');
-  continueBtn2.type = 'button';
-  continueBtn2.id = 'step2-continue';
-  continueBtn2.className = 'bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition mt-8';
-  continueBtn2.textContent = 'Continuer';
-  step2.appendChild(continueBtn2);
-}
-
-const recapModel = document.getElementById('recap-model');
-const recapPieces = document.getElementById('recap-pieces');
-const recapEtat = document.getElementById('recap-etat');
-const btnEvaluer = document.getElementById('btn-evaluer');
-
-continueBtn.addEventListener('click', function() {
-  // Validation simple : marque et modèle requis
-  if (!modelInput.value) {
-    modelBtn.focus();
-    modelBtn.classList.add('ring-2', 'ring-red-500');
-    setTimeout(() => modelBtn.classList.remove('ring-2', 'ring-red-500'), 1200);
-    return;
+// Gestion des étapes du formulaire (attendre que le DOM ET main.js soient chargés)
+document.addEventListener('DOMContentLoaded', function() {
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
+  const step3 = document.getElementById('step-3');
+  const continueBtn = document.getElementById('step-continue');
+  const stepForm = document.getElementById('step-form');
+  const progressStepLabel = document.getElementById('progress-step-label');
+  const progressBar = document.getElementById('progress-bar');
+  const step4 = document.getElementById('step-4');
+  let continueBtn2 = document.getElementById('step2-continue');
+  if (!continueBtn2) {
+    continueBtn2 = document.createElement('button');
+    continueBtn2.type = 'button';
+    continueBtn2.id = 'step2-continue';
+    continueBtn2.className = 'bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition mt-8';
+    continueBtn2.textContent = 'Continuer';
+    step2.appendChild(continueBtn2);
   }
-  step1.classList.add('hidden');
-  step2.classList.remove('hidden');
-  // Mise à jour de la barre de progression et du texte
-  progressStepLabel.textContent = '2/4 Choix des pièces';
-  progressBar.classList.remove('w-1/4');
-  progressBar.classList.add('w-2/4');
-});
 
-continueBtn2.addEventListener('click', function(e) {
-  e.preventDefault();
-  // Validation : au moins une pièce cochée
-  const checked = step2.querySelectorAll('input[type="checkbox"]:checked');
-  if (checked.length === 0) {
-    step2.querySelector('input[type="checkbox"]').focus();
-    step2.querySelector('input[type="checkbox"]').classList.add('ring-2', 'ring-red-500');
-    setTimeout(() => step2.querySelector('input[type="checkbox"]').classList.remove('ring-2', 'ring-red-500'), 1200);
-    return;
-  }
-  step2.classList.add('hidden');
-  step3.classList.remove('hidden');
-  // Mise à jour de la barre de progression et du texte
-  progressStepLabel.textContent = '3/4 État de la pièce';
-  progressBar.classList.remove('w-2/4');
-  progressBar.classList.add('w-3/4');
-});
+  const recapModel = document.getElementById('recap-model');
+  const recapPieces = document.getElementById('recap-pieces');
+  const recapEtat = document.getElementById('recap-etat');
+  const btnEvaluer = document.getElementById('btn-evaluer');
 
-// Étape 3 : passage à l'étape 4 (récapitulatif)
-step3.querySelector('button[type="submit"]').addEventListener('click', function(e) {
-  e.preventDefault();
-  // Validation : un état sélectionné
-  const etatChecked = step3.querySelector('input[type="radio"]:checked');
-  if (!etatChecked) {
-    step3.querySelector('input[type="radio"]').focus();
-    step3.querySelector('input[type="radio"]').classList.add('ring-2', 'ring-red-500');
-    setTimeout(() => step3.querySelector('input[type="radio"]').classList.remove('ring-2', 'ring-red-500'), 1200);
-    return;
-  }
-  step3.classList.add('hidden');
-  step4.classList.remove('hidden');
-  // Mise à jour de la barre de progression et du texte
-  progressStepLabel.textContent = '4/4 Récapitulatif';
-  progressBar.classList.remove('w-3/4');
-  progressBar.classList.add('w-full');
-  // Remplir le récapitulatif
-  recapModel.textContent = selectedLabel.textContent;
-  const pieces = Array.from(step2.querySelectorAll('input[type="checkbox"]:checked')).map(el => el.value);
-  recapPieces.textContent = pieces.join(', ');
-  recapEtat.textContent = etatChecked.value;
+  // Récupérer les éléments du sélecteur de modèle
+  const modelBtn = document.getElementById('custom-model-select-btn');
+  const modelInput = document.getElementById('model');
+  const selectedLabel = document.getElementById('custom-model-selected-label');
+
+  continueBtn.addEventListener('click', function() {
+    // Validation simple : marque et modèle requis
+    if (!modelInput.value) {
+      modelBtn.focus();
+      modelBtn.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => modelBtn.classList.remove('ring-2', 'ring-red-500'), 1200);
+      return;
+    }
+    step1.classList.add('hidden');
+    step2.classList.remove('hidden');
+    // Mise à jour de la barre de progression et du texte
+    progressStepLabel.textContent = '2/4 Choix des pièces';
+    progressBar.classList.remove('w-1/4');
+    progressBar.classList.add('w-2/4');
+  });
+
+  continueBtn2.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Validation : au moins une pièce cochée
+    const checked = step2.querySelectorAll('input[type="checkbox"]:checked');
+    if (checked.length === 0) {
+      step2.querySelector('input[type="checkbox"]').focus();
+      step2.querySelector('input[type="checkbox"]').classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => step2.querySelector('input[type="checkbox"]').classList.remove('ring-2', 'ring-red-500'), 1200);
+      return;
+    }
+    step2.classList.add('hidden');
+    step3.classList.remove('hidden');
+    // Mise à jour de la barre de progression et du texte
+    progressStepLabel.textContent = '3/4 État de la pièce';
+    progressBar.classList.remove('w-2/4');
+    progressBar.classList.add('w-3/4');
+  });
+
+  // Étape 3 : passage à l'étape 4 (récapitulatif)
+  step3.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Validation : un état sélectionné
+    const etatChecked = step3.querySelector('input[type="radio"]:checked');
+    if (!etatChecked) {
+      step3.querySelector('input[type="radio"]').focus();
+      step3.querySelector('input[type="radio"]').classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => step3.querySelector('input[type="radio"]').classList.remove('ring-2', 'ring-red-500'), 1200);
+      return;
+    }
+    step3.classList.add('hidden');
+    step4.classList.remove('hidden');
+    // Mise à jour de la barre de progression et du texte
+    progressStepLabel.textContent = '4/4 Récapitulatif';
+    progressBar.classList.remove('w-3/4');
+    progressBar.classList.add('w-full');
+    // Remplir le récapitulatif
+    recapModel.textContent = selectedLabel.textContent;
+    const pieces = Array.from(step2.querySelectorAll('input[type="checkbox"]:checked')).map(el => el.value);
+    recapPieces.textContent = pieces.join(', ');
+    recapEtat.textContent = etatChecked.value;
+  });
 });
 </script>
 </body>
