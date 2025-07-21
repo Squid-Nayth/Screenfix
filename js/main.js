@@ -70,12 +70,13 @@ function screenfixLogoAnimation() {
   const logoCount = 18;
   const faviconRatio = 0.22;
   const logoAnimContainer = document.getElementById('logo-anim-container');
+  const promoSection = document.getElementById('promo-reduc-section');
+  if (!logoAnimContainer || !promoSection) return;
   let logoElements = [];
   let rotateAngles = [];
   let animFrame = null;
+
   function randomizeLogoStyles() {
-    const section = document.getElementById('promo-reduc-section');
-    if (!section) return;
     logoElements.forEach((el, i) => {
       const top = Math.random() * 45 + 10;
       let left;
@@ -92,18 +93,14 @@ function screenfixLogoAnimation() {
       el.style.opacity = 0.32;
     });
   }
+
   function createLogos() {
-    if (!logoAnimContainer) return;
     logoAnimContainer.innerHTML = '';
     logoElements = [];
     rotateAngles = [];
     for (let i = 0; i < logoCount; i++) {
       const img = document.createElement('img');
-      if (Math.random() < faviconRatio) {
-        img.src = favicon;
-      } else {
-        img.src = logos[i % logos.length];
-      }
+      img.src = Math.random() < faviconRatio ? favicon : logos[i % logos.length];
       img.alt = 'Logo iPhone/Apple';
       img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
       img.style.zIndex = 10;
@@ -114,29 +111,24 @@ function screenfixLogoAnimation() {
     }
     randomizeLogoStyles();
   }
+
   function animateLogos() {
     logoElements.forEach((el, i) => {
       rotateAngles[i] += 0.7 + Math.random() * 0.5;
       const floatY = Math.sin(Date.now()/700 + i) * 12;
       el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
-      el.style.opacity = 0.32;
     });
     animFrame = requestAnimationFrame(animateLogos);
   }
+
   function stopAnimation() {
     if (animFrame) cancelAnimationFrame(animFrame);
   }
-  document.addEventListener('DOMContentLoaded', () => {
-    if (logoAnimContainer && document.getElementById('promo-reduc-section')) {
-      createLogos();
-      animateLogos();
-      window.addEventListener('resize', randomizeLogoStyles);
-    }
-  });
+
+  createLogos();
+  animateLogos();
+  window.addEventListener('resize', randomizeLogoStyles);
   window.addEventListener('beforeunload', stopAnimation);
-}
-if (document.getElementById('logo-anim-container') && document.getElementById('promo-reduc-section')) {
-  screenfixLogoAnimation();
 }
 
 // Animation fade-out sur le bouton Formation du menu mobile (toutes pages)
@@ -190,8 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
     AOS.init({ once: true, duration: 700, offset: 80 });
   }
 });
-// Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
-function screenfixLogoAnimation() {
+// Animation des logos iPhone/Apple dans la section promo réduction
+// Cette version est robuste et évite les doublons/fonctions multiples
+
+document.addEventListener('DOMContentLoaded', function() {
   const logos = [
     'assets/Iphones/Iphone 15.png',
     'assets/Iphones/iphone SE 2022.png',
@@ -201,15 +195,15 @@ function screenfixLogoAnimation() {
   ];
   const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
-  const faviconRatio = 0.22; // ~22% des logos seront des favicons
+  const faviconRatio = 0.22;
   const logoAnimContainer = document.getElementById('logo-anim-container');
+  const promoSection = document.getElementById('promo-reduc-section');
+  if (!logoAnimContainer || !promoSection) return;
   let logoElements = [];
   let rotateAngles = [];
   let animFrame = null;
 
   function randomizeLogoStyles() {
-    const section = document.getElementById('promo-reduc-section');
-    if (!section) return;
     logoElements.forEach((el, i) => {
       const top = Math.random() * 45 + 10;
       let left;
@@ -228,17 +222,12 @@ function screenfixLogoAnimation() {
   }
 
   function createLogos() {
-    if (!logoAnimContainer) return;
     logoAnimContainer.innerHTML = '';
     logoElements = [];
     rotateAngles = [];
     for (let i = 0; i < logoCount; i++) {
       const img = document.createElement('img');
-      if (Math.random() < faviconRatio) {
-        img.src = favicon;
-      } else {
-        img.src = logos[i % logos.length];
-      }
+      img.src = Math.random() < faviconRatio ? favicon : logos[i % logos.length];
       img.alt = 'Logo iPhone/Apple';
       img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
       img.style.zIndex = 10;
@@ -255,7 +244,6 @@ function screenfixLogoAnimation() {
       rotateAngles[i] += 0.7 + Math.random() * 0.5;
       const floatY = Math.sin(Date.now()/700 + i) * 12;
       el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
-      el.style.opacity = 0.32;
     });
     animFrame = requestAnimationFrame(animateLogos);
   }
@@ -264,38 +252,10 @@ function screenfixLogoAnimation() {
     if (animFrame) cancelAnimationFrame(animFrame);
   }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.step-video').forEach(function(video) {
-    const container = video.closest('.relative');
-    const playIcon = container ? container.querySelector('.step-play-icon') : null;
-    if (playIcon) playIcon.style.opacity = 0;
-    video.addEventListener('mouseenter', function() {
-      video.play();
-      if (playIcon) {
-        playIcon.style.opacity = 1;
-        setTimeout(function() {
-          playIcon.style.opacity = 0;
-        }, 2000);
-      }
-    });
-    video.addEventListener('mouseleave', function() {
-      video.pause();
-      video.currentTime = 0;
-      if (playIcon) playIcon.style.opacity = 0;
-    });
-    video.addEventListener('ended', function() {
-      if (playIcon) playIcon.style.opacity = 0;
-    });
-  });
-});
-        tooltip.classList.add('opacity-100','scale-100','pointer-events-auto');
-      }, 600);
-    });
-    floatBtn.addEventListener('mouseleave', function() {
-      clearTimeout(hoverTimeout);
-      tooltip.classList.remove('opacity-100','scale-100','pointer-events-auto');
-    });
-  }
+  createLogos();
+  animateLogos();
+  window.addEventListener('resize', randomizeLogoStyles);
+  window.addEventListener('beforeunload', stopAnimation);
 });
 
 // Déclaration prixIphone 
