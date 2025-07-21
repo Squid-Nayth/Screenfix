@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revendre des pièces d'Iphones</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- Header sticky -->
+  <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+      <a href="#" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
+      <nav class="hidden md:flex gap-8 text-gray-700 text-base items-center">
+        <a href="index.html#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
+        <a href="index.html#about" class="hover:text-blue-600 transition" id="nav-about">À propos</a>
+        <a href="index.html#satisfaction" class="hover:text-blue-600 transition" id="nav-avis">Avis</a>
+        <a href="index.html#formation" class="hover:text-blue-600 transition" id="nav-formation">Formation</a>
+        <a href="index.html#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
+        <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
+      </nav>
+      <!-- Icône panier mobile -->
+      <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="flex md:hidden items-center justify-center text-blue-600 hover:text-blue-800 transition ml-1" id="nav-boutique-mobile" aria-label="Boutique">
+        <img src="assets/boutique/sac-de-courses.png" alt="Boutique" class="w-8 h-8 object-contain" />
+      </a>
+      <div class="md:hidden relative">
+        <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="sr-only">Ouvrir le menu</span>
+          <svg class="w-7 h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="1.5" />
+            <circle cx="12" cy="12" r="1.5"/>
+            <circle cx="12" cy="19" r="1.5"/>
+          </svg>
+        </button>
+        <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
+          <form id="mobile-nav-form" class="flex flex-col gap-4">
+            <button type="button" data-target="eval" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Évaluation</button>
+            <button type="button" data-target="about" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">À propos</button>
+            <button type="button" data-target="satisfaction" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Avis</button>
+            <button type="button" data-target="formation" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Formation</button>
+            <button type="button" data-target="contact" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Contact</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="flex min-h-screen bg-gray-50">
+    <!-- Colonne illustration -->
+    <aside class="hidden lg:flex flex-col w-[35.5rem] pl-40 pt-20 bg-white border-r border-gray-200">
+      <a href="index.html" class="flex items-center text-blue-600 hover:underline mb-12">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8.427 7.53a.75.75 0 0 0-1.06-1.06L2.72 11.116a1.25 1.25 0 0 0 0 1.768l4.646 4.646a.75.75 0 0 0 1.06-1.06l-3.719-3.72h16.19a.75.75 0 1 0 0-1.5H4.706l3.72-3.72"></path>
+        </svg>
+        Retour à l'accueil
+      </a>
+      <img src="assets/Iphones/chassis-iphone-12-removebg-preview.png" alt="Illustration reprise" class="max-w-full mt-20">
+    </aside>
+    <!-- Colonne formulaire -->
+    <section class="flex-1 px-6 py-10 lg:px-32 flex flex-col justify-center">
+      <div class="relative mb-8">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2 tracking-tight">Revendre des pièces d'Iphone</h1>
+        <div id="progress-step-label" class="text-center font-medium text-sm text-gray-700">1/4 Votre appareil</div>
+        <div class="w-full h-2 bg-gray-200 mt-2 rounded-full overflow-hidden">
+          <div id="progress-bar" class="w-1/4 h-full bg-blue-600 transition-all duration-300"></div>
+        </div>
+      </div>
+      <form id="step-form" class="space-y-12 max-w-xl mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100">
+        <div id="step-1">
+          <label for="brand" class="block text-lg font-semibold mb-2">Marque de votre smartphone</label>
+          <select id="brand" name="brand" class="w-full border border-gray-300 rounded-md p-3 text-gray-800 bg-white" required>
+            <option value="APPLE" selected>Apple</option>
+          </select>
+          <label for="model" class="block text-lg font-semibold mb-2 mt-8">Quel est le modèle exact de votre appareil ?</label>
+          <div class="flex items-start bg-blue-50 border-l-4 border-blue-400 p-4 rounded mb-4 text-sm text-blue-800">
+            <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.75 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-3 3a.75.75 0 0 1 .75-.75h1A1.25 1.25 0 0 1 12.75 11v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4.5H10.5a.75.75 0 0 1-.75-.75"></path>
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25M3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+              <p class="font-medium">Trouver votre modèle :</p>
+              <p>"Réglages" > "Général" > "Informations"</p>
+              <p class="mt-1 text-xs">Si votre modèle ne figure pas dans la liste, il n’est pas encore éligible à la reprise.</p>
+            </div>
+          </div>
+          <div class="relative w-full mx-auto" id="custom-model-select-container">
+            <button type="button" id="custom-model-select-btn" class="w-full h-11 text-base border border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" aria-haspopup="listbox" aria-expanded="false">
+              <span id="custom-model-selected" class="flex items-center gap-2 text-gray-700">
+                <img src="Assets/icons8-iphone13-50.png" alt="iPhone" class="w-6 h-6 opacity-70" id="custom-model-selected-icon">
+                <span id="custom-model-selected-label">Sélectionnez un modèle</span>
+              </span>
+              <svg class="w-5 h-5 text-gray-400 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="custom-model-dropdown" class="absolute z-20 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg max-h-72 overflow-y-auto hidden animate-fade-in">
+              <div class="p-2 sticky top-0 bg-white z-10">
+                <input type="text" id="custom-model-search" placeholder="Rechercher un modèle..." class="w-full p-2 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-400" autocomplete="off">
+              </div>
+              <ul id="custom-model-list" class="divide-y divide-gray-100"></ul>
+            </div>
+            <input type="hidden" id="model" name="model" required>
+          </div>
+          <button type="button" id="step-continue" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition mt-8">Continuer</button>
+        </div>
+        <div id="step-2" class="hidden">
+          <!-- Progression et titre déjà présents dans le header de la section, on retire le doublon ici -->
+          <div class="space-y-8">
+            <label class="block text-lg font-semibold mb-2">Quelles pièces souhaitez-vous vendre ?</label>
+            <div class="grid grid-cols-1 gap-6">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" name="pieces[]" value="Écran" class="form-checkbox h-5 w-5 text-blue-600">
+                <span class="text-base">Écran</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" name="pieces[]" value="Caméra" class="form-checkbox h-5 w-5 text-blue-600">
+                <span class="text-base">Caméra</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" name="pieces[]" value="Vitre arrière" class="form-checkbox h-5 w-5 text-blue-600">
+                <span class="text-base">Vitre arrière</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" name="pieces[]" value="Châssis" class="form-checkbox h-5 w-5 text-blue-600">
+                <span class="text-base">Châssis</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="step-3" class="hidden">
+          <div class="space-y-8">
+            <label class="block text-lg font-semibold mb-2">Quel est l'état de la pièce sélectionnée ?</label>
+            <div class="grid grid-cols-1 gap-6">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="etat" value="Cassé" class="form-radio h-5 w-5 text-blue-600" required>
+                <span>
+                  <span class="text-base font-medium">Cassé</span><br>
+                  <span class="text-xs text-gray-500">La pièce est inutilisable ou présente des défauts majeurs (fissures, ne fonctionne plus...)</span>
+                </span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="etat" value="Bon état" class="form-radio h-5 w-5 text-blue-600">
+                <span>
+                  <span class="text-base font-medium">Bon état</span><br>
+                  <span class="text-xs text-gray-500">La pièce fonctionne correctement mais présente quelques marques ou rayures d’usage.</span>
+                </span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="etat" value="Très bon état" class="form-radio h-5 w-5 text-blue-600">
+                <span>
+                  <span class="text-base font-medium">Très bon état</span><br>
+                  <span class="text-xs text-gray-500">La pièce fonctionne parfaitement et ne présente quasiment aucune trace d’utilisation.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition mt-8">Continuer</button>
+        </div>
+        <div id="step-4" class="hidden">
+          <div class="space-y-8">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">Récapitulatif de votre vente</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded mb-4 text-sm text-blue-800">
+              <p><span class="font-semibold">Modèle :</span> <span id="recap-model"></span></p>
+              <p><span class="font-semibold">Pièces à vendre :</span> <span id="recap-pieces"></span></p>
+              <p><span class="font-semibold">État :</span> <span id="recap-etat"></span></p>
+            </div>
+            <button type="button" id="btn-evaluer" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition">Évaluer ma vente</button>
+          </div>
+        </div>
+        </div>
+        </div>
+      </form>
+    </section>
+  </main>
+<script>
+// Liste des modèles d'iPhone
+const iphoneModels = [
+  "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max",
+  "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
+  "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
+  "iPhone 13", "iPhone 13 Mini", "iPhone 13 Pro", "iPhone 13 Pro Max",
+  "iPhone 12", "iPhone 12 Mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
+  "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max",
+  "iPhone X", "iPhone XS", "iPhone XR", "iPhone XS Max",
+  "iPhone SE 2022"
+];
+
+const modelBtn = document.getElementById('custom-model-select-btn');
+const modelDropdown = document.getElementById('custom-model-dropdown');
+const modelList = document.getElementById('custom-model-list');
+const modelSearch = document.getElementById('custom-model-search');
+const modelInput = document.getElementById('model');
+const selectedLabel = document.getElementById('custom-model-selected-label');
+const selectedIcon = document.getElementById('custom-model-selected-icon');
+
+function renderModelList(filter = "") {
+  modelList.innerHTML = "";
+  iphoneModels.filter(m => m.toLowerCase().includes(filter.toLowerCase())).forEach(model => {
+    const li = document.createElement('li');
+    li.className = "cursor-pointer px-4 py-3 hover:bg-blue-50 flex items-center gap-2 text-gray-800";
+    li.innerHTML = `<img src='assets/icons8-iphone13-50.png' alt='iPhone' class='w-5 h-5 opacity-70 mr-2'>${model}`;
+    li.onclick = () => selectModel(model);
+    modelList.appendChild(li);
+  });
+  if (modelList.innerHTML === "") {
+    const li = document.createElement('li');
+    li.className = "px-4 py-3 text-gray-400";
+    li.textContent = "Aucun modèle trouvé";
+    modelList.appendChild(li);
+  }
+}
+
+function selectModel(model) {
+  selectedLabel.textContent = model;
+  selectedIcon.src = "assets/icons8-iphone13-50.png";
+  modelInput.value = model;
+  modelDropdown.classList.add('hidden');
+  modelBtn.setAttribute('aria-expanded', 'false');
+}
+
+modelBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  const expanded = modelDropdown.classList.contains('hidden');
+  document.querySelectorAll('#custom-model-dropdown').forEach(d => d.classList.add('hidden'));
+  if (expanded) {
+    modelDropdown.classList.remove('hidden');
+    modelBtn.setAttribute('aria-expanded', 'true');
+    modelSearch.value = "";
+    renderModelList();
+    modelSearch.focus();
+  } else {
+    modelDropdown.classList.add('hidden');
+    modelBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+modelSearch.addEventListener('input', function() {
+  renderModelList(this.value);
+});
+
+document.addEventListener('click', function(e) {
+  if (!modelBtn.contains(e.target) && !modelDropdown.contains(e.target)) {
+    modelDropdown.classList.add('hidden');
+    modelBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Initialisation
+renderModelList();
+
+// Gestion des étapes du formulaire
+const step1 = document.getElementById('step-1');
+const step2 = document.getElementById('step-2');
+const step3 = document.getElementById('step-3');
+const continueBtn = document.getElementById('step-continue');
+const stepForm = document.getElementById('step-form');
+const progressStepLabel = document.getElementById('progress-step-label');
+const progressBar = document.getElementById('progress-bar');
+const step4 = document.getElementById('step-4');
+let continueBtn2 = document.getElementById('step2-continue');
+if (!continueBtn2) {
+  continueBtn2 = document.createElement('button');
+  continueBtn2.type = 'button';
+  continueBtn2.id = 'step2-continue';
+  continueBtn2.className = 'bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-full w-full shadow transition mt-8';
+  continueBtn2.textContent = 'Continuer';
+  step2.appendChild(continueBtn2);
+}
+
+const recapModel = document.getElementById('recap-model');
+const recapPieces = document.getElementById('recap-pieces');
+const recapEtat = document.getElementById('recap-etat');
+const btnEvaluer = document.getElementById('btn-evaluer');
+
+continueBtn.addEventListener('click', function() {
+  // Validation simple : marque et modèle requis
+  if (!modelInput.value) {
+    modelBtn.focus();
+    modelBtn.classList.add('ring-2', 'ring-red-500');
+    setTimeout(() => modelBtn.classList.remove('ring-2', 'ring-red-500'), 1200);
+    return;
+  }
+  step1.classList.add('hidden');
+  step2.classList.remove('hidden');
+  // Mise à jour de la barre de progression et du texte
+  progressStepLabel.textContent = '2/4 Choix des pièces';
+  progressBar.classList.remove('w-1/4');
+  progressBar.classList.add('w-2/4');
+});
+
+continueBtn2.addEventListener('click', function(e) {
+  e.preventDefault();
+  // Validation : au moins une pièce cochée
+  const checked = step2.querySelectorAll('input[type="checkbox"]:checked');
+  if (checked.length === 0) {
+    step2.querySelector('input[type="checkbox"]').focus();
+    step2.querySelector('input[type="checkbox"]').classList.add('ring-2', 'ring-red-500');
+    setTimeout(() => step2.querySelector('input[type="checkbox"]').classList.remove('ring-2', 'ring-red-500'), 1200);
+    return;
+  }
+  step2.classList.add('hidden');
+  step3.classList.remove('hidden');
+  // Mise à jour de la barre de progression et du texte
+  progressStepLabel.textContent = '3/4 État de la pièce';
+  progressBar.classList.remove('w-2/4');
+  progressBar.classList.add('w-3/4');
+});
+
+// Étape 3 : passage à l'étape 4 (récapitulatif)
+step3.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  // Validation : un état sélectionné
+  const etatChecked = step3.querySelector('input[type="radio"]:checked');
+  if (!etatChecked) {
+    step3.querySelector('input[type="radio"]').focus();
+    step3.querySelector('input[type="radio"]').classList.add('ring-2', 'ring-red-500');
+    setTimeout(() => step3.querySelector('input[type="radio"]').classList.remove('ring-2', 'ring-red-500'), 1200);
+    return;
+  }
+  step3.classList.add('hidden');
+  step4.classList.remove('hidden');
+  // Mise à jour de la barre de progression et du texte
+  progressStepLabel.textContent = '4/4 Récapitulatif';
+  progressBar.classList.remove('w-3/4');
+  progressBar.classList.add('w-full');
+  // Remplir le récapitulatif
+  recapModel.textContent = selectedLabel.textContent;
+  const pieces = Array.from(step2.querySelectorAll('input[type="checkbox"]:checked')).map(el => el.value);
+  recapPieces.textContent = pieces.join(', ');
+  recapEtat.textContent = etatChecked.value;
+});
+</script>
+</body>
+</html>
