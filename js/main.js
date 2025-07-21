@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.jpg',
-    'assets/Iphones/iphone SE 2022.jpg',
-    'assets/Iphones/iphone X.jpg',
-    'assets/Iphones/iphone13,12,11.jpg',
-    'assets/Iphones/logo-apple.jpg'
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
   ];
   const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
@@ -161,12 +161,25 @@ document.addEventListener('DOMContentLoaded', function() {
 // Lecture/pause vidéo au survol pour les vidéos d'étape (toutes pages)
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.step-video').forEach(function(video) {
+    const container = video.closest('.relative');
+    const playIcon = container ? container.querySelector('.step-play-icon') : null;
+    if (playIcon) playIcon.style.opacity = 0;
     video.addEventListener('mouseenter', function() {
       video.play();
+      if (playIcon) {
+        playIcon.style.opacity = 1;
+        setTimeout(function() {
+          playIcon.style.opacity = 0;
+        }, 2000);
+      }
     });
     video.addEventListener('mouseleave', function() {
       video.pause();
       video.currentTime = 0;
+      if (playIcon) playIcon.style.opacity = 0;
+    });
+    video.addEventListener('ended', function() {
+      if (playIcon) playIcon.style.opacity = 0;
     });
   });
 });
@@ -180,13 +193,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation des logos iPhone/Apple dans la section promo réduction (rotation continue, logos éparpillés à gauche/droite)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.jpg',
-    'assets/Iphones/iphone SE 2022.jpg',
-    'assets/Iphones/iphone X.jpg',
-    'assets/Iphones/iphone13,12,11.jpg',
-    'assets/Iphones/logo-apple.jpg'
+    'assets/Iphones/Iphone 15.png',
+    'assets/Iphones/iphone SE 2022.png',
+    'assets/Iphones/iphone X.png',
+    'assets/Iphones/iphone13,12,11.png',
+    'assets/Iphones/logo-apple.png'
   ];
-  const favicon = 'assets/Iphones/favicon.jpg';
+  const favicon = 'assets/Iphones/favicon.png';
   const logoCount = 18;
   const faviconRatio = 0.22; // ~22% des logos seront des favicons
   const logoAnimContainer = document.getElementById('logo-anim-container');
@@ -251,37 +264,30 @@ function screenfixLogoAnimation() {
     if (animFrame) cancelAnimationFrame(animFrame);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (logoAnimContainer && document.getElementById('promo-reduc-section')) {
-      createLogos();
-      animateLogos();
-      window.addEventListener('resize', randomizeLogoStyles);
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.step-video').forEach(function(video) {
+    const container = video.closest('.relative');
+    const playIcon = container ? container.querySelector('.step-play-icon') : null;
+    if (playIcon) playIcon.style.opacity = 0;
+    video.addEventListener('mouseenter', function() {
+      video.play();
+      if (playIcon) {
+        playIcon.style.opacity = 1;
+        setTimeout(function() {
+          playIcon.style.opacity = 0;
+        }, 2000);
+      }
+    });
+    video.addEventListener('mouseleave', function() {
+      video.pause();
+      video.currentTime = 0;
+      if (playIcon) playIcon.style.opacity = 0;
+    });
+    video.addEventListener('ended', function() {
+      if (playIcon) playIcon.style.opacity = 0;
+    });
   });
-  window.addEventListener('beforeunload', stopAnimation);
-}
-
-// Lancer l'animation si la section existe sur la page
-if (document.getElementById('logo-anim-container') && document.getElementById('promo-reduc-section')) {
-  screenfixLogoAnimation();
-}
-// Animation pop à l'apparition + tooltip long survol
-window.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    var btn = document.getElementById('whatsapp-float');
-    if(btn) {
-      btn.classList.remove('scale-0','opacity-0');
-      btn.classList.add('scale-100','opacity-100');
-    }
-  }, 800);
-
-  // Affichage du tooltip après un long survol (600ms)
-  var floatBtn = document.getElementById('whatsapp-float');
-  var tooltip = document.getElementById('whatsapp-tooltip');
-  var hoverTimeout;
-  if(floatBtn && tooltip) {
-    floatBtn.addEventListener('mouseenter', function() {
-      hoverTimeout = setTimeout(function() {
+});
         tooltip.classList.add('opacity-100','scale-100','pointer-events-auto');
       }, 600);
     });
