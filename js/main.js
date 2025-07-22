@@ -67,7 +67,11 @@ function screenfixLogoAnimation() {
     'assets/Iphones/logo-apple.jpeg'
   ];
   const favicon = 'assets/Iphones/favicon.png';
-  const logoCount = 18;
+  // Affiche moins de logos sur mobile, 18 sur desktop
+  function getLogoCount() {
+    return window.innerWidth < 768 ? 4 : 18;
+  }
+  let logoCount = getLogoCount();
   const faviconRatio = 0.22;
   const logoAnimContainer = document.getElementById('logo-anim-container');
   const promoSection = document.getElementById('promo-reduc-section');
@@ -98,6 +102,7 @@ function screenfixLogoAnimation() {
     logoAnimContainer.innerHTML = '';
     logoElements = [];
     rotateAngles = [];
+    logoCount = getLogoCount();
     for (let i = 0; i < logoCount; i++) {
       const img = document.createElement('img');
       img.src = Math.random() < faviconRatio ? favicon : logos[i % logos.length];
@@ -127,7 +132,15 @@ function screenfixLogoAnimation() {
 
   createLogos();
   animateLogos();
-  window.addEventListener('resize', randomizeLogoStyles);
+  window.addEventListener('resize', function() {
+    // Si le nombre de logos doit changer (changement mobile/desktop), on régénère
+    const newCount = getLogoCount();
+    if (newCount !== logoElements.length) {
+      createLogos();
+    } else {
+      randomizeLogoStyles();
+    }
+  });
   window.addEventListener('beforeunload', stopAnimation);
 }
 
