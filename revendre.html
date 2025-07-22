@@ -67,19 +67,9 @@
             <option value="APPLE" selected>Apple</option>
           </select>
           <label for="model" class="block text-lg font-semibold mb-2 mt-8 w-full text-center">Quel est le modèle exact de votre appareil ?</label>
-          <div class="flex flex-col items-center bg-blue-50 border-l-4 border-blue-400 p-4 rounded mb-4 text-sm text-blue-800 text-center">
-            <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12.75 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-3 3a.75.75 0 0 1 .75-.75h1A1.25 1.25 0 0 1 12.75 11v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4.5H10.5a.75.75 0 0 1-.75-.75"></path>
-              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25M3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0" clip-rule="evenodd"></path>
-            </svg>
-            <div>
-              <p class="font-medium">Trouver votre modèle :</p>
-              <p>"Réglages" &gt; "Général" &gt; "Informations"</p>
-              <p class="mt-1 text-xs">Si votre modèle ne figure pas dans la liste, il n’est pas encore éligible à la reprise.</p>
-            </div>
-          </div>
+          <div class="mb-4" style="min-height:48px;"></div>
           <div class="relative w-full mx-auto" id="custom-model-select-container">
-            <button type="button" id="custom-model-select-btn" class="w-full h-11 text-base border border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" aria-haspopup="listbox" aria-expanded="false">
+            <button type="button" id="custom-model-select-btn" class="w-full h-11 text-base border border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition relative" aria-haspopup="listbox" aria-expanded="false">
               <span id="custom-model-selected" class="flex items-center gap-2 text-gray-700 w-full justify-center">
                 <img src="Assets/icons8-iphone13-50.png" alt="iPhone" class="w-6 h-6 opacity-70" id="custom-model-selected-icon">
                 <span id="custom-model-selected-label" class="w-full text-center">Sélectionnez un modèle</span>
@@ -87,9 +77,6 @@
               <svg class="w-5 h-5 text-gray-400 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div id="custom-model-dropdown" class="absolute z-20 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg max-h-72 overflow-y-auto hidden animate-fade-in">
-              <div class="p-2 sticky top-0 bg-white z-10">
-                <input type="text" id="custom-model-search" placeholder="Rechercher un modèle..." class="w-full p-2 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-400 text-center" autocomplete="off">
-              </div>
               <ul id="custom-model-list" class="divide-y divide-gray-100"></ul>
             </div>
             <input type="hidden" id="model" name="model" required>
@@ -106,44 +93,8 @@
                 <span class="text-base">Écran</span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Batterie" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Batterie</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Carte mère" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Carte mère</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" name="pieces[]" value="Module caméra" class="form-checkbox h-5 w-5 text-blue-600">
                 <span class="text-base">Module caméra</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Connecteur de charge" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Connecteur de charge</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Haut-parleur" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Haut-parleur</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Microphone" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Microphone</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Châssis" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Châssis</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Boutons" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Boutons</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Nappes internes" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Nappes internes</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="pieces[]" value="Vitre arrière" class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="text-base">Vitre arrière</span>
               </label>
             </div>
           </div>
