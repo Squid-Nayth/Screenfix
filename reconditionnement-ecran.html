@@ -25,7 +25,30 @@
         <a href="index.html#satisfaction" class="hover:text-blue-600 transition" id="nav-avis">Avis</a>
         <a href="index.html#formation" class="hover:text-blue-600 transition" id="nav-formation">Formation</a>
         <a href="index.html#contact" class="hover:text-blue-600 transition" id="nav-contact">Contact</a>
-    <!-- JS vidéo au survol déplacé dans main.js -->
+      <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
+      <a href="revendre.html" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-revendre">Revendre</a>
+    </nav>
+    <div class="md:hidden relative">
+      <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg class="w-7 h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="5" r="1.5" />
+          <circle cx="12" cy="12" r="1.5"/>
+          <circle cx="12" cy="19" r="1.5"/>
+        </svg>
+      </button>
+      <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
+        <form id="mobile-nav-form" class="flex flex-col gap-4">
+          <button type="button" data-target="eval" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Évaluation</button>
+          <button type="button" data-target="about" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">À propos</button>
+          <button type="button" data-target="satisfaction" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Avis</button>
+          <button type="button" data-target="formation" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Formation</button>
+          <button type="button" data-target="contact" class="w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-900 text-lg font-medium transition">Contact</button>
+          <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="w-full py-3 rounded-lg border border-blue-600 bg-white text-blue-700 text-lg font-semibold transition hover:bg-blue-50 text-center">Visitez la boutique</a>
+          <a href="revendre.html" class="w-full py-3 rounded-lg border border-blue-600 bg-white text-blue-700 text-lg font-semibold transition hover:bg-blue-50 text-center">Revendre</a>
+        </form>
+      </div>
+    </div>
         </button>
         <div id="mobile-menu" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in p-4">
           <form id="mobile-nav-form" class="flex flex-col gap-4">
