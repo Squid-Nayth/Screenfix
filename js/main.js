@@ -66,10 +66,10 @@ function screenfixLogoAnimation() {
     'assets/Iphones/iphone13,12,11.jpeg',
     'assets/Iphones/logo-apple.jpeg'
   ];
-  const favicon = 'assets/Iphones/favicon.png';
+  const favicon = 'assets/Iphones/favicon.jpeg';
   // Affiche moins de logos sur mobile, 18 sur desktop
   function getLogoCount() {
-    return window.innerWidth < 768 ? 4 : 18;
+    return window.innerWidth < 768 ? 6 : 18;
   }
   let logoCount = getLogoCount();
   const faviconRatio = 0.22;
@@ -195,80 +195,10 @@ document.addEventListener('DOMContentLoaded', function() {
     AOS.init({ once: true, duration: 700, offset: 80 });
   }
 });
-// Animation des logos iPhone/Apple dans la section promo réduction
-// Cette version est robuste et évite les doublons/fonctions multiples
 
+// Appel de l'animation des logos iPhone/Apple au chargement du DOM
 document.addEventListener('DOMContentLoaded', function() {
-  const logos = [
-    'assets/Iphones/Iphone 15.jpeg',
-    'assets/Iphones/iphone SE 2022.jpeg',
-    'assets/Iphones/iphone X.jpeg',
-    'assets/Iphones/iphone13,12,11.jpeg',
-    'assets/Iphones/logo-apple.jpeg'
-  ];
-  const favicon = 'assets/Iphones/favicon.jpeg';
-  const logoCount = 18;
-  const faviconRatio = 0.22;
-  const logoAnimContainer = document.getElementById('logo-anim-container');
-  const promoSection = document.getElementById('promo-reduc-section');
-  if (!logoAnimContainer || !promoSection) return;
-  let logoElements = [];
-  let rotateAngles = [];
-  let animFrame = null;
-
-  function randomizeLogoStyles() {
-    logoElements.forEach((el, i) => {
-      const top = Math.random() * 45 + 10;
-      let left;
-      if (Math.random() < 0.5) {
-        left = Math.random() * 33 + 5;
-      } else {
-        left = Math.random() * 33 + 62;
-      }
-      const size = Math.random() * 40 + 40;
-      el.style.top = top + '%';
-      el.style.left = left + '%';
-      el.style.width = size + 'px';
-      el.style.height = size + 'px';
-      el.style.opacity = 0.32;
-    });
-  }
-
-  function createLogos() {
-    logoAnimContainer.innerHTML = '';
-    logoElements = [];
-    rotateAngles = [];
-    for (let i = 0; i < logoCount; i++) {
-      const img = document.createElement('img');
-      img.src = Math.random() < faviconRatio ? favicon : logos[i % logos.length];
-      img.alt = 'Logo iPhone/Apple';
-      img.className = 'absolute transition-all duration-700 ease-in-out will-change-transform pointer-events-none';
-      img.style.zIndex = 10;
-      img.style.opacity = 0.32;
-      logoAnimContainer.appendChild(img);
-      logoElements.push(img);
-      rotateAngles.push(Math.random() * 360);
-    }
-    randomizeLogoStyles();
-  }
-
-  function animateLogos() {
-    logoElements.forEach((el, i) => {
-      rotateAngles[i] += 0.7 + Math.random() * 0.5;
-      const floatY = Math.sin(Date.now()/700 + i) * 12;
-      el.style.transform = `translateY(${floatY}px) rotate(${rotateAngles[i]}deg)`;
-    });
-    animFrame = requestAnimationFrame(animateLogos);
-  }
-
-  function stopAnimation() {
-    if (animFrame) cancelAnimationFrame(animFrame);
-  }
-
-  createLogos();
-  animateLogos();
-  window.addEventListener('resize', randomizeLogoStyles);
-  window.addEventListener('beforeunload', stopAnimation);
+  screenfixLogoAnimation();
 });
 
 // Déclaration prixIphone 
@@ -700,7 +630,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('custom-model-select-btn');
   const dropdown = document.getElementById('custom-model-dropdown');
   const list = document.getElementById('custom-model-list');
-  const search = document.getElementById('custom-model-search');
   const selectedLabel = document.getElementById('custom-model-selected-label');
   const selectedIcon = document.getElementById('custom-model-selected-icon');
   const hiddenInput = document.getElementById('model');
@@ -709,9 +638,9 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentValue = '';
 
   // Injection dynamique des modèles
-  function renderList(filter = '') {
+  function renderList() {
     list.innerHTML = '';
-    iphoneModels.filter(m => m.label.toLowerCase().includes(filter.toLowerCase())).forEach(model => {
+    iphoneModels.forEach(model => {
       const li = document.createElement('li');
       li.setAttribute('role', 'option');
       li.setAttribute('tabindex', '0');
@@ -739,8 +668,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.setAttribute('aria-expanded', 'true');
     isOpen = true;
     setTimeout(() => { dropdown.classList.remove('animate-fade-out'); }, 10);
-    search.focus();
-    renderList(search.value);
+    renderList();
   }
   function closeDropdown() {
     dropdown.classList.add('animate-fade-out');
@@ -755,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function () {
     selectedIcon.src = model.icon;
     hiddenInput.value = model.value;
     btn.classList.remove('ring-2', 'ring-blue-400');
-    renderList(search.value);
+    renderList();
     // Déclenche les events pour la logique de prix/réparations
     hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
     closeDropdown();
@@ -778,9 +706,7 @@ document.addEventListener('DOMContentLoaded', function () {
       closeDropdown();
     }
   });
-  search && search.addEventListener('input', function() {
-    renderList(this.value);
-  });
+  // Champ de recherche supprimé, plus d'écouteur ici
   // Accessibilité : navigation clavier dans la liste
   list && list.addEventListener('keydown', function(e) {
     const items = Array.from(list.querySelectorAll('li[role=option]'));
