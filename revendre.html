@@ -150,6 +150,32 @@
 // (La logique est maintenant dans js/main.js)
 // Veuillez vous assurer que les IDs/classes HTML du sélecteur de modèle sont identiques à ceux attendus par main.js
 
+// Gestion du menu mobile navbar : navigation sur clic
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('button[data-target]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const target = btn.getAttribute('data-target');
+        let url = '';
+        switch(target) {
+          case 'eval': url = 'index.html#eval'; break;
+          case 'about': url = 'index.html#about'; break;
+          case 'satisfaction': url = 'index.html#satisfaction'; break;
+          case 'formation': url = 'index.html#formation'; break;
+          case 'contact': url = 'index.html#contact'; break;
+          default: url = 'index.html'; break;
+        }
+        window.location.href = url;
+      });
+    });
+  }
+});
+
 // Gestion des étapes du formulaire (attendre que le DOM ET main.js soient chargés)
 document.addEventListener('DOMContentLoaded', function() {
   const step1 = document.getElementById('step-1');
