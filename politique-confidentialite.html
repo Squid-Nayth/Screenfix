@@ -83,8 +83,10 @@
     <footer class="bg-gray-900 text-gray-200 text-center py-6 text-base w-full">
       &copy; 2025 Screenfix. Tous droits réservés.<br>
       Développé par <a href="https://github.com/Squid-Nayth" target="_blank" class="text-blue-400 hover:underline">Nathan Michel</a><br>
-      <span class="block mt-2">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a> &nbsp;|&nbsp; 
-        <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" class="text-pink-400 hover:underline">Instagram</a>
+      <span class="block mt-2 flex items-center justify-center gap-4">
+        <span class="text-gray-200">Contact : <a href="tel:0622188574" class="hover:underline">06 22 18 85 74</a></span>
+        <a href="https://www.instagram.com/screenfix_ivry/" target="_blank" title="Instagram" class="inline-block"><img src="assets/icones/instagram.png" alt="Instagram" class="w-7 h-7 hover:opacity-80 transition" /></a>
+        <a href="https://www.tiktok.com/@screenfix75" target="_blank" title="TikTok" class="inline-block"><img src="assets/icones/tik-tok.png" alt="TikTok" class="w-7 h-7 hover:opacity-80 transition" /></a>
       </span>
       <span class="block mt-2">
         <a href="./mentions-legales.html" class="text-gray-300 hover:text-white underline mr-4" target="_blank">Mentions légales</a>
@@ -95,5 +97,32 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
+</body>
+<script>
+// Correction navigation mobile : redirige vers index.html#section
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('button[data-target]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const target = btn.getAttribute('data-target');
+        let url = '';
+        switch(target) {
+          case 'eval': url = 'index.html#eval'; break;
+          case 'about': url = 'index.html#about'; break;
+          case 'satisfaction': url = 'index.html#satisfaction'; break;
+          case 'formation': url = 'index.html#formation'; break;
+          case 'contact': url = 'index.html#contact'; break;
+          default: url = 'index.html'; break;
+        }
+        window.location.href = url;
+      });
+    });
+  }
+});
   </body>
 </html>
