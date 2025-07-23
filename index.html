@@ -377,6 +377,59 @@
     <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      // Gestion du scroll pour le menu mobile
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavForm = document.getElementById('mobile-nav-form');
+        if (mobileNavForm) {
+          mobileNavForm.querySelectorAll('button[data-target]').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const target = btn.getAttribute('data-target');
+              const section = document.getElementById(target);
+              // Vérifie si on est déjà sur la page d'accueil (racine ou index.html)
+              const isHome = (
+                window.location.pathname === '/' ||
+                window.location.pathname.endsWith('/index.html')
+              );
+              if (section && isHome) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (mobileMenu) mobileMenu.classList.add('hidden');
+              } else {
+                // Redirige toujours vers la racine absolue avec le hash
+                // (fonctionne même si le site est dans un sous-dossier)
+                let homeUrl = window.location.origin;
+                // Si le site est servi depuis un sous-dossier, on garde le path jusqu'au dossier
+                const pathParts = window.location.pathname.split('/');
+                if (pathParts.length > 2) {
+                  // Ex: /mon-dossier/mentions-legales.html => /mon-dossier/
+                  homeUrl += '/' + pathParts[1] + '/';
+                } else {
+                  homeUrl += '/';
+                }
+                // On tente d'accéder à index.html si possible, sinon juste la racine
+                // (cela gère les deux cas)
+                const tryIndex = true; // mettre à false si jamais index.html n'est pas accessible
+                if (tryIndex) {
+                  homeUrl += 'index.html';
+                }
+                window.location.href = homeUrl + '#' + target;
+              }
+            });
+          });
+        }
+        // Si on arrive sur la page avec un hash, scroll automatiquement
+        if (window.location.hash) {
+          const hash = window.location.hash.replace('#', '');
+          setTimeout(() => {
+            const section = document.getElementById(hash);
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 200);
+        }
+      });
+    </script>
 
   </body>
 </html>
