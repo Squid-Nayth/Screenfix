@@ -8,6 +8,23 @@
     <link href="css/output.css" rel="stylesheet">
     <!-- AOS Animation CSS -->.
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* Responsive WhatsApp button: cache sur mobile, affiche sur desktop */
+      #whatsapp-float {
+        display: flex;
+      }
+      #whatsapp-float-mobile {
+        display: none;
+      }
+      @media (max-width: 640px) {
+        #whatsapp-float {
+          display: none !important;
+        }
+        #whatsapp-float-mobile {
+          display: flex !important;
+        }
+      }
+    </style>
   </head>
   <body class="bg-white text-gray-900 font-sans">
 
@@ -21,6 +38,10 @@
         Cliquez ici pour discuter directement avec notre équipe sur WhatsApp.<br>
         <span class="block mt-2 text-green-600 font-semibold">Réponse rapide&nbsp;: 10h-19h, lundi à samedi</span>
       </span>
+    </a>
+    <!-- Bouton WhatsApp Mobile (visible uniquement sur mobile) -->
+    <a href="https://wa.me/33622188574?text=Bonjour%20Screenfix%2C%20j'ai%20une%20question%20!" target="_blank" aria-label="Contact WhatsApp Mobile" id="whatsapp-float-mobile" class="fixed z-50 bottom-6 right-6 flex items-center justify-center bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition-all duration-300 ease-in-out" style="width:56px;height:56px;box-shadow:0 4px 24px 0 rgba(37,211,102,0.25);">
+      <img src="assets/icones/Wathsapp.png" alt="WhatsApp" style="width:32px;height:32px;" />
     </a>
 
     
