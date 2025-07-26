@@ -28,44 +28,6 @@
 </body>
 </html>
 <script>
-// Correction des liens de la navbar pour GitHub Pages : redirige toujours vers index.html#section
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = [
-    { id: 'nav-eval', target: 'eval' },
-    { id: 'nav-about', target: 'about' },
-    { id: 'nav-avis', target: 'satisfaction' },
-    { id: 'nav-formation', target: 'formation' },
-    { id: 'nav-contact', target: 'contact' }
-  ];
-  navLinks.forEach(link => {
-    const el = document.getElementById(link.id);
-    if (el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Si déjà sur la page d'accueil, scroll
-        const isHome = (
-          window.location.pathname === '/' ||
-          window.location.pathname.endsWith('/index.html')
-        );
-        const section = document.getElementById(link.target);
-        if (section && isHome) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          // Redirige vers index.html#section, même en sous-dossier
-          let homeUrl = window.location.origin;
-          const pathParts = window.location.pathname.split('/');
-          if (pathParts.length > 2) {
-            homeUrl += '/' + pathParts[1] + '/';
-          } else {
-            homeUrl += '/';
-          }
-          homeUrl += 'index.html#' + link.target;
-          window.location.href = homeUrl;
-        }
-      });
-    }
-  });
-});
 // Force la redirection vers la page d'accueil même si on est déjà sur index.html ou une autre page
 document.addEventListener('DOMContentLoaded', function() {
   var logo = document.getElementById('nav-home');
