@@ -6,10 +6,10 @@
     <title>Screenfix</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="css/output.css" rel="stylesheet">
-    <!-- AOS Animation CSS -->.
+    
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <style>
-      /* Responsive WhatsApp button: cache sur mobile, affiche sur desktop */
+      /* Bouton WhatsApp responsive : caché sur mobile, affiché sur desktop */
       #whatsapp-float {
         display: flex;
       }
@@ -39,7 +39,7 @@
         <span class="block mt-2 text-green-600 font-semibold">Réponse rapide&nbsp;: 10h-19h, lundi à samedi</span>
       </span>
     </a>
-    <!-- Bouton WhatsApp Mobile (visible uniquement sur mobile) -->
+    
     <a href="https://wa.me/33622188574?text=Bonjour%20Screenfix%2C%20j'ai%20une%20question%20!" target="_blank" aria-label="Contact WhatsApp Mobile" id="whatsapp-float-mobile" class="fixed z-50 bottom-6 right-6 flex items-center justify-center bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition-all duration-300 ease-in-out" style="width:56px;height:56px;box-shadow:0 4px 24px 0 rgba(37,211,102,0.25);">
       <img src="assets/icones/4017334_circle_logo_media_network_social_icon.png" alt="WhatsApp" style="width:32px;height:32px;" />
     </a>
@@ -47,7 +47,7 @@
     
     <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#" id="nav-home2" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
+        <a href="#" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
         <nav class="hidden md:flex gap-8 text-gray-700 text-base items-center">
           <a href="#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
           <a href="#about" class="hover:text-blue-600 transition" id="nav-about">À propos</a>
@@ -57,7 +57,7 @@
           <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-boutique">Visitez la boutique</a>
           <a href="revendre.html" class="text-blue-600 font-semibold transition hover:text-blue-800" id="nav-revendre">Revendre</a>
         </nav>
-        <!-- Icône panier mobile -->
+        
         <a href="https://screenfix.sumupstore.com/produits" target="_blank" class="flex md:hidden items-center justify-center text-blue-600 hover:text-blue-800 transition ml-1" id="nav-boutique-mobile" aria-label="Boutique">
           <img src="assets/boutique/sac-de-courses.png" alt="Boutique" class="w-8 h-8 object-contain"/>
         </a>
@@ -87,7 +87,7 @@
     </header>
     
 
-    <!-- Section Promo Réduction -->
+    
     <section id="promo-reduc-section" class="block bg-white py-20 md:py-28 text-center font-sans relative overflow-visible" data-aos="fade-up">
       <div id="logo-anim-container" class="pointer-events-none select-none absolute inset-0 w-full h-full z-10"></div>
       <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight relative z-20 text-center">Profitez d'une réduction sur vos réparation</h2>
@@ -98,7 +98,7 @@
     </section>
     
     
-    <!-- Section Évaluation de réparation -->
+    
     <section id="eval" class="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up">
       <div class="w-full max-w-none flex flex-col items-center">
         <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
@@ -150,7 +150,7 @@
               <span id="repair-count" class="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
             </div>
             <div id="repair-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base">
-              <!-- Carte Diagnostic personnalisé -->
+              
               <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="diagnostic" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
@@ -166,7 +166,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="recond_ecran" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/icons8-iphone13-50.png" alt="Écran" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/icons8-iphone13-50.png" alt="Écran" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Reconditionnement d'écran</span>
                 </div>
                 <div id="reduc-recond_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -176,7 +176,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="chgmt_ecran" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/icons8-iphone13-50.png" alt="Changement écran" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/icons8-iphone13-50.png" alt="Changement écran" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Changement d'écran complet</span>
                 </div> 
                 <div id="reduc-chgmt_ecran" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -186,7 +186,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="vitre_arriere" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/icons8-iphone14-pro-50.png" alt="Vitre arrière" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Remplacement vitre arrière</span>
                 </div>
                 <div id="reduc-vitre_arriere" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -196,7 +196,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="batterie" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/icons8-batterie-pleine-50.png" alt="Batterie" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/icons8-batterie-pleine-50.png" alt="Batterie" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Remplacement batterie</span>
                 </div>
                 <div id="reduc-batterie" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -206,7 +206,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="connecteur" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/icons8-éclair-50.png" alt="Connecteur" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/icons8-éclair-50.png" alt="Connecteur" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Remplacement connecteur de charge</span>
                 </div>
                 <div id="reduc-connecteur" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -216,7 +216,7 @@
 <label class="group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95">
                 <input type="checkbox" name="repair" value="camera" class="peer sr-only">
                 <div class="flex flex-col items-center gap-2">
-                  <img src="Assets/5620966.png" alt="Caméra" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
+                  <img src="assets/5620966.png" alt="Caméra" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110">
                   <span class="font-semibold">Remplacement caméra</span>
                 </div>
                 <div id="reduc-camera" class="text-xs font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2" style="display:none;"></div>
@@ -265,7 +265,7 @@
 
     
 
-    <!-- Section Formation -->
+    
 
     <section id="formation" class="bg-white py-16 px-6" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Formation Reconditionnement d’Écran iPhone</h2>
@@ -285,7 +285,7 @@
             ></video>
           </div>
           <div class="flex flex-col justify-center items-center md:w-1/2 w-full p-8 md:p-12 text-center">
-            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-left">Notre formation intensive, d’une durée de 7 à 10 jours, est conçue pour vous transmettre toutes les compétences nécessaires au reconditionnement professionnel des écrans d’iPhone, avec un taux de réussite élevé.</h3>
+            <h4 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 text-left">Notre formation intensive, d’une durée de 7 à 10 jours, est conçue pour vous transmettre toutes les compétences nécessaires au reconditionnement professionnel des écrans d’iPhone, avec un taux de réussite élevé.</h4>
             <p class="text-gray-700 text-lg md:text-xl mb-4 text-left leading-relaxed">
               La formation est divisée en <span class="font-semibold text-blue-700">4 étapes de 2 jours chacune</span>, adaptées aux spécificités de chaque génération d’iPhone :
             </p>
@@ -307,7 +307,7 @@
       </div>
     </section>
 
-    <!-- Section Qui sommes-nous ? -->
+    
     <section id="about" class="bg-white py-16 px-6" data-aos="fade-up">
       <h5 class="text-4xl md:text-5xl font-bold text-center mb-2">Qui sommes-nous&nbsp;?</h2>
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez l’équipe et l’atelier derrière Screenfix</p>
@@ -332,7 +332,7 @@
       </div>
     </section>
 
-    <!-- Section Satisfaction clients -->
+    
     <section id="satisfaction" class="bg-white py-16 px-6" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-2">Satisfaction de nos clients</h2>
       <p class="text-center text-gray-600 mb-10 text-lg md:text-xl">Découvrez les avis Google laissés par nos clients Screenfix</p>
@@ -344,7 +344,7 @@
       </div>
     </section>
 
-    <!-- Section localisation -->
+    
     <section id="map-location" class="bg-white py-12 px-4 md:px-16 scroll-mt-24" data-aos="fade-up">
       <div class="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto text-center">
         <div class="w-full aspect-video shadow-lg rounded-xl overflow-hidden flex items-center justify-center">
@@ -399,11 +399,13 @@
 
 
 
-    <!-- AOS Animation JS -->
+    
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
+    
     <script src="js/email.js"></script>
     <script src="js/main.js"></script>
+    
     <script>
       // Gestion du scroll pour le menu mobile
       document.addEventListener('DOMContentLoaded', function() {
@@ -423,19 +425,17 @@
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 if (mobileMenu) mobileMenu.classList.add('hidden');
               } else {
-                // Redirige toujours vers la racine absolue avec le hash
-                // (fonctionne même si le site est dans un sous-dossier)
+                // Redirige toujours vers la racine absolue avec le hash (fonctionne même si le site est dans un sous-dossier)
                 let homeUrl = window.location.origin;
                 // Si le site est servi depuis un sous-dossier, on garde le path jusqu'au dossier
                 const pathParts = window.location.pathname.split('/');
                 if (pathParts.length > 2) {
-                  // Ex: /mon-dossier/mentions-legales.html => /mon-dossier/
+                  // Ex : /mon-dossier/mentions-legales.html => /mon-dossier/
                   homeUrl += '/' + pathParts[1] + '/';
                 } else {
                   homeUrl += '/';
                 }
-                // On tente d'accéder à index.html si possible, sinon juste la racine
-                // (cela gère les deux cas)
+                // On tente d'accéder à index.html si possible, sinon juste la racine (cela gère les deux cas)
                 const tryIndex = true; // mettre à false si jamais index.html n'est pas accessible
                 if (tryIndex) {
                   homeUrl += 'index.html';

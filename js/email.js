@@ -6,7 +6,7 @@ const EMAILJS_TEMPLATE_ADMIN = 'template_szlgmdo';
 const ADMIN_EMAIL = 'nathannkombe@icloud.com'; 
 
 
-// Charge EmailJS SDK 
+// Chargement du SDK EmailJS
 window.emailjsReady = false;
 (function(){
   function setReady() {
@@ -41,6 +41,9 @@ function sendScreenfixEmails(evaluation, rdv, onSuccess, onError) {
   } else {
     repairStr = evaluation.repair || '';
   }
+  console.log('Type(s) de réparation sélectionné(s) :', repairStr);
+  console.log('Prix sans réduction :', evaluation.totalSansReduc);
+  console.log('Prix avec réduction :', evaluation.price);
   const userParams = {
     to_email: rdv.email,
     user_name: rdv.name,

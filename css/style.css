@@ -1,5 +1,5 @@
 
-@import "tailwindcss";
+#import "tailwindcss";
 #repair-count {
   display: inline-block;
   transition: transform 0.2s cubic-bezier(.4,2,.6,1), color 0.2s;

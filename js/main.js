@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Contrôle Play/Pause vidéos reconditionnement
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
@@ -396,21 +395,48 @@ document.addEventListener('DOMContentLoaded', function () {
     const marque = document.getElementById('brand')?.value || '';
     const modele = document.getElementById('model')?.value || '';
     // Récupérer toutes les réparations sélectionnées
-    const repairSelect = document.getElementById('repair');
-    let typeReparation = '';
-    if (repairSelect) {
-      let selected = [];
-      for (let option of repairSelect.options) {
-        if (option.selected) selected.push(option.textContent);
+    // Correction : récupérer les réparations sélectionnées via les checkboxes
+    const repairCheckboxes = document.querySelectorAll('#repair-checkboxes input[type="checkbox"]');
+    let selectedRepairs = [];
+    repairCheckboxes.forEach(cb => {
+      if (cb.checked) selectedRepairs.push(cb.value);
+    });
+    // Optionnel : afficher les labels lisibles dans l'email
+    function cbLabelFromValue(val) {
+      switch(val) {
+        case 'recond_ecran': return "Reconditionnement d'écran";
+        case 'chgmt_ecran': return "Changement d'écran complet";
+        case 'vitre_arriere': return "Remplacement vitre arrière";
+        case 'batterie': return "Remplacement batterie";
+        case 'connecteur': return "Remplacement connecteur de charge";
+        case 'camera': return "Remplacement caméra";
+        case 'diagnostic': return "Diagnostic personnalisé";
+        default: return val;
       }
-      typeReparation = selected.join(', ');
     }
+    let typeReparation = selectedRepairs.map(cbLabelFromValue).join(', ');
     const prix = document.getElementById('service-coverage-value')?.textContent || '';
 
     // Appel EmailJS
     if (typeof sendScreenfixEmails === 'function') {
+      // Récupère les prix bruts (sans et avec réduction) depuis la fenêtre globale ou les variables calculées
+      let totalSansReduc = window.prixEstimeBrut || '';
+      let totalAvecReduc = '';
+      // On tente de récupérer le prix affiché (avec réduction) depuis le DOM
+      const prixAffiche = document.getElementById('service-coverage-value')?.textContent || '';
+      // Si le prix affiché contient une réduction, on extrait le prix réduit
+      const match = prixAffiche.match(/([0-9]+[.,]?[0-9]*)\s*€\s*$/);
+      if (match) {
+        totalAvecReduc = match[1].replace(',', '.');
+      }
       sendScreenfixEmails(
-        { brand: marque, model: modele, repair: typeReparation, price: prix },
+        {
+          brand: marque,
+          model: modele,
+          repair: typeReparation,
+          price: totalAvecReduc,
+          totalSansReduc: totalSansReduc,
+        },
         { name: nom, email: email, date: date },
         function() {
           afficherMessageConfirmation('Votre demande a bien été envoyée. Vous recevrez un email de confirmation.');
