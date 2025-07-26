@@ -16,7 +16,7 @@
   <header class="sticky top-0 z-30 bg-white backdrop-blur border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
       <a href="./index.html" id="nav-home" class="text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none">Screenfix</a>
-      <nav class="hidden md:flex gap-8 text-gray-700 text-base items-center">
+      <nav class="hidden md:flex gap-8 text-g ray-700 text-base items-center">
         <a href="./index.html#eval" class="hover:text-blue-600 transition" id="nav-eval">Évaluation</a>
         <a href="./index.html#about" class="hover:text-blue-600 transition" id="nav-about">À propos</a>
         <a href="./index.html#satisfaction" class="hover:text-blue-600 transition" id="nav-avis">Avis</a>
@@ -151,46 +151,6 @@ Elle est divisée en 4 étapes de 2 jours chacune, afin de consacrer le temps n�
   <script>AOS.init({ once: true, duration: 700, offset: 80 });</script>
   <script src="js/email.js"></script>
   <script src="js/main.js"></script>
-<script>
-// Correction des liens de la navbar pour GitHub Pages : redirige toujours vers index.html#section
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = [
-    { id: 'nav-eval', target: 'eval' },
-    { id: 'nav-about', target: 'about' },
-    { id: 'nav-avis', target: 'satisfaction' },
-    { id: 'nav-formation', target: 'formation' },
-    { id: 'nav-contact', target: 'contact' }
-  ];
-  navLinks.forEach(link => {
-    const el = document.getElementById(link.id);
-    if (el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Si déjà sur la page d'accueil, scroll
-        const isHome = (
-          window.location.pathname === '/' ||
-          window.location.pathname.endsWith('/index.html')
-        );
-        const section = document.getElementById(link.target);
-        if (section && isHome) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          // Redirige vers index.html#section, même en sous-dossier
-          let homeUrl = window.location.origin;
-          const pathParts = window.location.pathname.split('/');
-          if (pathParts.length > 2) {
-            homeUrl += '/' + pathParts[1] + '/';
-          } else {
-            homeUrl += '/';
-          }
-          homeUrl += 'index.html#' + link.target;
-          window.location.href = homeUrl;
-        }
-      });
-    }
-  });
-});
-</script>
 </body>
 </html>
 <script>
