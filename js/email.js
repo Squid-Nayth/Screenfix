@@ -3,7 +3,7 @@ const EMAILJS_USER_ID = 'jRRj-yIH7JJxNkXO0';
 const EMAILJS_SERVICE_ID = 'service_95urihm';
 const EMAILJS_TEMPLATE_USER = 'template_pvowh8p'; 
 const EMAILJS_TEMPLATE_ADMIN = 'template_szlgmdo'; 
-const ADMIN_EMAIL = 'nathannkombe@icloud.com'; 
+const ADMIN_EMAIL = 'cineeffrance@gmail.com'; 
 
 
 // Chargement du SDK EmailJS
