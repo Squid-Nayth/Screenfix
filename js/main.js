@@ -300,7 +300,16 @@ document.addEventListener('DOMContentLoaded', function () {
   if (navHome) {
     navHome.addEventListener('click', function(e) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Redirige toujours vers la page d'accueil
+      let homeUrl = window.location.origin;
+      const pathParts = window.location.pathname.split('/');
+      if (pathParts.length > 2) {
+        homeUrl += '/' + pathParts[1] + '/';
+      } else {
+        homeUrl += '/';
+      }
+      homeUrl += 'index.html';
+      window.location.href = homeUrl;
     });
   }
 });
@@ -328,10 +337,24 @@ function setupMobileMenu() {
           e.preventDefault();
           menu.classList.add('hidden');
           const target = btn.getAttribute('data-target');
-          // Mapping direct entre data-target et id de section
           const section = document.getElementById(target);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+          const isHome = (
+            window.location.pathname === '/' ||
+            window.location.pathname.endsWith('/index.html')
+          );
+          if (section && isHome) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            // Redirige toujours vers la racine absolue avec le hash (fonctionne même si le site est dans un sous-dossier)
+            let homeUrl = window.location.origin;
+            const pathParts = window.location.pathname.split('/');
+            if (pathParts.length > 2) {
+              homeUrl += '/' + pathParts[1] + '/';
+            } else {
+              homeUrl += '/';
+            }
+            homeUrl += 'index.html';
+            window.location.href = homeUrl + '#' + target;
           }
         });
       });
@@ -537,6 +560,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isDiagnostic) {
       prix = '<span class="text-blue-700 font-bold">35 €</span>';
       window.prixEstimeBrut = '35';
+      // Forcer selectedRepairs à ['diagnostic'] pour l'export email
+      selectedRepairs = ['diagnostic'];
     } else {
       // Réductions à appliquer
       const reductions = [-0.15, -0.10, -0.10];
@@ -571,16 +596,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Fonction utilitaire pour retrouver le label lisible d'une checkbox
   function cbLabelFromValue(val) {
-    switch(val) {
-      case 'recond_ecran': return "Reconditionnement d'écran";
-      case 'chgmt_ecran': return "Changement d'écran complet";
-      case 'vitre_arriere': return "Remplacement vitre arrière";
-      case 'batterie': return "Remplacement batterie";
-      case 'connecteur': return "Remplacement connecteur de charge";
-      case 'camera': return "Remplacement caméra";
-      case 'autre': return "Autre";
-      default: return val;
-    }
+      switch(val) {
+        case 'recond_ecran': return "Reconditionnement d'écran";
+        case 'chgmt_ecran': return "Changement d'écran complet";
+        case 'vitre_arriere': return "Remplacement vitre arrière";
+        case 'batterie': return "Remplacement batterie";
+        case 'connecteur': return "Remplacement connecteur de charge";
+        case 'camera': return "Remplacement caméra";
+        case 'diagnostic': return "Diagnostic personnalisé";
+        case 'autre': return "Autre";
+        default: return val;
+      }
   }
 
   // Smooth scroll pour tous les liens internes commençant par #
