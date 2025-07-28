@@ -615,40 +615,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // --- MENU DÉROULANT ---
 document.addEventListener('DOMContentLoaded', function () {
-  // Liste des modèles
-  const iphoneModels = [
-    { value: '', label: 'Sélectionnez un modèle', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    // iPhone 16 series (icônes temporaires, à remplacer si besoin)
-    { value: 'iphone-16', label: 'iPhone 16', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-16-plus', label: 'iPhone 16 Plus', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-16-pro', label: 'iPhone 16 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-16-pro-max', label: 'iPhone 16 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    // iPhone 15 et antérieurs
-    { value: 'iphone-15', label: 'iPhone 15', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-15-plus', label: 'iPhone 15 Plus', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-15-pro', label: 'iPhone 15 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-15-pro-max', label: 'iPhone 15 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-14', label: 'iPhone 14', icon: 'assets/type-reparation/icons8-iphone14-pro-50.png' },
-    { value: 'iphone-14-plus', label: 'iPhone 14 Plus', icon: 'assets/type-reparation/icons8-iphone14-pro-50.png' },
-    { value: 'iphone-14-pro', label: 'iPhone 14 Pro', icon: 'assets/type-reparation/icons8-iphone14-pro-50.png' },
-    { value: 'iphone-14-pro-max', label: 'iPhone 14 Pro Max', icon: 'assets/type-reparation/icons8-iphone14-pro-50.png' },
-    { value: 'iphone-13', label: 'iPhone 13', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-13-mini', label: 'iPhone 13 Mini', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-13-pro', label: 'iPhone 13 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-13-pro-max', label: 'iPhone 13 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-12', label: 'iPhone 12', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-12-mini', label: 'iPhone 12 Mini', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-12-pro', label: 'iPhone 12 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-12-pro-max', label: 'iPhone 12 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-11', label: 'iPhone 11', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-11-pro', label: 'iPhone 11 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-11-pro-max', label: 'iPhone 11 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-x', label: 'iPhone X', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-xs', label: 'iPhone XS', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-xr', label: 'iPhone XR', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-xs-max', label: 'iPhone XS Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-se-2022', label: 'iPhone SE 2022', icon: 'assets/type-reparation/icons8-iphone13-50.png' }
-  ];
 
   const btn = document.getElementById('custom-model-select-btn');
   const dropdown = document.getElementById('custom-model-dropdown');
