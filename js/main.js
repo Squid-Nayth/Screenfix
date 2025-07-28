@@ -1,9 +1,9 @@
-import iphoneModelsData from './assets/Modèles/iphones.json'
- 
-console.log('iphoneModelsData', iphoneModelsData);
-console.log(iphoneModelsData.default);
-console.log(iphoneModelsData.generations);
 // Diaporama section "À propos" (carousel)
+let iphoneModelsData = null;
+fetch('assets/Modèles/iphones.json')
+  .then(res => res.json())
+  .then(data => { iphoneModelsData = data; });
+
 document.addEventListener('DOMContentLoaded', function() {
   const images = [
     'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58 (1).jpeg',
@@ -206,48 +206,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Déclaration prixIphone 
-const prixIphone = {
-  'iphone-16': { recond_ecran: 170, chgmt_ecran: 280, vitre_arriere: 190, batterie: 85, connecteur: 120, camera: 160 },
-  'iphone-16-plus': { recond_ecran: 200, chgmt_ecran: 330, vitre_arriere: 210, batterie: 95, connecteur: 130, camera: 180 },
-  'iphone-16-pro': { recond_ecran: 210, chgmt_ecran: 350, vitre_arriere: 220, batterie: 100, connecteur: 140, camera: 200 },
-  'iphone-16-pro-max': { recond_ecran: 230, chgmt_ecran: 380, vitre_arriere: 240, batterie: 110, connecteur: 150, camera: 220 },
-  'iphone-15': { recond_ecran: 152, chgmt_ecran: 253, vitre_arriere: 180, batterie: 75, connecteur: 109, camera: 149 },
-  'iphone-15-plus': { recond_ecran: 183, chgmt_ecran: 305, vitre_arriere: 185, batterie: 85, connecteur: 115, camera: 155 },
-  'iphone-15-pro': { recond_ecran: 190, chgmt_ecran: 320, vitre_arriere: 200, batterie: 85, connecteur: 120, camera: 170 },
-  'iphone-15-pro-max': { recond_ecran: 210, chgmt_ecran: 350, vitre_arriere: 220, batterie: 95, connecteur: 130, camera: 190 },
-  'iphone-14': { recond_ecran: 132, chgmt_ecran: 220, vitre_arriere: 160, batterie: 75, connecteur: 99, camera: 129 },
-  'iphone-14-plus': { recond_ecran: 161, chgmt_ecran: 269, vitre_arriere: 170, batterie: 85, connecteur: 105, camera: 135 },
-  'iphone-14-pro': { recond_ecran: 183, chgmt_ecran: 305, vitre_arriere: 190, batterie: 85, connecteur: 110, camera: 150 },
-  'iphone-14-pro-max': { recond_ecran: 201, chgmt_ecran: 335, vitre_arriere: 210, batterie: 95, connecteur: 120, camera: 170 },
-  'iphone-13': { recond_ecran: 103, chgmt_ecran: 172, vitre_arriere: 140, batterie: 75, connecteur: 89, camera: 119 },
-  'iphone-13-mini': { recond_ecran: 108, chgmt_ecran: 180, vitre_arriere: 145, batterie: 65, connecteur: 80, camera: 110 },
-  'iphone-13-pro': { recond_ecran: 152, chgmt_ecran: 253, vitre_arriere: 160, batterie: 75, connecteur: 95, camera: 130 },
-  'iphone-13-pro-max': { recond_ecran: 165, chgmt_ecran: 275, vitre_arriere: 170, batterie: 85, connecteur: 100, camera: 140 },
-  'iphone-12': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 120, batterie: 75, connecteur: 79, camera: 99 },
-  'iphone-12-mini': { recond_ecran: 84, chgmt_ecran: 139, vitre_arriere: 110, batterie: 75, connecteur: 70, camera: 90 },
-  'iphone-12-pro': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 130, batterie: 75, connecteur: 80, camera: 105 },
-  'iphone-12-pro-max': { recond_ecran: 108, chgmt_ecran: 180, vitre_arriere: 140, batterie: 95, connecteur: 90, camera: 120 },
-  'iphone-11': { recond_ecran: 62, chgmt_ecran: 103, vitre_arriere: 90, batterie: 55, connecteur: 69, camera: 89 },
-  'iphone-11-pro': { recond_ecran: 89, chgmt_ecran: 148, vitre_arriere: 100, batterie: 55, connecteur: 70, camera: 95 },
-  'iphone-11-pro-max': { recond_ecran: 84, chgmt_ecran: 139, vitre_arriere: 110, batterie: 65, connecteur: 75, camera: 100 },
-  'iphone-x': { recond_ecran: 59, chgmt_ecran: 99, vitre_arriere: 80, batterie: 45, connecteur: 60, camera: 80 },
-  'iphone-xs': { recond_ecran: 59, chgmt_ecran: 99, vitre_arriere: 85, batterie: 45, connecteur: 65, camera: 85 },
-  'iphone-xr': { recond_ecran: 50, chgmt_ecran: 83, vitre_arriere: 75, batterie: 45, connecteur: 55, camera: 75 },
-  'iphone-xs-max': { recond_ecran: 69, chgmt_ecran: 115, vitre_arriere: 90, batterie: 60, connecteur: 70, camera: 90 },
-  'iphone-se-2022': { recond_ecran: 52, chgmt_ecran: 85, vitre_arriere: 70, batterie: 45, connecteur: 50, camera: 70 }
-};
+function getPrixIphone(modelValue, type) {
+  if (!iphoneModelsData) return undefined;
+  for (const gen of iphoneModelsData.generations) {
+    const found = gen.models.find(m => m.value === modelValue);
+    if (found && typeof found[type] !== 'undefined') {
+      return found[type];
+    }
+  }
+  return undefined;
+}
 
 // Affichage du nombre de réparations sélectionnées
 document.addEventListener('DOMContentLoaded', function () {
-
   function updateRepairPrices() {
     const model = document.getElementById('model').value;
     const types = ['recond_ecran','chgmt_ecran','vitre_arriere','batterie','connecteur','camera'];
     types.forEach(type => {
       const el = document.getElementById('prix-' + type);
       if (el) {
-        if (prixIphone[model] && typeof prixIphone[model][type] !== 'undefined') {
-          el.textContent = prixIphone[model][type] + ' €';
+        const prix = getPrixIphone(model, type);
+        if (typeof prix !== 'undefined') {
+          el.textContent = prix + ' €';
           el.classList.remove('text-gray-400');
         } else {
           el.textContent = '-- €';
@@ -374,7 +354,6 @@ if (document.readyState === 'loading') {
 }
 
 // Logique d'affichage du prix pour tous les modèles d'iPhone
-
 document.addEventListener('DOMContentLoaded', function () {
   const evalForm = document.getElementById('eval-form');
   const costSection = document.getElementById('cost-section-container');
@@ -429,18 +408,20 @@ document.addEventListener('DOMContentLoaded', function () {
     repairCheckboxes.forEach(cb => {
       if (cb.checked) selectedRepairs.push(cb.value);
     });
-    // Optionnel : afficher les labels lisibles dans l'email
+
+    // Fonction utilitaire pour retrouver le label lisible d'une checkbox
     function cbLabelFromValue(val) {
-      switch(val) {
-        case 'recond_ecran': return "Reconditionnement d'écran";
-        case 'chgmt_ecran': return "Changement d'écran complet";
-        case 'vitre_arriere': return "Remplacement vitre arrière";
-        case 'batterie': return "Remplacement batterie";
-        case 'connecteur': return "Remplacement connecteur de charge";
-        case 'camera': return "Remplacement caméra";
-        case 'diagnostic': return "Diagnostic personnalisé";
-        default: return val;
-      }
+        switch(val) {
+          case 'recond_ecran': return "Reconditionnement d'écran";
+          case 'chgmt_ecran': return "Changement d'écran complet";
+          case 'vitre_arriere': return "Remplacement vitre arrière";
+          case 'batterie': return "Remplacement batterie";
+          case 'connecteur': return "Remplacement connecteur de charge";
+          case 'camera': return "Remplacement caméra";
+          case 'diagnostic': return "Diagnostic personnalisé";
+          case 'autre': return "Autre";
+          default: return val;
+        }
     }
     let typeReparation = selectedRepairs.map(cbLabelFromValue).join(', ');
     const prix = document.getElementById('service-coverage-value')?.textContent || '';
@@ -571,10 +552,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // Réductions à appliquer
       const reductions = [-0.15, -0.10, -0.10];
       window.prixEstimeBrut = null;
-      if (brand === 'apple' && prixIphone[model] && selectedRepairs.length > 0) {
+      if (brand === 'apple' && selectedRepairs.length > 0) {
         selectedRepairs.forEach(function(rep, idx) {
-          if (prixIphone[model][rep]) {
-            const prixBase = prixIphone[model][rep];
+          const prixBase = getPrixIphone(model, rep);
+          if (prixBase) {
             totalSansReduc += prixBase;
             let reduc = 0;
             if (idx < reductions.length) {
@@ -598,21 +579,6 @@ document.addEventListener('DOMContentLoaded', function () {
     costSection.style.display = 'block';
     costSection.scrollIntoView({ behavior: 'smooth' });
   });
-
-  // Fonction utilitaire pour retrouver le label lisible d'une checkbox
-  function cbLabelFromValue(val) {
-      switch(val) {
-        case 'recond_ecran': return "Reconditionnement d'écran";
-        case 'chgmt_ecran': return "Changement d'écran complet";
-        case 'vitre_arriere': return "Remplacement vitre arrière";
-        case 'batterie': return "Remplacement batterie";
-        case 'connecteur': return "Remplacement connecteur de charge";
-        case 'camera': return "Remplacement caméra";
-        case 'diagnostic': return "Diagnostic personnalisé";
-        case 'autre': return "Autre";
-        default: return val;
-      }
-  }
 
   // Smooth scroll pour tous les liens internes commençant par #
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -661,14 +627,12 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentValue = '';
 
   // Injection dynamique des modèles
-  const iphoneModels = [
-    iphoneModelsData.default,
-    ...iphoneModelsData.generations.flatMap(group => group.models)
-  ];
-
- function renderList() {
+  function renderList() {
     list.innerHTML = '';
-    iphoneModels.forEach(model => {
+    if (!iphoneModelsData) return;
+    // Récupère tous les modèles de toutes les générations
+    const allModels = iphoneModelsData.generations.flatMap(gen => gen.models);
+    allModels.forEach(model => {
       const li = document.createElement('li');
       li.setAttribute('role', 'option');
       li.setAttribute('tabindex', '0');

@@ -3,75 +3,361 @@
     {
       "generation": "iPhone 16",
       "models": [
-        { "value": "iphone-16", "label": "iPhone 16", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-16-plus", "label": "iPhone 16 Plus", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-16-pro", "label": "iPhone 16 Pro", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-16-pro-max", "label": "iPhone 16 Pro Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-16", 
+          "label": "iPhone 16", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 170, 
+          "chgmt_ecran": 280, 
+          "vitre_arriere": 190, 
+          "batterie": 85, 
+          "connecteur": 120, 
+          "camera": 160
+        },
+        { 
+          "value": "iphone-16-plus", 
+          "label": "iPhone 16 Plus", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 200, 
+          "chgmt_ecran": 330, 
+          "vitre_arriere": 210, 
+          "batterie": 95, 
+          "connecteur": 130, 
+          "camera": 180
+        },
+        { 
+          "value": "iphone-16-pro", 
+          "label": "iPhone 16 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 210, 
+          "chgmt_ecran": 350, 
+          "vitre_arriere": 220, 
+          "batterie": 100, 
+          "connecteur": 140, 
+          "camera": 200
+        },
+        { 
+          "value": "iphone-16-pro-max", 
+          "label": "iPhone 16 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 230, 
+          "chgmt_ecran": 380, 
+          "vitre_arriere": 240, 
+          "batterie": 110, 
+          "connecteur": 150, 
+          "camera": 220
+        }
       ]
     },
     {
       "generation": "iPhone 15",
       "models": [
-        { "value": "iphone-15", "label": "iPhone 15", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-15-plus", "label": "iPhone 15 Plus", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-15-pro", "label": "iPhone 15 Pro", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-15-pro-max", "label": "iPhone 15 Pro Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-15", 
+          "label": "iPhone 15", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 152, 
+          "chgmt_ecran": 253, 
+          "vitre_arriere": 180, 
+          "batterie": 75, 
+          "connecteur": 109, 
+          "camera": 149 
+        },
+        { 
+          "value": "iphone-15-plus", 
+          "label": "iPhone 15 Plus", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 183, 
+          "chgmt_ecran": 305, 
+          "vitre_arriere": 185, 
+          "batterie": 85, 
+          "connecteur": 115, 
+          "camera": 155
+        },
+        { 
+          "value": "iphone-15-pro", 
+          "label": "iPhone 15 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 190, 
+          "chgmt_ecran": 320, 
+          "vitre_arriere": 200, 
+          "batterie": 85, 
+          "connecteur": 120, 
+          "camera": 170
+        },
+        { 
+          "value": "iphone-15-pro-max", 
+          "label": "iPhone 15 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 210, 
+          "chgmt_ecran": 350, 
+          "vitre_arriere": 220, 
+          "batterie": 95, 
+          "connecteur": 130, 
+          "camera": 190
+        }
       ]
     },
     {
       "generation": "iPhone 14",
       "models": [
-        { "value": "iphone-14", "label": "iPhone 14", "icon": "assets/type-reparation/icons8-iphone14-pro-50.png" },
-        { "value": "iphone-14-plus", "label": "iPhone 14 Plus", "icon": "assets/type-reparation/icons8-iphone14-pro-50.png" },
-        { "value": "iphone-14-pro", "label": "iPhone 14 Pro", "icon": "assets/type-reparation/icons8-iphone14-pro-50.png" },
-        { "value": "iphone-14-pro-max", "label": "iPhone 14 Pro Max", "icon": "assets/type-reparation/icons8-iphone14-pro-50.png" }
+        { 
+          "value": "iphone-14", 
+          "label": "iPhone 14", 
+          "icon": "assets/type-reparation/icons8-iphone14-pro-50.png",
+          "recond_ecran": 132, 
+          "chgmt_ecran": 220, 
+          "vitre_arriere": 160, 
+          "batterie": 75, 
+          "connecteur": 99, 
+          "camera": 129
+        },
+        { 
+          "value": "iphone-14-plus", 
+          "label": "iPhone 14 Plus", 
+          "icon": "assets/type-reparation/icons8-iphone14-pro-50.png",
+          "recond_ecran": 161, 
+          "chgmt_ecran": 269, 
+          "vitre_arriere": 170, 
+          "batterie": 85, 
+          "connecteur": 105, 
+          "camera": 135
+        },
+        { 
+          "value": "iphone-14-pro", 
+          "label": "iPhone 14 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone14-pro-50.png",
+          "recond_ecran": 183, 
+          "chgmt_ecran": 305, 
+          "vitre_arriere": 190, 
+          "batterie": 85, 
+          "connecteur": 110, 
+          "camera": 150
+        },
+        { 
+          "value": "iphone-14-pro-max", 
+          "label": "iPhone 14 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone14-pro-50.png",
+          "recond_ecran": 201, 
+          "chgmt_ecran": 335, 
+          "vitre_arriere": 210, 
+          "batterie": 95, 
+          "connecteur": 120, 
+          "camera": 170
+        }
       ]
     },
     {
       "generation": "iPhone 13",
       "models": [
-        { "value": "iphone-13", "label": "iPhone 13", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-13-mini", "label": "iPhone 13 Mini", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-13-pro", "label": "iPhone 13 Pro", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-13-pro-max", "label": "iPhone 13 Pro Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-13", 
+          "label": "iPhone 13", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 103, 
+          "chgmt_ecran": 172, 
+          "vitre_arriere": 140, 
+          "batterie": 75, 
+          "connecteur": 89, 
+          "camera": 119
+        },
+        { 
+          "value": "iphone-13-mini", 
+          "label": "iPhone 13 Mini", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 108, 
+          "chgmt_ecran": 180, 
+          "vitre_arriere": 145, 
+          "batterie": 65, 
+          "connecteur": 80, 
+          "camera": 110
+        },
+        { 
+          "value": "iphone-13-pro", 
+          "label": "iPhone 13 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 152, 
+          "chgmt_ecran": 253, 
+          "vitre_arriere": 160, 
+          "batterie": 75, 
+          "connecteur": 95, 
+          "camera": 130
+        },
+        { 
+          "value": "iphone-13-pro-max", 
+          "label": "iPhone 13 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 165, 
+          "chgmt_ecran": 275, 
+          "vitre_arriere": 170, 
+          "batterie": 85, 
+          "connecteur": 100, 
+          "camera": 140
+        }
       ]
     },
     {
       "generation": "iPhone 12",
       "models": [
-        { "value": "iphone-12", "label": "iPhone 12", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-12-mini", "label": "iPhone 12 Mini", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-12-pro", "label": "iPhone 12 Pro", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-12-pro-max", "label": "iPhone 12 Pro Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-12", 
+          "label": "iPhone 12", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 89, 
+          "chgmt_ecran": 148, 
+          "vitre_arriere": 120, 
+          "batterie": 75, 
+          "connecteur": 79, 
+          "camera": 99
+        },
+        { 
+          "value": "iphone-12-mini", 
+          "label": "iPhone 12 Mini", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 84, 
+          "chgmt_ecran": 139, 
+          "vitre_arriere": 110, 
+          "batterie": 75, 
+          "connecteur": 70, 
+          "camera": 90
+        },
+        { 
+          "value": "iphone-12-pro", 
+          "label": "iPhone 12 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 89, 
+          "chgmt_ecran": 148, 
+          "vitre_arriere": 130, 
+          "batterie": 75, 
+          "connecteur": 80, 
+          "camera": 105
+        },
+        { 
+          "value": "iphone-12-pro-max", 
+          "label": "iPhone 12 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 108, 
+          "chgmt_ecran": 180, 
+          "vitre_arriere": 140, 
+          "batterie": 95, 
+          "connecteur": 90, 
+          "camera": 120
+        }
       ]
     },
     {
       "generation": "iPhone 11",
       "models": [
-        { "value": "iphone-11", "label": "iPhone 11", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-11-pro", "label": "iPhone 11 Pro", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-11-pro-max", "label": "iPhone 11 Pro Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-11", 
+          "label": "iPhone 11", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 62, 
+          "chgmt_ecran": 103, 
+          "vitre_arriere": 90, 
+          "batterie": 55, 
+          "connecteur": 69, 
+          "camera": 89 
+        },
+        { 
+          "value": "iphone-11-pro", 
+          "label": "iPhone 11 Pro", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 89, 
+          "chgmt_ecran": 148, 
+          "vitre_arriere": 100, 
+          "batterie": 55, 
+          "connecteur": 70, 
+          "camera": 95
+        },
+        { 
+          "value": "iphone-11-pro-max", 
+          "label": "iPhone 11 Pro Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 84, 
+          "chgmt_ecran": 139, 
+          "vitre_arriere": 110, 
+          "batterie": 65, 
+          "connecteur": 75, 
+          "camera": 100
+        }
       ]
     },
     {
       "generation": "iPhone X / XS / XR",
       "models": [
-        { "value": "iphone-x", "label": "iPhone X", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-xs", "label": "iPhone XS", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-xs-max", "label": "iPhone XS Max", "icon": "assets/type-reparation/icons8-iphone13-50.png" },
-        { "value": "iphone-xr", "label": "iPhone XR", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-x", 
+          "label": "iPhone X", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 59, 
+          "chgmt_ecran": 99, 
+          "vitre_arriere": 80, 
+          "batterie": 45, 
+          "connecteur": 60,
+          "camera": 80
+        },
+        { 
+          "value": "iphone-xs", 
+          "label": "iPhone XS", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 59, 
+          "chgmt_ecran": 99, 
+          "vitre_arriere": 85, 
+          "batterie": 45, 
+          "connecteur": 65, 
+          "camera": 85
+        },
+        { 
+          "value": "iphone-xs-max", 
+          "label": "iPhone XS Max", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 69, 
+          "chgmt_ecran": 115, 
+          "vitre_arriere": 90, 
+          "batterie": 60, 
+          "connecteur": 70, 
+          "camera": 90
+        },
+        { 
+          "value": "iphone-xr", 
+          "label": "iPhone XR", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 50, 
+          "chgmt_ecran": 83, 
+          "vitre_arriere": 75, 
+          "batterie": 45, 
+          "connecteur": 55, 
+          "camera": 75
+        }
       ]
     },
     {
       "generation": "iPhone SE",
       "models": [
-        { "value": "iphone-se-2022", "label": "iPhone SE 2022", "icon": "assets/type-reparation/icons8-iphone13-50.png" }
+        { 
+          "value": "iphone-se-2022", 
+          "label": "iPhone SE 2022", 
+          "icon": "assets/type-reparation/icons8-iphone13-50.png",
+          "recond_ecran": 52, 
+          "chgmt_ecran": 85, 
+          "vitre_arriere": 70, 
+          "batterie": 45, 
+          "connecteur": 50, 
+          "camera": 70
+        }
       ]
     }
   ],
   "default": {
     "value": "",
     "label": "Sélectionnez un modèle",
-    "icon": "assets/type-reparation/icons8-iphone13-50.png"
+    "icon": "assets/type-reparation/icons8-iphone13-50.png",
+    "recond_ecran": 0, 
+    "chgmt_ecran": 0, 
+    "vitre_arriere": 0, 
+    "batterie": 0, 
+    "connecteur": 0, 
+    "camera": 0
   }
 }
