@@ -669,14 +669,14 @@ document.addEventListener('DOMContentLoaded', function () {
     { value: 'iphone-12-mini', label: 'iPhone 12 Mini', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
     { value: 'iphone-12-pro', label: 'iPhone 12 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
     { value: 'iphone-12-pro-max', label: 'iPhone 12 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
-    { value: 'iphone-11', label: 'iPhone 11', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-11-pro', label: 'iPhone 11 Pro', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-11-pro-max', label: 'iPhone 11 Pro Max', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-x', label: 'iPhone X', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-xs', label: 'iPhone XS', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-xr', label: 'iPhone XR', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-xs-max', label: 'iPhone XS Max', icon: 'Assets/icons8-iphone13-50.png' },
-    { value: 'iphone-se-2022', label: 'iPhone SE 2022', icon: 'Assets/icons8-iphone13-50.png' }
+    { value: 'iphone-11', label: 'iPhone 11', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-11-pro', label: 'iPhone 11 Pro', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-11-pro-max', label: 'iPhone 11 Pro Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-x', label: 'iPhone X', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-xs', label: 'iPhone XS', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-xr', label: 'iPhone XR', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-xs-max', label: 'iPhone XS Max', icon: 'assets/type-reparation/icons8-iphone13-50.png' },
+    { value: 'iphone-se-2022', label: 'iPhone SE 2022', icon: 'assets/type-reparation/icons8-iphone13-50.png' }
   ];
 
   const btn = document.getElementById('custom-model-select-btn');
