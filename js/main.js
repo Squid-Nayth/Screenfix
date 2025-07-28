@@ -1,6 +1,6 @@
 // Diaporama section "À propos" (carousel)
 let iphoneModelsData = null;
-fetch('Assets/Modèles/iphones.json')
+fetch('iphones.json')
   .then(res => res.json())
   .then(data => { iphoneModelsData = data; });
 
