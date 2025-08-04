@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
-    'assets/Iphones/Iphone 15.jpeg',
-    'assets/Iphones/iphone SE 2022.jpeg',
-    'assets/Iphones/iphone X.jpeg',
-    'assets/Iphones/iphone13,12,11.jpeg',
-    'assets/Iphones/logo-apple.jpeg'
+    'assets/Iphones/Iphone-15.png',
+    'assets/Iphones/iphone-SE-2022.png',
+    'assets/Iphones/iphone-X.png',
+    'assets/Iphones/iphone13_12_11.png',
+    'assets/Iphones/logo-apple.png'
   ];
-  const favicon = 'assets/Iphones/favicon.jpeg';
+  const favicon = 'assets/Iphones/favicon.png';
   // Affiche moins de logos sur mobile, 18 sur desktop
   function getLogoCount() {
     return window.innerWidth < 768 ? 6 : 18;
