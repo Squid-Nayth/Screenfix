@@ -1,6 +1,4 @@
-# Screenfix
-
-Site web vitrine développé avec HTML, CSS, JavaScript et Tailwind CSS.
+<img width="300" height="300" alt="Gemini_Generated_Image_u81614u81614u816" src="https://github.com/user-attachments/assets/98d6f725-732a-443a-a619-4d7b096c70e2" />
 
 ## Description
 Ce projet a pour objectif de proposer une interface moderne, responsive et facile à personnaliser.
