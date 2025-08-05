@@ -6,13 +6,13 @@ fetch('iphones.json')
 
 document.addEventListener('DOMContentLoaded', function() {
   const images = [
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58 (1).jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.06.58.jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.07.23.jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56 (1).jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.08.56.jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48 (1).jpeg',
-    'assets/À propos/WhatsApp Image 2025-07-17 at 14.16.48.jpeg'
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.06.58_(1).jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.06.58.jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.07.23.jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.08.56_(1).jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.08.56.jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.16.48_(1).jpeg',
+    'assets/a_propos/WhatsApp_Image_2025-07-17_at_14.16.48.jpeg'
   ];
   let idx = 0;
   let timer = null;
