@@ -1,6 +1,4 @@
-# Screenfix
-
-Site web vitrine développé avec HTML, CSS, JavaScript et Tailwind CSS.
+<img width="300" height="300" alt="Gemini_Generated_Image_u81614u81614u816" src="https://github.com/user-attachments/assets/98d6f725-732a-443a-a619-4d7b096c70e2" />
 
 ## Description
 Ce projet a pour objectif de proposer une interface moderne, responsive et facile à personnaliser.
@@ -15,7 +13,7 @@ Ce projet a pour objectif de proposer une interface moderne, responsive et facil
 ## Installation
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/screenfix.git
+   git clone https://github.com/Squid-Nayth/Screenfix.git
    ```
 2. Installez les dépendances Tailwind CSS :
    ```bash
@@ -33,4 +31,5 @@ Ouvrez le fichier `index.html` dans votre navigateur pour voir le site.
 Nathan Michel
 
 ## Licence
-Ce projet est sous licence MIT.
+le site web de Screenfix est sous licence [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
+© 2025 Screenfix, tous droits réservés.
