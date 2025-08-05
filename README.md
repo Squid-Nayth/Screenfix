@@ -13,7 +13,7 @@ Ce projet a pour objectif de proposer une interface moderne, responsive et facil
 ## Installation
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/screenfix.git
+   git clone https://github.com/Squid-Nayth/Screenfix.git
    ```
 2. Installez les dépendances Tailwind CSS :
    ```bash
