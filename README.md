@@ -31,4 +31,5 @@ Ouvrez le fichier `index.html` dans votre navigateur pour voir le site.
 Nathan Michel
 
 ## Licence
-Ce projet est sous licence MIT.
+le site web de Screenfix est sous licence [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
+© 2025 Screenfix, tous droits réservés.
