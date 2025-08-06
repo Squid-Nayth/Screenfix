@@ -6,13 +6,13 @@ fetch('../../iphones.json')
 
 document.addEventListener('DOMContentLoaded', function() {
   const images = [
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.06.58_(1).jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.06.58.jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.07.23.jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.08.56_(1).jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.08.56.jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.16.48_(1).jpeg',
-    '../../assets/images/about/WhatsApp_Image_2025-07-17_at_14.16.48.jpeg'
+    '../assets/images/about/Workshop-01.jpeg',
+    '../assets/images/about/Workshop-02.jpeg',
+    '../assets/images/about/Workshop-03.jpeg',
+    '../assets/images/about/Workshop-04.jpeg',
+    '../assets/images/about/Workshop-05.jpeg',
+    '../assets/images/about/Workshop-06.jpeg',
+    '../assets/images/about/Workshop-07.jpeg'
   ];
   let idx = 0;
   let timer = null;
@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // Animation logos iPhone/Apple (section promo réduction)
 function screenfixLogoAnimation() {
   const logos = [
-    '../../assets/images/Iphones/Iphone-15.png',
-    '../../assets/images/Iphones/iphone-SE-2022.png',
-    '../../assets/images/Iphones/iphone-X.png',
-    '../../assets/images/Iphones/iphone13_12_11.png',
-    '../../assets/images/Iphones/logo-apple.png'
+    '../assets/images/Iphones/iphone-15.png',
+    '../assets/images/Iphones/iphone-SE-2022.png',
+    '../assets/images/Iphones/iphone-X.png',
+    '../assets/images/Iphones/iphone13-12-11.png',
+    '../assets/images/Iphones/logo-apple.png'
   ];
-  const favicon = '../../assets/images/Iphones/favicon.png';
+  const favicon = '../assets/images/Iphones/broken-iphone.png';
   // Affiche moins de logos sur mobile, 18 sur desktop
   function getLogoCount() {
     return window.innerWidth < 768 ? 6 : 18;
