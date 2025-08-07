@@ -43,6 +43,6 @@ To contribute correctly, please go read the [contributing file](CONTRIBUTING.md)
 All contributions are under the license of this repository.
 
 ## License
-his repository is under the [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+This repository is under the [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 the code source of this website belongs to EVA STUDIO.
