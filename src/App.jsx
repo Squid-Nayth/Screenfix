@@ -4,12 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import NavBar from './sections/NavBar'
+import Hero from './sections/Hero'
 
 function App() {
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
+      <Hero />
     </>
   )
 }

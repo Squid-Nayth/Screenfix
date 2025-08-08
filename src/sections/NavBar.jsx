@@ -1,5 +1,3 @@
-import shopLogo from '@assets/images/shop/icone-shopping-bag.png'
-
 const NavBar = () => {
 
     return (
@@ -9,9 +7,6 @@ const NavBar = () => {
                     className='text-2xl font-semibold tracking-tight text-gray-900 hover:text-blue-600 transition focus:outline-none'
                 >
                     Screenfix
-                </a>
-                <a href='https://screenfix.sumupstore.com/produits' target='_blank' className='md-60rem:hidden'>
-                    <img src={shopLogo} alt="Boutique" className="w-8 h-8 object-contain"/>
                 </a>
                 <button aria-label="Ouvrir le menu" class="flex md-60rem:hidden items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
                     <span class="sr-only">Ouvrir le menu</span>

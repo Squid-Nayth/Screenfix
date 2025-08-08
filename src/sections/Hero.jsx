@@ -1,0 +1,24 @@
+const Hero = () => {
+
+    return (
+        <section class="block bg-white py-20 md:py-28 text-center font-sans relative overflow-visible" data-aos="fade-up">
+            <div class="pointer-events-none select-none absolute inset-0 w-full h-full z-10"></div>
+            <h2 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight relative z-20 text-center">
+                Profitez d'une réduction sur vos réparation
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-md mx-auto leading-snug relative z-20 text-center">
+                Cumulez vos réparation et bénéficiez jusqu'à <span class="font-semibold text-blue-600">-35% de remise</span>
+            </p>
+            <div class="flex justify-center mt-2 mb-4 relative z-20 w-full">
+                <a href="#eval" 
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium py-3 px-8 rounded-full 
+                            shadow transition inline-block text-center"
+                >
+                    Commencer une réparation
+                </a>
+            </div>
+        </section>
+    );
+}
+
+export default Hero;
