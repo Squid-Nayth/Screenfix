@@ -10,7 +10,8 @@ const Evaluation = () => {
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center">
             <div className="w-full max-w-none flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
-                <form className="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 space-y-6 text-center">
+                <form className="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 
+                                space-y-6 text-center">
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
@@ -85,9 +86,13 @@ const Evaluation = () => {
                                 alternative="Caméra"
                             />
                         </div>
-                        <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition text-center">Évaluer</button>
+                        <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
+                                                    font-medium py-3 px-8 rounded-full w-full shadow transition text-center">
+                                                        Évaluer
+                        </button>
                         <div className='cost-section-container'>
-                            <div className='cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200 flex flex-col items-center'>
+                            <div className='cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200 flex 
+                                            flex-col items-center'>
                                 <div className='cost-info block'>
                                     <h4 className='cost-type text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
                                     <p className="cost-description mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
@@ -113,8 +118,14 @@ const Evaluation = () => {
                                     <label for="date" className="block text-base font-medium mb-2 text-center">Date du rendez-vous</label>
                                     <input type="date" name="date" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
                                 </div>
-                                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 rounded-full w-full shadow transition text-center">Envoyer</button>
-                                <p class="mt-4 text-sm text-gray-500">En remplissant notre formulaire, vous acceptez notre <a href="politique-confidentialite.html" class="underline hover:text-blue-600">politique de confidentialité</a>.</p>
+                                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
+                                                                rounded-full w-full shadow transition text-center">
+                                                                    Envoyer
+                                </button>
+                                <p class="mt-4 text-sm text-gray-500">
+                                    En remplissant notre formulaire, vous acceptez notre 
+                                    <a href="politique-confidentialite.html" class="underline hover:text-blue-600"> politique de confidentialité</a>.
+                                </p>
                             </form>
                         </div>
 
@@ -129,10 +140,13 @@ const ReparationOption = ({ repairName, repairValue, logo, alternative, title, d
     let priceStyle = (price)? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1" : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
     let PriceValueCheck = (price)? price : "--";
     return (
-        <label className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95'>
+        <label className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
+                        hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 
+                        ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95'>
             <input type="checkbox" name={repairName} value={repairValue} className="peer sr-only" />
             <div className='flex flex-col items-center gap-2'>
-                <img src={logo} alt={alternative} className="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110"/>
+                <img src={logo} alt={alternative} className="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 
+                                                            group-hover:opacity-100 group-active:scale-110"/>
                 <span className="font-semibold">{title}</span>
                 <span className="text-gray-600 text-sm text-center">{description}</span>
             </div>
@@ -147,7 +161,9 @@ const MenuButton = ({ title, type, description, image, alternative }) => {
         <div className="flex flex-col items-center gap-2">
             <label for={type} className="block text-base font-medium mb-2 text-center">{title}</label>
             <div className='relative w-5/6 mx-auto'>
-                <button type="button" aria-haspopup="listbox" aria-expanded="false" className="w-full h-11 text-base border border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                <button type="button" aria-haspopup="listbox" aria-expanded="false" className="w-full h-11 text-base border 
+                            border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none 
+                            focus:ring-2 focus:ring-blue-400 transition">
                     <span className="flex items-center gap-2 text-gray-700">
                         {imageSrc}
                         <span class="absolute left-1/2 transform -translate-x-1/2 w-full text-center block">{description}</span>
