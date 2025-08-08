@@ -8,6 +8,7 @@ import Course from './sections/Course'
 import About from './sections/About'
 import Satisfaction from './sections/Satisfaction'
 import MapLocation from './sections/MapLocation'
+import Footer from './sections/Footer'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <About />
       <Satisfaction />
       <MapLocation />
+      <Footer />
     </>
   )
 }
