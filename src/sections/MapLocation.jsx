@@ -6,7 +6,7 @@ import bicycleLogo from '@assets/images/icones/velo/Sports_(39).jpg'
 
 const MapLocation = () => {
     return (
-        <section className="bg-white py-12 px-4 md:px-16 scroll-mt-24 aos-init" data-aos="fade-up">
+        <section className="bg-white py-12 px-4 md:px-16 scroll-mt-24 aos-init" data-aos="fade-up" id='contact'>
             <div className="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto text-center">
                 <div className="w-full aspect-video shadow-lg rounded-xl overflow-hidden flex items-center justify-center">
                     <iframe className="w-full h-full" loading="lazy" 

@@ -2,7 +2,7 @@ import ReparationVideo from '@assets/videos/glass-separating-process.mp4'
 
 const Course = () => {
     return (
-        <section className="bg-white py-16 px-6 aos-init" data-aos='fade-up'>
+        <section className="bg-white py-16 px-6 aos-init" data-aos='fade-up' id='course'>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">Formation Reconditionnement d’Écran iPhone</h2>
             <p className="text-center text-gray-600 mb-10 text-lg md:text-xl">Devenez expert en reconditionnement d’écrans d’iPhone, modèle par modèle.</p>
             <div className="flex flex-col items-center justify-center w-full">

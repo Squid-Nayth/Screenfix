@@ -2,7 +2,7 @@ import screenfixTeamImage from '@assets/images/about/Workshop-01.jpeg'
 
 const About = () => {
     return (
-        <section className="bg-white py-16 px-6 aos-init" data-aos="fade-up">
+        <section className="bg-white py-16 px-6 aos-init" data-aos="fade-up" id='about'>
             <h5 className="text-4xl md:text-5xl font-bold text-center mb-2">Qui sommes-nous ?</h5>
             <p className="text-center text-gray-600 mb-10 text-lg md:text-xl">
                 Découvrez l’équipe et l’atelier derrière Screenfix
