@@ -3,21 +3,16 @@ import reactLogo from '/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import Button from '@components/Button.jsx'
+import Title from '@components/Title.jsx'
 
 function App() {
 
-  const handleClick = () => {
-    alert('You clicked the button !');
-  };
-
   return (
     <>
-      <Button
-        name="Clicking test"
-        containerClass="bg-blue-500 text-white px-4 py-2 rounded"
-        onClickFunc={handleClick}
-      />
+      <Title name="Main Title" level={1} />
+      <Title name="Sub-Title" level={2} />
+      <Title name="Wrong Title" level={"abc"} />
+      <Title name="YOU'RE LONG" level={10} />
     </>
   )
 }
