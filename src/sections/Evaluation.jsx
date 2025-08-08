@@ -27,7 +27,7 @@ const Evaluation = () => {
                     <div className='flex flex-col items-center gap-2'>
                         <label className="block text-base font-medium mb-2 text-center">Types de réparations</label>
 
-                        <div class="flex items-center justify-between w-5/6 mb-2">
+                        <div className="flex items-center justify-between w-5/6 mb-2">
                             <span className="text-base text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
                             <span className="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
                         </div>
@@ -107,24 +107,24 @@ const Evaluation = () => {
                             <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
                             <form className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
                                 <div className="flex flex-col items-center">
-                                    <label for="name" className="block text-base font-medium mb-2 text-center">Nom</label>
+                                    <label htmlFor="name" className="block text-base font-medium mb-2 text-center">Nom</label>
                                     <input type="text" name="name" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
                                 </div>
                                 <div className="flex flex-col items-center">
-                                    <label for="email" className="block text-base font-medium mb-2 text-center">Email</label>
+                                    <label htmlFor="email" className="block text-base font-medium mb-2 text-center">Email</label>
                                     <input type="email" name="email" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
                                 </div>
                                 <div className="flex flex-col items-center">
-                                    <label for="date" className="block text-base font-medium mb-2 text-center">Date du rendez-vous</label>
+                                    <label htmlFor="date" className="block text-base font-medium mb-2 text-center">Date du rendez-vous</label>
                                     <input type="date" name="date" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
                                 </div>
-                                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
+                                <button type="submit" className="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
                                                                 rounded-full w-full shadow transition text-center">
                                                                     Envoyer
                                 </button>
-                                <p class="mt-4 text-sm text-gray-500">
+                                <p className="mt-4 text-sm text-gray-500">
                                     En remplissant notre formulaire, vous acceptez notre 
-                                    <a href="politique-confidentialite.html" class="underline hover:text-blue-600"> politique de confidentialité</a>.
+                                    <a href="politique-confidentialite.html" className="underline hover:text-blue-600"> politique de confidentialité</a>.
                                 </p>
                             </form>
                         </div>
@@ -150,7 +150,7 @@ const ReparationOption = ({ repairName, repairValue, logo, alternative, title, d
                 <span className="font-semibold">{title}</span>
                 <span className="text-gray-600 text-sm text-center">{description}</span>
             </div>
-            <span class={priceStyle}>{PriceValueCheck} €</span>
+            <span className={priceStyle}>{PriceValueCheck} €</span>
         </label>
     );
 }
@@ -159,17 +159,17 @@ const MenuButton = ({ title, type, description, image, alternative }) => {
     let imageSrc = (image)? <img src={image} alt={alternative} className="w-6 h-6 opacity-70"/> : null;
     return (
         <div className="flex flex-col items-center gap-2">
-            <label for={type} className="block text-base font-medium mb-2 text-center">{title}</label>
+            <label htmlFor={type} className="block text-base font-medium mb-2 text-center">{title}</label>
             <div className='relative w-5/6 mx-auto'>
                 <button type="button" aria-haspopup="listbox" aria-expanded="false" className="w-full h-11 text-base border 
                             border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none 
                             focus:ring-2 focus:ring-blue-400 transition">
                     <span className="flex items-center gap-2 text-gray-700">
                         {imageSrc}
-                        <span class="absolute left-1/2 transform -translate-x-1/2 w-full text-center block">{description}</span>
+                        <span className="absolute left-1/2 transform -translate-x-1/2 w-full text-center block">{description}</span>
                     </span>
-                    <svg className="w-5 h-5 text-gray-400 ml-2" fill="none" stroke="CurrentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    <svg className="w-5 h-5 text-gray-400 ml-2" fill="none" stroke="CurrentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
             </div>
