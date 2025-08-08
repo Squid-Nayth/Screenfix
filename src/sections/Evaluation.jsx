@@ -1,4 +1,5 @@
 import iphone13Logo from '@assets/images/reparation-type/icone-iphone13.png'
+import unknownCauseLogo from '@assets/images/broken-iphones/curiosity.png'
 
 const Evaluation = () => {
     return (
@@ -18,11 +19,34 @@ const Evaluation = () => {
                         image={iphone13Logo}
                         alternative="iPhone"
                     />
+                    <div className='flex flex-col items-center gap-2'>
+                        <label class="block text-base font-medium mb-2 text-center">Types de réparations</label>
+
+                        <div class="flex items-center justify-between w-5/6 mb-2">
+                            <span class="text-base text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
+                            <span class="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
+                        </div>
+                        
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
+                            <label className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95'>
+                                <input type="checkbox" name="repair" value="diagnostic" class="peer sr-only" />
+
+                                <div className='flex flex-col items-center gap-2'>
+                                    <img src={unknownCauseLogo} alt="Diagnostic personnalisé" class="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 group-hover:opacity-100 group-active:scale-110"/>
+                                    <span class="font-semibold">Vous ne connaissez pas la panne ?</span>
+                                    <span class="text-gray-600 text-sm text-center">Prenez un diagnostic personnalisé</span>
+                                </div>
+                                <span class="text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1">35 €</span>
+                            </label>
+                        </div>
+                    </div>
                 </form>
             </div>
         </section>
     );
 }
+
+
 
 const MenuButton = ({ title, type, description, image, alternative }) => {
     let imageSrc = (image)? <img src={image} alt={alternative} className="w-6 h-6 opacity-70"/> : null;
