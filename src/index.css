@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
-.btn {
-  cursor: pointer;
+@layer components {
+
+  .navbar-button {
+    @apply hover:text-blue-600 transition;
+  }
+  
+  .wrap-nav {
+    @apply hidden;
+  }
+
+  .wrap-nav-active {
+    
+  }
+  
+}
+
+@layer utilities {
+  @media (min-width: 60rem /* 960px */) {
+    .md-60rem\:flex {
+      display: flex;
+    }
+
+    .md-60rem\:hidden {
+      display: none;
+    }
+  }
 }
