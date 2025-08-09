@@ -4,6 +4,7 @@ import unknownCauseLogo from '@assets/images/broken-iphones/curiosity.png'
 import cameraLogo from '@assets/images/reparation-type/camera-module.png'
 import batteryLogo from '@assets/images/reparation-type/icone-full-battery.png'
 import powerLogo from '@assets/images/reparation-type/icone-lightning.png'
+import appleLogo from '@assets/images/iphone/logo-apple.png'
 
 const Evaluation = () => {
     return (
@@ -16,6 +17,8 @@ const Evaluation = () => {
                         title="Marque de l'appareil"
                         type="brand"
                         description="Apple"
+                        image={appleLogo}
+                        alternative="Logo de apple"
                     />
                     <MenuButton
                         title="Modèle"

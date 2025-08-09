@@ -26,4 +26,10 @@
       display: none;
     }
   }
+
+  @media (min-width: 40rem /* 640px */) {
+    .md-40rem\:flex {
+      display: flex;
+    }
+  }
 }

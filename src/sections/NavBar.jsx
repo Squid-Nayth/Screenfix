@@ -21,8 +21,8 @@ const NavBar = () => {
                     <ul className="flex gap-8">
                         <li className="navbar-button"><a href="#eval">Évaluation</a></li>
                         <li className="navbar-button"><a href="#about">À propos</a></li>
-                        <li className="navbar-button"><a href="#satisfaction">Avis</a></li>
                         <li className="navbar-button"><a href="#course">Formation</a></li>
+                        <li className="navbar-button"><a href="#satisfaction">Avis</a></li>
                         <li className="navbar-button"><a href="#contact">Contact</a></li>
 
                         
