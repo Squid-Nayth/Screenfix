@@ -2,7 +2,6 @@ const Hero = () => {
 
     return (
         <section className="block bg-white py-20 md:py-28 text-center font-sans relative overflow-visible" data-aos="fade-up">
-            <div className="pointer-events-none select-none absolute inset-0 w-full h-full z-10"></div>
             <h2 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight relative z-20 text-center">
                 Profitez d'une réduction sur vos réparation
             </h2>

@@ -24,7 +24,7 @@ const Footer = () => {
                 </a>
             </span>
             <span className="block mt-2">
-                <a href="./mentions-legales.html" className="text-gray-300 hover:text-white underline mr-4">Mentions légales</a>
+                <a href="/mentions-légales" className="text-gray-300 hover:text-white underline mr-4">Mentions légales</a>
                 <a href="./politique-confidentialite.html" className="text-gray-300 hover:text-white underline">Politique de confidentialité</a>
             </span>
         </footer>
