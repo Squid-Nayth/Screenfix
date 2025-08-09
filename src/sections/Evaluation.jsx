@@ -121,7 +121,7 @@ const Evaluation = () => {
                                     <label htmlFor="date" className="block text-base font-medium mb-2 text-center">Date du rendez-vous</label>
                                     <input type="date" name="date" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
                                 </div>
-                                <button type="submit" className="bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
+                                <button type="submit" className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
                                                                 rounded-full w-full shadow transition text-center">
                                                                     Envoyer
                                 </button>
