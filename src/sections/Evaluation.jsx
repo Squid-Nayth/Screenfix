@@ -227,13 +227,21 @@ const Evaluation = () => {
 }
 
 const ReparationOption = ({ id, repairName, repairValue, logo, alternative, title, description, price }) => {
-    let priceStyle = (price)? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1" : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
+    let priceStyle = price
+        ? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1"
+        : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
+
+    let labelClasses = `
+        flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
+        focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 
+        ease-in-out will-change-transform 
+        ${price ? "group opacity-100 cursor-pointer hover:shadow-lg group-hover:scale-105 group-active:scale-95" : "opacity-50"}
+    `;
 
     return (
-        <label id={id} className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
-                        hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 
-                        ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95'>
-            <input type="checkbox" name={repairName} value={repairValue} className="peer sr-only" />
+        <label id={id} className={labelClasses}>
+            {(price)? <input type="checkbox" name={repairName} value={repairValue} className="peer sr-only" /> : '' }
+            
             <div className='flex flex-col items-center gap-2'>
                 <img src={logo} alt={alternative} className="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 
                                                             group-hover:opacity-100 group-active:scale-110"/>
