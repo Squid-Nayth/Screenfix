@@ -1,3 +1,33 @@
+import { mainNavLinks } from "@constants/index.js";
+import { navLinks } from "@constants/index.js";
+
+const NavItems = ({ onClick = () => {} }) => (
+    <ul className="flex gap-8">
+        {mainNavLinks.map((item) => (
+            <li key={item.id} className="navbar-button">
+                <a href={item.href} onClick={onClick}>
+                    {item.name}
+                </a>
+            </li>
+        ))}
+
+        {navLinks.map((item) => (
+            <li key={item.id} className="navbar-button">
+                <a
+                    href={item.href}
+                    target="_blank"
+                    onClick={onClick}
+                    className="text-blue-600 font-semibold transition hover:text-blue-800"
+                    rel="noopener noreferrer"
+                >
+                    {item.name}
+                </a>
+            </li>
+        ))}
+    </ul>
+);
+
+
 const NavBar = () => {
 
     return (
@@ -18,30 +48,7 @@ const NavBar = () => {
                 </button>
                 
                 <div className="hidden lg:flex gap-8 text-gray-700 text-base items-center">
-                    <ul className="flex gap-8">
-                        <li className="navbar-button"><a href="#eval">Évaluation</a></li>
-                        <li className="navbar-button"><a href="#about">À propos</a></li>
-                        <li className="navbar-button"><a href="#course">Formation</a></li>
-                        <li className="navbar-button"><a href="#satisfaction">Avis</a></li>
-                        <li className="navbar-button"><a href="#contact">Contact</a></li>
-
-                        
-                        <li className="navbar-button">
-                            <a href="https://screenfix.sumupstore.com/produits" target='_blank' 
-                                className='text-blue-600 font-semibold transition hover:text-blue-800'
-                            >
-                                Visitez la boutique
-                            </a>
-                        </li>
-                        
-                        <li className="navbar-button">
-                            <a href="resell.html" target='_blank' 
-                                className='text-blue-600 font-semibold transition hover:text-blue-800'
-                            >
-                                Revendre
-                            </a>
-                        </li>
-                    </ul>
+                    <NavItems />
                 </div>
             </nav>
         </header>
