@@ -4,9 +4,6 @@ import { Fragment } from 'react'
 import { OptionsModels } from '@constants/index.js'
 import { phoneModels } from '@constants/models.js'
 
-import iphone13Logo from '/reparation-type/icone-iphone13.png'
-import appleLogo from '/logo-apple.png'
-
 const EvalOptions = () => (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
         {OptionsModels.map((item) => (
@@ -36,66 +33,67 @@ const Selection = ({ template = () => {} }) => {
     );
 };
 
-const ModelSelection = ({ brand }) => {
-
+const ModelSelection = ({ brand, onSelect }) => {
     const brandData = phoneModels.find(b => b.brand === brand);
-
-    if (!brandData) {
-        return null;
-    }
+    if (!brandData) return null;
 
     return (
         <Selection 
-        template={brandData.generations.map((generation) => (
-                    <Fragment key={generation.generation}>
-                        <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
-                            {generation.generation}
+            template={brandData.generations.map((generation) => (
+                <Fragment key={generation.generation}>
+                    <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
+                        {generation.generation}
+                    </li>
+                    {generation.models.map((model) => (
+                        <li
+                            key={model.value}
+                            role="option"
+                            tabIndex="0"
+                            className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
+                            onClick={() => onSelect(model.label)}
+                        >
+                            <img src={model.icon} alt={model.label} className="w-6 h-6 opacity-70" />
+                            <span>{model.label}</span>
                         </li>
-                        {generation.models.map((model) => (
-                            <li
-                                key={model.value}
-                                role="option"
-                                tabIndex="0"
-                                className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                            >
-                                <img
-                                    src={model.icon}
-                                    alt={model.label}
-                                    className="w-6 h-6 opacity-70"
-                                />
-                                <span>{model.label}</span>
-                            </li>
-                        ))}
-                    </Fragment>
-                ))}
-        />
-    )
-}
-
-const BrandSelection = () => {
-    return (
-        <Selection 
-        template={phoneModels.map((brand) => (
-            <li key={brand.brand} role="option" tabIndex="0"
-                className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none">
-                <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
-                <span>{brand.brand}</span>
-            </li>
-        ))}
+                    ))}
+                </Fragment>
+            ))}
         />
     );
 }
 
+
+const BrandSelection = ({ onSelect }) => {
+    return (
+        <Selection 
+            template={phoneModels.map((brand) => (
+                <li
+                    key={brand.brand}
+                    role="option"
+                    tabIndex="0"
+                    className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
+                    onClick={() => onSelect(brand.brand)}
+                >
+                    <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
+                    <span>{brand.brand}</span>
+                </li>
+            ))}
+        />
+    );
+}
+
+
 const Evaluation = () => {
 
     // Brand and Model selection states
-    const [isBrandOpen, setIsBrandOpen] = useState(false);
-    const toggleBrandMenu = () => setIsBrandOpen(!isBrandOpen);
-    const closeBrandMenu = () => setIsBrandOpen(false);
+    const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
 
-    const [isModelOpen, setIsModelOpen] = useState(false);
-    const toggleModelMenu = () => setIsModelOpen(!isModelOpen);
-    const closeModelMenu = () => setIsModelOpen(false);
+    const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
+    const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
+
+    const [selectedBrand, setSelectedBrand] = useState('');
+    const [selectedModel, setSelectedModel] = useState('');
+
 
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
@@ -106,15 +104,31 @@ const Evaluation = () => {
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
-                        description="Sélectionnez une marque"
-                        menu={(isBrandOpen)? <BrandSelection /> : '' }
+                        description={selectedBrand || "Sélectionnez une marque"}
+                        menu={(selectorState === 1)
+                            ? <BrandSelection onSelect={(brand) => {
+                                setSelectedBrand(brand);
+                                setSelectState(0); // ferme le menu
+                                setSelectedModel(''); // reset modèle quand on change de marque
+                            }} />
+                            : null
+                        }
                         onClick={toggleBrandMenu}
                     />
                     <MenuButton
                         title="Modèle"
                         type="model"
-                        description="Sélectionnez un modèle"
-                        menu={(isModelOpen)? <ModelSelection brand='Apple' /> : '' }
+                        description={selectedModel || "Sélectionnez un modèle"}
+                        menu={(selectorState === 2 && selectedBrand)
+                            ? <ModelSelection
+                                brand={selectedBrand}
+                                onSelect={(model) => {
+                                    setSelectedModel(model);
+                                    setSelectState(0);
+                                }}
+                            />
+                            : null
+                        }
                         onClick={toggleModelMenu}
                     />
                     
@@ -223,7 +237,7 @@ const MenuButton = ({ title, type, description, image, alternative, menu = null,
                 </button>
 
                 {menu}
-                <input type="hidden" id="model" name="model" required="" value="iphone-16-pro" data-gtm-form-interact-field-id="2" />
+                <input type="hidden" id={type} name={type} value={description} required="" />
             </div>
         </div>
     );
