@@ -1,10 +1,11 @@
-import iphone13Logo from '/reparation-type/icone-iphone13.png'
-import appleLogo from '/logo-apple.png'
-
+import { useState } from 'react'
 import { Fragment } from 'react'
 
 import { OptionsModels } from '@constants/index.js'
 import { phoneModels } from '@constants/models.js'
+
+import iphone13Logo from '/reparation-type/icone-iphone13.png'
+import appleLogo from '/logo-apple.png'
 
 const EvalOptions = () => (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
@@ -86,6 +87,16 @@ const BrandSelection = () => {
 }
 
 const Evaluation = () => {
+
+    // Brand and Model selection states
+    const [isBrandOpen, setIsBrandOpen] = useState(false);
+    const toggleBrandMenu = () => setIsBrandOpen(!isBrandOpen);
+    const closeBrandMenu = () => setIsBrandOpen(false);
+
+    const [isModelOpen, setIsModelOpen] = useState(false);
+    const toggleModelMenu = () => setIsModelOpen(!isModelOpen);
+    const closeModelMenu = () => setIsModelOpen(false);
+
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
@@ -95,18 +106,16 @@ const Evaluation = () => {
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
-                        description="Apple"
-                        image={appleLogo}
-                        alternative="Logo de apple"
-                        menu={ <BrandSelection /> }
+                        description="Sélectionnez une marque"
+                        menu={(isBrandOpen)? <BrandSelection /> : '' }
+                        onClick={toggleBrandMenu}
                     />
                     <MenuButton
                         title="Modèle"
                         type="model"
                         description="Sélectionnez un modèle"
-                        image={iphone13Logo}
-                        alternative="iPhone"
-                        menu={ <ModelSelection brand='Apple' /> }
+                        menu={(isModelOpen)? <ModelSelection brand='Apple' /> : '' }
+                        onClick={toggleModelMenu}
                     />
                     
 
@@ -195,15 +204,15 @@ const ReparationOption = ({ id, repairName, repairValue, logo, alternative, titl
     );
 }
 
-const MenuButton = ({ title, type, description, image, alternative, menu = null }) => {
+const MenuButton = ({ title, type, description, image, alternative, menu = null, onClick }) => {
     let imageSrc = (image)? <img src={image} alt={alternative} className="w-6 h-6 opacity-70"/> : null;
     return (
         <div className="flex flex-col items-center gap-2">
             <label htmlFor={type} className="block text-base font-medium mb-2 text-center">{title}</label>
             <div className='relative w-5/6 mx-auto'>
-                <button type="button" aria-haspopup="listbox" aria-expanded="false" className="w-full h-11 text-base border 
+                <button type="button" aria-haspopup="listbox" aria-expanded="false" className="w-full h-11 text-base border
                             border-gray-300 rounded-lg bg-white flex items-center justify-between px-4 focus:outline-none 
-                            focus:ring-2 focus:ring-blue-400 transition">
+                            focus:ring-2 focus:ring-blue-400 transition" onClick={onClick}>
                     <span className="flex items-center gap-2 text-gray-700">
                         {imageSrc}
                         <span className="absolute left-1/2 transform -translate-x-1/2 w-full text-center block">{description}</span>
