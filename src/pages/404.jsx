@@ -1,6 +1,6 @@
 import Footer from '@sections/Footer'
 
-import brokenPhoneLogo from '@assets/images/iphone/broken-iphone.png'
+import brokenPhoneLogo from '/iphone/broken-iphone.png'
 
 const NotFound = () => {
     return (

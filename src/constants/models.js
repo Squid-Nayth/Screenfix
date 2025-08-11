@@ -1,6 +1,8 @@
 export const phoneModels = [
     {
         brand: 'Apple',
+        image: '/logo-apple.png',
+        alt: 'Apple logo',
         generations: [
             {
                 generation: 'Iphone 16',
@@ -106,7 +108,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-14", 
                 label: "iPhone 14", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 132, 
                 chgmt_ecran: 220, 
                 vitre_arriere: 160, 
@@ -117,7 +119,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-14-plus", 
                 label: "iPhone 14 Plus", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 161, 
                 chgmt_ecran: 269, 
                 vitre_arriere: 170, 
@@ -155,7 +157,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-13", 
                 label: "iPhone 13", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 103, 
                 chgmt_ecran: 172, 
                 vitre_arriere: 140, 
@@ -166,7 +168,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-13-mini", 
                 label: "iPhone 13 Mini", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 108, 
                 chgmt_ecran: 180, 
                 vitre_arriere: 145, 
@@ -177,7 +179,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-13-pro", 
                 label: "iPhone 13 Pro", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 152, 
                 chgmt_ecran: 253, 
                 vitre_arriere: 160, 
@@ -188,7 +190,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-13-pro-max", 
                 label: "iPhone 13 Pro Max", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 165, 
                 chgmt_ecran: 275, 
                 vitre_arriere: 170, 
@@ -204,7 +206,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-12", 
                 label: "iPhone 12", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 89, 
                 chgmt_ecran: 148, 
                 vitre_arriere: 120, 
@@ -215,7 +217,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-12-mini", 
                 label: "iPhone 12 Mini", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 84, 
                 chgmt_ecran: 139, 
                 vitre_arriere: 110, 
@@ -226,7 +228,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-12-pro", 
                 label: "iPhone 12 Pro", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 89, 
                 chgmt_ecran: 148, 
                 vitre_arriere: 130, 
@@ -237,7 +239,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-12-pro-max", 
                 label: "iPhone 12 Pro Max", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 108, 
                 chgmt_ecran: 180, 
                 vitre_arriere: 140, 
@@ -253,7 +255,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-11", 
                 label: "iPhone 11", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 62, 
                 chgmt_ecran: 103, 
                 vitre_arriere: 90, 
@@ -264,7 +266,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-11-pro", 
                 label: "iPhone 11 Pro", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 89, 
                 chgmt_ecran: 148, 
                 vitre_arriere: 100, 
@@ -275,7 +277,7 @@ export const phoneModels = [
                 { 
                 value: "iphone-11-pro-max", 
                 label: "iPhone 11 Pro Max", 
-                icon: "/iphone/iphone13-12-11.png",
+                icon: "/iphone/iphone-15.png",
                 recond_ecran: 84, 
                 chgmt_ecran: 139, 
                 vitre_arriere: 110, 
@@ -334,6 +336,22 @@ export const phoneModels = [
                 }
             ]
             },
+            {
+            generation: "iPhone SE",
+            models: [
+                { 
+                value: "iphone-se-2022", 
+                label: "iPhone SE 2022", 
+                icon: "/iphone/iphone-SE-2022.png",
+                recond_ecran: 52, 
+                chgmt_ecran: 85, 
+                vitre_arriere: 70, 
+                batterie: 45, 
+                connecteur: 50, 
+                camera: 70
+                }
+            ]
+            }
         ]
     }
 ];

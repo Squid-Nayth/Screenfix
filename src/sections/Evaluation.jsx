@@ -1,7 +1,10 @@
 import iphone13Logo from '/reparation-type/icone-iphone13.png'
 import appleLogo from '/logo-apple.png'
 
+import { Fragment } from 'react'
+
 import { OptionsModels } from '@constants/index.js'
+import { phoneModels } from '@constants/models.js'
 
 const EvalOptions = () => (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
@@ -20,6 +23,68 @@ const EvalOptions = () => (
     </div>
 );
 
+const Selection = ({ template = () => {} }) => {
+    return (
+        <div
+        className="absolute z-20 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg max-h-72 
+        overflow-y-auto animate-fade-in">
+            <ul className="divide-y divide-gray-100">
+                {template}
+            </ul>
+        </div>
+    );
+};
+
+const ModelSelection = ({ brand }) => {
+
+    const brandData = phoneModels.find(b => b.brand === brand);
+
+    if (!brandData) {
+        return null;
+    }
+
+    return (
+        <Selection 
+        template={brandData.generations.map((generation) => (
+                    <Fragment key={generation.generation}>
+                        <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
+                            {generation.generation}
+                        </li>
+                        {generation.models.map((model) => (
+                            <li
+                                key={model.value}
+                                role="option"
+                                tabIndex="0"
+                                className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
+                            >
+                                <img
+                                    src={model.icon}
+                                    alt={model.label}
+                                    className="w-6 h-6 opacity-70"
+                                />
+                                <span>{model.label}</span>
+                            </li>
+                        ))}
+                    </Fragment>
+                ))}
+        />
+    )
+}
+
+const BrandSelection = () => {
+    return (
+        <Selection 
+        template={phoneModels.map((brand) => (
+            <li key={brand.brand} role="option" tabIndex="0"
+                className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none">
+                <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
+                <span>{brand.brand}</span>
+            </li>
+        ))}
+        />
+    );
+}
+
 const Evaluation = () => {
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
@@ -33,6 +98,7 @@ const Evaluation = () => {
                         description="Apple"
                         image={appleLogo}
                         alternative="Logo de apple"
+                        menu={ <BrandSelection /> }
                     />
                     <MenuButton
                         title="Modèle"
@@ -40,7 +106,10 @@ const Evaluation = () => {
                         description="Sélectionnez un modèle"
                         image={iphone13Logo}
                         alternative="iPhone"
+                        menu={ <ModelSelection brand='Apple' /> }
                     />
+                    
+
                     <div className='flex flex-col items-center gap-2'>
                         <label className="block text-base font-medium mb-2 text-center">Types de réparations</label>
 
@@ -104,7 +173,7 @@ const Evaluation = () => {
 
 const ReparationOption = ({ id, repairName, repairValue, logo, alternative, title, description, price }) => {
     let priceStyle = (price)? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1" : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
-    let PriceValueCheck = (price)? price : "--";
+
     return (
         <label id={id} className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
                         hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 
@@ -116,12 +185,17 @@ const ReparationOption = ({ id, repairName, repairValue, logo, alternative, titl
                 <span className="font-semibold">{title}</span>
                 <span className="text-gray-600 text-sm text-center">{description}</span>
             </div>
-            <span className={priceStyle}>{PriceValueCheck} €</span>
+            <span className={priceStyle}>{(price)? price : "--"} €</span>
+            <span class="absolute top-2 right-2 hidden peer-checked:inline-block text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+            </span>
         </label>
     );
 }
 
-const MenuButton = ({ title, type, description, image, alternative }) => {
+const MenuButton = ({ title, type, description, image, alternative, menu = null }) => {
     let imageSrc = (image)? <img src={image} alt={alternative} className="w-6 h-6 opacity-70"/> : null;
     return (
         <div className="flex flex-col items-center gap-2">
@@ -138,8 +212,10 @@ const MenuButton = ({ title, type, description, image, alternative }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
+
+                {menu}
+                <input type="hidden" id="model" name="model" required="" value="iphone-16-pro" data-gtm-form-interact-field-id="2" />
             </div>
-            <input type="hidden" name={type} />
         </div>
     );
 }
