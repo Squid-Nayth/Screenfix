@@ -1,5 +1,5 @@
 import iphone13Logo from '/reparation-type/icone-iphone13.png'
-import appleLogo from '@assets/images/iphone/logo-apple.png'
+import appleLogo from '/logo-apple.png'
 
 import { OptionsModels } from '@constants/index.js'
 

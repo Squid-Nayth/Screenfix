@@ -43,7 +43,7 @@ export const OptionsModels = [
     {
         id:1,
         title: 'Vous ne connaissez pas la panne ?',
-        descipriton: 'Prenez un diagnostic personnalisé',
+        description: 'Prenez un diagnostic personnalisé',
         name: 'repair',
         value: 'diagnostic',
         image: '/curiosity.png',
@@ -53,7 +53,7 @@ export const OptionsModels = [
     {
         id:2,
         title: "Reconditionnement d'écran",
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'recond_ecran',
         image: '/reparation-type/icone-iphone13.png',
@@ -63,7 +63,7 @@ export const OptionsModels = [
     {
         id:3,
         title: "Changement d'écran complet",
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'chgmt_ecran',
         image: '/reparation-type/icone-iphone13.png',
@@ -73,7 +73,7 @@ export const OptionsModels = [
     {
         id:4,
         title: 'Remplacement vitre arrière',
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'vitre_arriere',
         image: '/reparation-type/icone-iphone14-pro.png',
@@ -83,7 +83,7 @@ export const OptionsModels = [
     {
         id:5,
         title: 'Remplacement batterie',
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'batterie',
         image: '/reparation-type/icone-full-battery.png',
@@ -93,7 +93,7 @@ export const OptionsModels = [
     {
         id:6,
         title: 'Remplacement connecteur de charge',
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'connecteur',
         image: '/reparation-type/icone-lightning.png',
@@ -103,7 +103,7 @@ export const OptionsModels = [
     {
         id:7,
         title: 'Remplacement caméra',
-        descipriton: '',
+        description: '',
         name: 'repair',
         value: 'camera',
         image: '/reparation-type/camera-module.png',
