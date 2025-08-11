@@ -4,10 +4,38 @@ import { Fragment } from 'react'
 import { OptionsModels } from '@constants/index.js'
 import { phoneModels } from '@constants/models.js'
 
-const EvalOptions = () => (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
-        {OptionsModels.map((item) => (
-            <ReparationOption
+const EvalOptions = ({ model }) => {
+
+    return (
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
+        {OptionsModels.map((item) => {
+            let pr = 0
+            switch(item.value) {
+                case "recond_ecran":
+                    pr = model.recond_ecran
+                    break;
+                case "chgmt_ecran":
+                    pr = model.chgmt_ecran
+                    break;
+                case "vitre_arriere":
+                    pr = model.vitre_arriere
+                    break;
+                case "batterie":
+                    pr = model.batterie
+                    break;
+                case "connecteur":
+                    pr = model.connecteur
+                    break;
+                case "camera":
+                    pr = model.camera
+                    break;
+                default:
+                    pr = (model.name)? 0 : item.price
+                    break;
+            }
+            
+            return (
+                <ReparationOption
                 id={item.id}
                 title={item.title}
                 description={item.description}
@@ -15,11 +43,15 @@ const EvalOptions = () => (
                 repairValue={item.value}
                 logo={item.image}
                 alternative={item.alt}
-                price={item.price}
-            />
-        ))}
+                price={pr}
+                />
+            )
+            
+        })}
     </div>
-);
+    );
+    
+};
 
 const Selection = ({ template = () => {} }) => {
     return (
@@ -50,7 +82,7 @@ const ModelSelection = ({ brand, onSelect }) => {
                             role="option"
                             tabIndex="0"
                             className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                            onClick={() => onSelect({name: model.label, image:model.icon})}
+                            onClick={() => onSelect({name: model.label, image:model.icon, recond_ecran: model.recond_ecran, chgmt_ecran: model.chgmt_ecran, vitre_arriere: model.vitre_arriere, batterie: model.batterie, connecteur: model.connecteur, camera: model.camera})}
                         >
                             <img src={model.icon} alt={model.label} className="w-6 h-6 opacity-70" />
                             <span>{model.label}</span>
@@ -90,16 +122,16 @@ const Evaluation = () => {
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
-
+    
     const [selectedBrand, setSelectedBrand] = useState({name: '', image: ''});
-    const [selectedModel, setSelectedModel] = useState({name: '', image: ''});
+    const [selectedModel, setSelectedModel] = useState({name: '', image: '', recond_ecran: 0, chgmt_ecran: 0, vitre_arriere: 0, batterie: 0, connecteur: 0, camera: 0});
 
 
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
-                <form className="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 
+                <div className="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 
                                 space-y-6 text-center">
                     <MenuButton
                         title="Marque de l'appareil"
@@ -111,7 +143,7 @@ const Evaluation = () => {
                                 let prevBrand = selectedBrand
                                 setSelectedBrand(brand);
                                 setSelectState(0);
-                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', item: ''});
+                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', image: '', recond_ecran: 0, chgmt_ecran: 0, vitre_arriere: 0, batterie: 0, connecteur: 0, camera: 0});
                             }} />
                             : null
                         }
@@ -121,7 +153,7 @@ const Evaluation = () => {
                     <MenuButton
                         title="Modèle"
                         type="model"
-                        description={selectedModel.name || "Sélectionnez un modèle"}
+                        description={selectedModel.name || "-- Sélectionnez un modèle --"}
                         image={selectedModel.image}
                         menu={(selectorState === 2 && selectedBrand.name)
                             ? <ModelSelection brand={selectedBrand.name} onSelect={(model) => {
@@ -142,7 +174,7 @@ const Evaluation = () => {
                             <span className="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
                         </div>
 
-                        <EvalOptions />
+                        <EvalOptions model={selectedModel}/>
 
 
                         <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
@@ -187,9 +219,8 @@ const Evaluation = () => {
                                 </p>
                             </form>
                         </div>
-
                     </div>
-                </form>
+                </div>
             </div>
         </section>
     );
