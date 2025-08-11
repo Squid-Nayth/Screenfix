@@ -1,10 +1,24 @@
-import iphone13Logo from '@assets/images/reparation-type/icone-iphone13.png'
-import iphone14Logo from '@assets/images/reparation-type/icone-iphone14-pro.png'
-import unknownCauseLogo from '@assets/images/broken-iphones/curiosity.png'
-import cameraLogo from '@assets/images/reparation-type/camera-module.png'
-import batteryLogo from '@assets/images/reparation-type/icone-full-battery.png'
-import powerLogo from '@assets/images/reparation-type/icone-lightning.png'
+import iphone13Logo from '/reparation-type/icone-iphone13.png'
 import appleLogo from '@assets/images/iphone/logo-apple.png'
+
+import { OptionsModels } from '@constants/index.js'
+
+const EvalOptions = () => (
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
+        {OptionsModels.map((item) => (
+            <ReparationOption
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                repairName={item.name}
+                repairValue={item.value}
+                logo={item.image}
+                alternative={item.alt}
+                price={item.price}
+            />
+        ))}
+    </div>
+);
 
 const Evaluation = () => {
     return (
@@ -35,60 +49,9 @@ const Evaluation = () => {
                             <span className="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
                         </div>
 
+                        <EvalOptions />
 
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
-                            <ReparationOption 
-                                title="Vous ne connaissez pas la panne ?"
-                                description= "Prenez un diagnostic personnalisé"
-                                repairName="repair"
-                                repairValue="diagnostic"
-                                logo={unknownCauseLogo}
-                                alternative="Diagnostic personnalisé"
-                                price="35"
-                            />
-                            <ReparationOption 
-                                title="Reconditionnement d'écran"
-                                repairName="repair"
-                                repairValue="recond_ecran"
-                                logo={iphone13Logo}
-                                alternative="Écran"
-                            />
-                            <ReparationOption 
-                                title="Changement d'écran complet"
-                                repairName="repair"
-                                repairValue="chgmt_ecran"
-                                logo={iphone13Logo}
-                                alternative="Changement écran"
-                            />
-                            <ReparationOption 
-                                title="Remplacement vitre arrière"
-                                repairName="repair"
-                                repairValue="vitre_arriere"
-                                logo={iphone14Logo}
-                                alternative="Vitre arrière"
-                            />
-                            <ReparationOption 
-                                title="Remplacement batterie"
-                                repairName="repair"
-                                repairValue="batterie"
-                                logo={batteryLogo}
-                                alternative="Batterie"
-                            />
-                            <ReparationOption 
-                                title="Remplacement connecteur de charge"
-                                repairName="repair"
-                                repairValue="connecteur"
-                                logo={powerLogo}
-                                alternative="Connecteur"
-                            />
-                            <ReparationOption 
-                                title="Remplacement caméra"
-                                repairName="repair"
-                                repairValue="camera"
-                                logo={cameraLogo}
-                                alternative="Caméra"
-                            />
-                        </div>
+
                         <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
                                                     font-medium py-3 px-8 rounded-full w-full shadow transition text-center">
                                                         Évaluer
@@ -139,11 +102,11 @@ const Evaluation = () => {
     );
 }
 
-const ReparationOption = ({ repairName, repairValue, logo, alternative, title, description, price }) => {
+const ReparationOption = ({ id, repairName, repairValue, logo, alternative, title, description, price }) => {
     let priceStyle = (price)? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1" : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
     let PriceValueCheck = (price)? price : "--";
     return (
-        <label className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
+        <label id={id} className='group flex flex-col items-center justify-between p-4 rounded-2xl border border-gray-200 bg-white shadow-sm 
                         hover:shadow-lg cursor-pointer focus-within:ring-2 focus-within:ring-blue-400 relative transition duration-300 
                         ease-in-out will-change-transform group-hover:scale-105 group-active:scale-95'>
             <input type="checkbox" name={repairName} value={repairValue} className="peer sr-only" />
