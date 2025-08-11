@@ -50,7 +50,7 @@ const ModelSelection = ({ brand, onSelect }) => {
                             role="option"
                             tabIndex="0"
                             className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                            onClick={() => onSelect(model.label)}
+                            onClick={() => onSelect({name: model.label, image:model.icon})}
                         >
                             <img src={model.icon} alt={model.label} className="w-6 h-6 opacity-70" />
                             <span>{model.label}</span>
@@ -72,7 +72,7 @@ const BrandSelection = ({ onSelect }) => {
                     role="option"
                     tabIndex="0"
                     className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                    onClick={() => onSelect(brand.brand)}
+                    onClick={() => onSelect({name: brand.brand, image: brand.image})}
                 >
                     <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
                     <span>{brand.brand}</span>
@@ -91,8 +91,8 @@ const Evaluation = () => {
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
 
-    const [selectedBrand, setSelectedBrand] = useState('');
-    const [selectedModel, setSelectedModel] = useState('');
+    const [selectedBrand, setSelectedBrand] = useState({name: '', image: ''});
+    const [selectedModel, setSelectedModel] = useState({name: '', image: ''});
 
 
     return (
@@ -104,29 +104,30 @@ const Evaluation = () => {
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
-                        description={selectedBrand || "Sélectionnez une marque"}
+                        description={selectedBrand.name || "-- Sélectionnez une marque --"}
+                        image={selectedBrand.image}
                         menu={(selectorState === 1)
                             ? <BrandSelection onSelect={(brand) => {
+                                let prevBrand = selectedBrand
                                 setSelectedBrand(brand);
-                                setSelectState(0); // ferme le menu
-                                setSelectedModel(''); // reset modèle quand on change de marque
+                                setSelectState(0);
+                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', item: ''});
                             }} />
                             : null
                         }
                         onClick={toggleBrandMenu}
                     />
+                    
                     <MenuButton
                         title="Modèle"
                         type="model"
-                        description={selectedModel || "Sélectionnez un modèle"}
-                        menu={(selectorState === 2 && selectedBrand)
-                            ? <ModelSelection
-                                brand={selectedBrand}
-                                onSelect={(model) => {
-                                    setSelectedModel(model);
-                                    setSelectState(0);
-                                }}
-                            />
+                        description={selectedModel.name || "Sélectionnez un modèle"}
+                        image={selectedModel.image}
+                        menu={(selectorState === 2 && selectedBrand.name)
+                            ? <ModelSelection brand={selectedBrand.name} onSelect={(model) => {
+                                setSelectedModel(model);
+                                setSelectState(0);
+                            }} />
                             : null
                         }
                         onClick={toggleModelMenu}
