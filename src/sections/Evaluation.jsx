@@ -18,60 +18,73 @@ const Selection = ({ template = () => {} }) => {
     );
 };
 
+function getModel(label) {
+    for (const brand of phoneModels) {
+        for (const generation of brand.generations) {
+            const found = generation.models.find(m => m.label === label);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+
 const ModelSelection = ({ brand, onSelect }) => {
     const brandData = phoneModels.find(b => b.brand === brand);
     if (!brandData) return null;
 
     return (
-        <Selection 
-            template={brandData.generations.map((generation) => (
-                <Fragment key={generation.generation}>
-                    <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
-                        {generation.generation}
-                    </li>
-                    {generation.models.map((model) => (
-                        <li
-                            key={model.value}
-                            role="option"
-                            tabIndex="0"
-                            className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                            onClick={() => onSelect({name: model.label, image:model.icon, recond_ecran: model.recond_ecran, chgmt_ecran: model.chgmt_ecran, vitre_arriere: model.vitre_arriere, batterie: model.batterie, connecteur: model.connecteur, camera: model.camera})}
-                        >
-                            <img src={model.icon} alt={model.label} className="w-6 h-6 opacity-70" />
-                            <span>{model.label}</span>
-                        </li>
-                    ))}
-                </Fragment>
+    <Selection 
+        template={brandData.generations.map((generation) => (
+        <Fragment key={generation.generation}>
+            <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
+            {generation.generation}
+            </li>
+            {generation.models.map((model) => (
+            <li
+                key={model.value}
+                role="option"
+                tabIndex="0"
+                className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
+                onClick={() => onSelect(model.label)}
+            >
+                <img src={model.icon} alt={model.label} className="w-6 h-6 opacity-70" />
+                <span>{model.label}</span>
+            </li>
             ))}
-        />
+        </Fragment>
+        ))}
+    />
     );
-}
+};
+
 
 
 const BrandSelection = ({ onSelect }) => {
     return (
-        <Selection 
-            template={phoneModels.map((brand) => (
-                <li
-                    key={brand.brand}
-                    role="option"
-                    tabIndex="0"
-                    className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-                    onClick={() => onSelect({name: brand.brand, image: brand.image})}
-                >
-                    <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
-                    <span>{brand.brand}</span>
-                </li>
-            ))}
-        />
+    <Selection 
+        template={phoneModels.map((brand) => (
+        <li
+            key={brand.brand}
+            role="option"
+            tabIndex="0"
+            className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
+            onClick={() => onSelect({ name: brand.brand, image: brand.image })}
+        >
+            <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
+            <span>{brand.brand}</span>
+        </li>
+        ))}
+    />
     );
-}
+};
+
 
 
 const Evaluation = () => {
 
     const initialForm = {
-        brand: '',
+        brand: {name:'', image:''},
         model: '',
         ...Object.fromEntries(
         OptionsModels.map(opt => [opt.value, false])
@@ -89,13 +102,14 @@ const Evaluation = () => {
 
 
 
-    const EvalOptions = ({ model }) => {
+    const EvalOptions = ({ label }) => {
 
         return (
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
 
             {OptionsModels.map((item) => {
-                let pr = (model.name)?  (item.value === 'diagnostic')? item.price : model[item.value] : 0
+                const mod = getModel(label)
+                let pr = ((label)?  ((item.value === 'diagnostic')? item.price : mod[item.value]) : 0)
                 return (
                     <ReparationOption
                     id={item.id}
@@ -115,16 +129,11 @@ const Evaluation = () => {
         );
     };
 
-    //
-
     // Brand and Model selection states
     const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
-    
-    const [selectedBrand, setSelectedBrand] = useState({ name: '', image: '' })
-    const [selectedModel, setSelectedModel] = useState({ name: '', image: '' })
     
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
@@ -135,30 +144,47 @@ const Evaluation = () => {
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
-                        description={selectedBrand.name || "-- Sélectionnez une marque --"}
-                        image={selectedBrand.image}
+                        description={form.brand.name || "-- Sélectionnez une marque --"}
+                        image={form.brand.image}
                         menu={(selectorState === 1)
-                            ? <BrandSelection onSelect={(brand) => {
-                                let prevBrand = selectedBrand
-                                setSelectedBrand(brand);
+                            ? <BrandSelection
+                                onSelect={(brand) => {
+                                setForm((prev) => {
+                                    const resetModel = (prev.brand.name !== brand.name)
+                                    ? ''
+                                    : prev.model;
+                                    return {
+                                        ...prev,
+                                        brand,
+                                        model: resetModel
+                                    };
+                                });
                                 setSelectState(0);
-                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', image: ''});
-                            }} />
+                                }}
+                            />
                             : null
                         }
                         onClick={toggleBrandMenu}
                     />
+
                     
                     <MenuButton
                         title="Modèle"
                         type="model"
-                        description={selectedModel.name || "-- Sélectionnez un modèle --"}
-                        image={selectedModel.image}
-                        menu={(selectorState === 2 && selectedBrand.name)
-                            ? <ModelSelection brand={selectedBrand.name} onSelect={(model) => {
-                                setSelectedModel(model);
-                                setSelectState(0);
-                            }} />
+                        description={form.model || "-- Sélectionnez un modèle --"}
+                        image={(getModel(form.model))? getModel(form.model).icon : ''}
+                        menu={
+                            selectorState === 2 && form.brand.name
+                            ? <ModelSelection
+                                brand={form.brand.name}
+                                onSelect={(model) => {
+                                    setForm((prev) => ({
+                                    ...prev,
+                                    model
+                                    }));
+                                    setSelectState(0);
+                                }}
+                                />
                             : null
                         }
                         onClick={toggleModelMenu}
@@ -172,8 +198,8 @@ const Evaluation = () => {
                             <span className="text-base text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
                             <span className="text-sm font-semibold text-blue-600 transition-all duration-300">{getCheckboxNumber()} sélectionnée</span>
                         </div>
-
-                        <EvalOptions model={selectedModel}/>
+                        
+                        <EvalOptions model={form.model}/>
 
 
                         <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
