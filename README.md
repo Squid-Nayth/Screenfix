@@ -37,7 +37,7 @@ The source of the website is separated in many different branches:
 If you followed perfectly these steps, everything should run perfectly fine !
 
 ## 💻 Contributing
-We welcome contributions to Screenfix official website development through pull requests on GitHub.
+Contributions to Screenfix official website development through pull requests on GitHub.
 To contribute correctly, please go read the [contributing file](CONTRIBUTING.md) on the root of this repository.
 
 All contributions are under the license of this repository.
