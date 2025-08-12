@@ -84,10 +84,9 @@ const Evaluation = () => {
         [key]: e.target.checked
         });
     }
+    const isAnyCheckboxCheck = () => { return OptionsModels.some(opt => form[opt.value]) }
+    const getCheckboxNumber = () => { return OptionsModels.reduce((count, opt) => { return form[opt.value] ? count + 1 : count }, 0) }
 
-    const isAnyCheckboxCheck = () => {
-        return OptionsModels.some(opt => form[opt.value]);
-    };
 
 
     const EvalOptions = ({ model }) => {
@@ -108,7 +107,7 @@ const Evaluation = () => {
                     alternative={item.alt}
                     checked={form[item.value]}
                     onChange={handleCheckboxChange(item.value)}
-                    price={(item.value !== 'diagnostic')? (form.diagnostic)? 0 : pr : (isAnyCheckboxCheck())? 0 : pr}
+                    price={(item.value !== 'diagnostic')? (form.diagnostic)? 0 : pr : (isAnyCheckboxCheck() && !form.diagnostic)? 0 : pr}
                     />
                 )
             })}
@@ -171,7 +170,7 @@ const Evaluation = () => {
 
                         <div className="flex items-center justify-between w-5/6 mb-2">
                             <span className="text-base text-gray-600">Sélectionnez une ou plusieurs réparations.</span>
-                            <span className="text-sm font-semibold text-blue-600 transition-all duration-300">0 sélectionnée</span>
+                            <span className="text-sm font-semibold text-blue-600 transition-all duration-300">{getCheckboxNumber()} sélectionnée</span>
                         </div>
 
                         <EvalOptions model={selectedModel}/>
