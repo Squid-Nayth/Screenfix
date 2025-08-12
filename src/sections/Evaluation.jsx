@@ -4,54 +4,7 @@ import { Fragment } from 'react'
 import { OptionsModels } from '@constants/index.js'
 import { phoneModels } from '@constants/models.js'
 
-const EvalOptions = ({ model }) => {
 
-    return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
-        {OptionsModels.map((item) => {
-            let pr = 0
-            switch(item.value) {
-                case "recond_ecran":
-                    pr = model.recond_ecran
-                    break;
-                case "chgmt_ecran":
-                    pr = model.chgmt_ecran
-                    break;
-                case "vitre_arriere":
-                    pr = model.vitre_arriere
-                    break;
-                case "batterie":
-                    pr = model.batterie
-                    break;
-                case "connecteur":
-                    pr = model.connecteur
-                    break;
-                case "camera":
-                    pr = model.camera
-                    break;
-                default:
-                    pr = (model.name)? 0 : item.price
-                    break;
-            }
-            
-            return (
-                <ReparationOption
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                repairName={item.name}
-                repairValue={item.value}
-                logo={item.image}
-                alternative={item.alt}
-                price={pr}
-                />
-            )
-            
-        })}
-    </div>
-    );
-    
-};
 
 const Selection = ({ template = () => {} }) => {
     return (
@@ -117,15 +70,62 @@ const BrandSelection = ({ onSelect }) => {
 
 const Evaluation = () => {
 
+    const initialForm = {
+        brand: '',
+        model: '',
+        ...Object.fromEntries(
+        OptionsModels.map(opt => [opt.value, false])
+    )};
+
+    const [form, setForm] = useState(initialForm)
+    const handleCheckboxChange = (key) => (e) => {
+        setForm({
+        ...form,
+        [key]: e.target.checked
+        });
+    }
+
+    const isAnyCheckboxCheck = () => {
+        return OptionsModels.some(opt => form[opt.value]);
+    };
+
+
+    const EvalOptions = ({ model }) => {
+
+        return (
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
+
+            {OptionsModels.map((item) => {
+                let pr = (model.name)?  (item.value === 'diagnostic')? item.price : model[item.value] : 0
+                return (
+                    <ReparationOption
+                    id={item.id}
+                    title={item.title}
+                    description={item.description}
+                    repairName={item.name}
+                    repairValue={item.value}
+                    logo={item.image}
+                    alternative={item.alt}
+                    checked={form[item.value]}
+                    onChange={handleCheckboxChange(item.value)}
+                    price={(item.value !== 'diagnostic')? (form.diagnostic)? 0 : pr : (isAnyCheckboxCheck())? 0 : pr}
+                    />
+                )
+            })}
+        </div>
+        );
+    };
+
+    //
+
     // Brand and Model selection states
     const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
     
-    const [selectedBrand, setSelectedBrand] = useState({name: '', image: ''});
-    const [selectedModel, setSelectedModel] = useState({name: '', image: '', recond_ecran: 0, chgmt_ecran: 0, vitre_arriere: 0, batterie: 0, connecteur: 0, camera: 0});
-
+    const [selectedBrand, setSelectedBrand] = useState({ name: '', image: '' })
+    const [selectedModel, setSelectedModel] = useState({ name: '', image: '' })
     
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
@@ -143,7 +143,7 @@ const Evaluation = () => {
                                 let prevBrand = selectedBrand
                                 setSelectedBrand(brand);
                                 setSelectState(0);
-                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', image: '', recond_ecran: 0, chgmt_ecran: 0, vitre_arriere: 0, batterie: 0, connecteur: 0, camera: 0});
+                                (prevBrand === selectedBrand)? null : setSelectedModel({name: '', image: ''});
                             }} />
                             : null
                         }
@@ -226,7 +226,7 @@ const Evaluation = () => {
     );
 }
 
-const ReparationOption = ({ id, repairName, repairValue, logo, alternative, title, description, price }) => {
+const ReparationOption = ({ id, repairName, repairValue, logo, alternative, title, description, price, checked, onChange }) => {
     let priceStyle = price
         ? "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1"
         : "text-blue-700 font-semibold text-base px-2 py-1 rounded transition-colors mt-1 text-gray-400";
@@ -240,8 +240,8 @@ const ReparationOption = ({ id, repairName, repairValue, logo, alternative, titl
 
     return (
         <label id={id} className={labelClasses}>
-            {(price)? <input type="checkbox" name={repairName} value={repairValue} className="peer sr-only" /> : '' }
             
+            <input type="checkbox" name={repairName} value={repairValue} checked={checked} onChange={onChange} disabled={!price} className="peer sr-only" />
             <div className='flex flex-col items-center gap-2'>
                 <img src={logo} alt={alternative} className="w-10 h-10 opacity-80 transition-transform duration-300 group-hover:scale-125 
                                                             group-hover:opacity-100 group-active:scale-110"/>

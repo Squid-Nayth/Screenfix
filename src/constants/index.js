@@ -48,7 +48,7 @@ export const OptionsModels = [
         value: 'diagnostic',
         image: '/curiosity.png',
         alt: 'Diagnostic personnalisé',
-        price: '35'
+        price: 35
     },
     {
         id:2,
@@ -58,7 +58,7 @@ export const OptionsModels = [
         value: 'recond_ecran',
         image: '/reparation-type/icone-iphone13.png',
         alt: 'Écran',
-        price: ''
+        price: 0
     },
     {
         id:3,
@@ -68,7 +68,7 @@ export const OptionsModels = [
         value: 'chgmt_ecran',
         image: '/reparation-type/icone-iphone13.png',
         alt: 'Changement écran',
-        price: ''
+        price: 0
     },
     {
         id:4,
@@ -78,7 +78,7 @@ export const OptionsModels = [
         value: 'vitre_arriere',
         image: '/reparation-type/icone-iphone14-pro.png',
         alt: 'Vitre arrière',
-        price: ''
+        price: 0
     },
     {
         id:5,
@@ -88,7 +88,7 @@ export const OptionsModels = [
         value: 'batterie',
         image: '/reparation-type/icone-full-battery.png',
         alt: 'Batterie',
-        price: ''
+        price: 0
     },
     {
         id:6,
@@ -98,7 +98,7 @@ export const OptionsModels = [
         value: 'connecteur',
         image: '/reparation-type/icone-lightning.png',
         alt: 'Connecteur',
-        price: ''
+        price: 0
     },
     {
         id:7,
@@ -108,6 +108,6 @@ export const OptionsModels = [
         value: 'camera',
         image: '/reparation-type/camera-module.png',
         alt: 'Caméra',
-        price: ''
+        price: 0
     }
 ];
