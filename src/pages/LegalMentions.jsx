@@ -65,7 +65,7 @@ const LegalCard = ({ title, name = {text, url}, status, tag, location, number, c
                 <div>
                     <h4 className="text-2xl md:text-2xl font-bold text-gray-900 mb-4">{title}</h4>
                     <ul >
-                        <li>{(name.url)? <a href={name.url} className="text-blue-600 font-semibold transition hover:text-blue-800">{name.text}</a>: name.text}</li>
+                        <li>{(name.url)? <a href={name.url} target='_blank' className="text-blue-600 font-semibold transition hover:text-blue-800">{name.text}</a>: name.text}</li>
                         <li>{(status)? status : ""}</li>
                         <li>{(tag)? `SIRET : ${tag}` : ""}</li>
                         <li>{(location)? location : ""}</li>

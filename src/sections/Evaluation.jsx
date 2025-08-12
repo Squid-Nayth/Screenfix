@@ -126,7 +126,7 @@ const Evaluation = () => {
     const [selectedBrand, setSelectedBrand] = useState({name: '', image: ''});
     const [selectedModel, setSelectedModel] = useState({name: '', image: '', recond_ecran: 0, chgmt_ecran: 0, vitre_arriere: 0, batterie: 0, connecteur: 0, camera: 0});
 
-
+    
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
