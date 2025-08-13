@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Fragment } from 'react'
 
-import { OptionsModels } from '@constants/index.js'
+import { OptionsModels, RdvOptions } from '@constants/index.js'
 import { phoneModels } from '@constants/models.js'
 
 
@@ -97,9 +97,8 @@ const Evaluation = () => {
         model: '',
         totalPrice: 0,
         totalReduction: 0,
-        ...Object.fromEntries(
-        OptionsModels.map(opt => [opt.value, false])
-    )};
+        ...Object.fromEntries( OptionsModels.map(opt => [opt.value, false]) )
+    };
 
     const [form, setForm] = useState(initialForm)
     const handleCheckboxChange = (key) => (e) => {
@@ -114,6 +113,43 @@ const Evaluation = () => {
     }
 
     const [isEvaluated, setEvaluated] = useState(false)
+
+    const RdvSection = () => {
+        const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
+
+        return (
+            <div className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
+                                
+                {RdvOptions.map((item) => (
+                    <div key={item.id} className="flex flex-col items-center">
+                    <label htmlFor={item.htmlFor} className="block text-base font-medium mb-2 text-center">{item.title}</label>
+                    <input
+                        type={item.type}
+                        name={item.htmlFor}
+                        value={rdvForm[item.htmlFor] || ""}
+                        onChange={(e) => {
+                        setRdvForm((prev) => ({
+                            ...prev,
+                            [item.htmlFor]: e.target.value
+                        }));
+                        }}
+                        className="w-full p-3 border border-gray-300 rounded-lg text-center"
+                        required
+                    />
+                    </div>
+                ))}
+
+                <button type="submit" className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
+                                                rounded-full w-full shadow transition text-center">
+                                                    Envoyer
+                </button>
+                <p className="mt-4 text-sm text-gray-500">
+                    En remplissant notre formulaire, vous acceptez notre 
+                    <a href="politique-confidentialite.html" className="underline hover:text-blue-600"> politique de confidentialité</a>.
+                </p>
+            </div>
+        );
+    };
 
     const EvalOptions = () => {
 
@@ -257,9 +293,9 @@ const Evaluation = () => {
                         <div className={(isEvaluated)? 'block' : 'hidden' }>
                             <div className='cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200 flex 
                                             flex-col items-center'>
-                                <div className='cost-info block'>
-                                    <h4 className='cost-type text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
-                                    <p className="cost-description mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
+                                <div className='block'>
+                                    <h4 className='text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
+                                    <p className="mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
                                     <figure className="cost-amount stat stat-reduced mb-4 text-center">
                                         <span class="text-2xl font-semibold">
                                             {(form.diagnostic && form.totalPrice === 35)? <span class="text-blue-700 font-bold">{form.totalPrice} €</span> : 
@@ -277,28 +313,9 @@ const Evaluation = () => {
                                 <span className='h-0.5 w-32 bg-gray-200 rounded-full'/>
                             </div>
                             <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
-                            <form className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
-                                <div className="flex flex-col items-center">
-                                    <label htmlFor="name" className="block text-base font-medium mb-2 text-center">Nom</label>
-                                    <input type="text" name="name" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <label htmlFor="email" className="block text-base font-medium mb-2 text-center">Email</label>
-                                    <input type="email" name="email" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <label htmlFor="date" className="block text-base font-medium mb-2 text-center">Date du rendez-vous</label>
-                                    <input type="date" name="date" className="w-full p-3 border border-gray-300 rounded-lg text-center" required="" />
-                                </div>
-                                <button type="submit" className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
-                                                                rounded-full w-full shadow transition text-center">
-                                                                    Envoyer
-                                </button>
-                                <p className="mt-4 text-sm text-gray-500">
-                                    En remplissant notre formulaire, vous acceptez notre 
-                                    <a href="politique-confidentialite.html" className="underline hover:text-blue-600"> politique de confidentialité</a>.
-                                </p>
-                            </form>
+
+                            <RdvSection />
+
                         </div>
                     </div>
                 </div>

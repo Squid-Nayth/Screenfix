@@ -39,6 +39,27 @@ export const navLinks = [
     },
 ];
 
+export const RdvOptions = [
+    {
+        id: 1,
+        title: 'Nom',
+        htmlFor: 'name',
+        type:'text'
+    },
+    {
+        id: 2,
+        title: 'Email',
+        htmlFor: 'email',
+        type:'email'
+    },
+    {
+        id: 3,
+        title: 'Date du rendez-vous',
+        htmlFor: 'date',
+        type:'date'
+    }
+];
+
 export const OptionsModels = [
     {
         id:1,
