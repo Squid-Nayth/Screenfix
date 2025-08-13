@@ -28,9 +28,17 @@ function getModel(label) {
     return null;
 }
 
+function getBrand(brandName) {
+    return phoneModels.find(b => b.brand === brandName) || null;
+}
+
+
+function getBrandImage(brandName) {
+    return getBrand(brandName).image || null;
+}
 
 const ModelSelection = ({ brand, onSelect }) => {
-    const brandData = phoneModels.find(b => b.brand === brand);
+    const brandData = getBrand(brand);
     if (!brandData) return null;
 
     return (
@@ -69,7 +77,7 @@ const BrandSelection = ({ onSelect }) => {
             role="option"
             tabIndex="0"
             className="flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 transition rounded select-none"
-            onClick={() => onSelect({ name: brand.brand, image: brand.image })}
+            onClick={() => onSelect(brand.brand)}
         >
             <img src={brand.image} alt={brand.alt} className="w-6 h-6 opacity-70" />
             <span>{brand.brand}</span>
@@ -84,7 +92,7 @@ const BrandSelection = ({ onSelect }) => {
 const Evaluation = () => {
 
     const initialForm = {
-        brand: {name:'', image:''},
+        brand: '',
         model: '',
         ...Object.fromEntries(
         OptionsModels.map(opt => [opt.value, false])
@@ -145,13 +153,13 @@ const Evaluation = () => {
                     <MenuButton
                         title="Marque de l'appareil"
                         type="brand"
-                        description={form.brand.name || "-- Sélectionnez une marque --"}
-                        image={form.brand.image}
+                        description={form.brand || "-- Sélectionnez une marque --"}
+                        image={getBrandImage(form.brand)}
                         menu={(selectorState === 1)
                             ? <BrandSelection
                                 onSelect={(brand) => {
                                 setForm((prev) => {
-                                    const resetModel = (prev.brand.name !== brand.name)
+                                    const resetModel = (prev.brand !== brand)
                                     ? ''
                                     : prev.model;
                                     return {
@@ -175,9 +183,9 @@ const Evaluation = () => {
                         description={form.model || "-- Sélectionnez un modèle --"}
                         image={(getModel(form.model))? getModel(form.model).icon : ''}
                         menu={
-                            selectorState === 2 && form.brand.name
+                            selectorState === 2 && form.brand
                             ? <ModelSelection
-                                brand={form.brand.name}
+                                brand={form.brand}
                                 onSelect={(model) => {
                                     setForm((prev) => ({
                                     ...prev,
