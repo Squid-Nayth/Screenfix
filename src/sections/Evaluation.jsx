@@ -34,6 +34,7 @@ function getBrand(brandName) {
 
 
 function getBrandImage(brandName) {
+    if(!brandName) return null;
     return getBrand(brandName).image || null;
 }
 
@@ -140,10 +141,19 @@ const Evaluation = () => {
 
     // Brand and Model selection states
     const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
+    const [isEvaluated, setEvaluated] = useState(false)
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
     
+    function handleEvaluationButton() {
+        setEvaluated(true);
+    }
+
+    let EvaluateButtonStyle = `bg-gray-900  text-white text-lg font-medium py-3 px-8 
+                                rounded-full w-full shadow transition text-center 
+                                ${(isAnyCheckboxCheck())? 'hover:bg-gray-800 cursor-pointer' : 'opacity-50'}`
+
     return (
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
@@ -211,11 +221,12 @@ const Evaluation = () => {
                         <EvalOptions />
 
 
-                        <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
-                                                    font-medium py-3 px-8 rounded-full w-full shadow transition text-center">
-                                                        Évaluer
+                        <button type="submit" onClick={(isAnyCheckboxCheck())? handleEvaluationButton : null}
+                        className={EvaluateButtonStyle}>
+                                    Évaluer
                         </button>
-                        <div className='cost-section-container'>
+
+                        <div className={(isEvaluated)? 'block' : 'hidden' }>
                             <div className='cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200 flex 
                                             flex-col items-center'>
                                 <div className='cost-info block'>
