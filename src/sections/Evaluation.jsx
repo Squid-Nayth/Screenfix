@@ -95,6 +95,8 @@ const Evaluation = () => {
     const initialForm = {
         brand: '',
         model: '',
+        totalPrice: 0,
+        totalReduction: 0,
         ...Object.fromEntries(
         OptionsModels.map(opt => [opt.value, false])
     )};
@@ -107,9 +109,11 @@ const Evaluation = () => {
         });
     }
     const isAnyCheckboxCheck = () => { return OptionsModels.some(opt => form[opt.value]) }
-    const getCheckboxNumber = () => { return OptionsModels.reduce((count, opt) => { return form[opt.value] ? count + 1 : count }, 0) }
+    const getCheckboxNumber = () => {
+        return OptionsModels.reduce((count, opt) => { return form[opt.value] ? count + 1 : count }, 0)
+    }
 
-
+    const [isEvaluated, setEvaluated] = useState(false)
 
     const EvalOptions = () => {
 
@@ -119,7 +123,7 @@ const Evaluation = () => {
             {OptionsModels.map((item) => {
                 const model = getModel(form.model)
                 const pr = (form.model)? ((model[item.value])? model[item.value] : item.price) : 0
-                //
+
                 return (
                     <ReparationOption
                     id={item.id}
@@ -140,22 +144,35 @@ const Evaluation = () => {
     };
 
     const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
-    const [isEvaluated, setEvaluated] = useState(false)
-    const [totalPrice, setTotalPrice] = useState(0)
+    
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
     
     function handleEvaluationButton() {
-        const modelData = getModel(form.model);
-        if(!modelData) return;
+        setForm((prevForm) => {
+            const number = OptionsModels.reduce(
+                (count, opt) => prevForm[opt.value] ? count + 1 : count,
+                0
+            );
 
-        let total = 0;
-        Object.keys(form).forEach(key => {
-            if(form[key] === true && modelData[key] != null)
-                total += modelData[key]
+            const modelData = getModel(prevForm.model);
+            if (!modelData) return prevForm;
+
+            let total = prevForm.diagnostic ? 35 : 0;
+
+            Object.keys(prevForm).forEach(key => {
+                if (prevForm[key] === true && modelData[key] != null) {
+                    total += modelData[key];
+                }
+            });
+
+            return {
+                ...prevForm,
+                totalReduction: (5 + Math.min(number, 3) * 10)/100,
+                totalPrice: total
+            };
         });
-        setTotalPrice(total);
         setEvaluated(true);
     }
 
@@ -244,7 +261,15 @@ const Evaluation = () => {
                                     <h4 className='cost-type text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
                                     <p className="cost-description mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
                                     <figure className="cost-amount stat stat-reduced mb-4 text-center">
-                                        <span className="stat-value text-2xl font-semibold">{totalPrice} €</span>
+                                        <span class="text-2xl font-semibold">
+                                            {(form.diagnostic && form.totalPrice === 35)? <span class="text-blue-700 font-bold">{form.totalPrice} €</span> : 
+                                                <>
+                                                <span class="line-through text-gray-400 mr-2">{form.totalPrice} €</span>
+                                                <span class="text-blue-700 font-bold">{form.totalPrice - (form.totalPrice * form.totalReduction)} €</span>
+                                                </>
+                                            }
+                                            
+                                        </span>
                                     </figure>
                                 </div>
                             </div>
