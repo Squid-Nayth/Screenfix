@@ -102,14 +102,15 @@ const Evaluation = () => {
 
 
 
-    const EvalOptions = ({ label }) => {
+    const EvalOptions = () => {
 
         return (
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-2 w-full text-base'>
-
+                
             {OptionsModels.map((item) => {
-                const mod = getModel(label)
-                let pr = ((label)?  ((item.value === 'diagnostic')? item.price : mod[item.value]) : 0)
+                const model = getModel(form.model)
+                const pr = (form.model)? ((model[item.value])? model[item.value] : item.price) : 0
+                //
                 return (
                     <ReparationOption
                     id={item.id}
@@ -199,7 +200,7 @@ const Evaluation = () => {
                             <span className="text-sm font-semibold text-blue-600 transition-all duration-300">{getCheckboxNumber()} sélectionnée</span>
                         </div>
                         
-                        <EvalOptions model={form.model}/>
+                        <EvalOptions />
 
 
                         <button type="submit" className="hover:cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg 
