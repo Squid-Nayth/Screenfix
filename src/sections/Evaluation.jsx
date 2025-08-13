@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react'
 
-import Selection from '@components/Selection';
-import Container from '@components/Container';
+import Selection from '@components/Selection'
+import Container from '@components/Container'
 
 
 import { OptionsModels, RdvOptions } from '@constants/index'
@@ -210,6 +210,7 @@ const Evaluation = () => {
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
+                
                 <div className="w-full max-w-5xl mx-auto bg-white p-8 px-4 md:px-12 rounded-2xl shadow border border-gray-100 
                                 space-y-6 text-center">
                     <MenuButton
