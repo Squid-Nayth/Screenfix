@@ -2,27 +2,27 @@ export const mainNavLinks = [
     {
         id:1,
         name: 'Évaluation',
-        href: '#eval'
+        href: '/#eval'
     },
     {
         id:2,
         name: 'À propos',
-        href: '#about'
+        href: '/#about'
     },
     {
         id:3,
         name: 'Formation',
-        href: '#course'
+        href: '/#course'
     },
     {
         id:4,
         name: 'Avis',
-        href: '#satisfaction'
+        href: '/#satisfaction'
     },
     {
         id:5,
         name: 'Contact',
-        href: '#contact'
+        href: '/#contact'
     },
 ];
 
@@ -131,4 +131,62 @@ export const OptionsModels = [
         alt: 'Caméra',
         price: 0
     }
+];
+
+export const LegalMentionData = [
+    {
+        id: 1,
+        title: "screenfix.fr est la propriété de",
+        author: "Screenfix",
+        url: '',
+        status: "auto entreprise",
+        tag: "930 951 355 00013",
+        location: "27 Boulevard de Port Royal, 75005 Paris",
+        number: "+33 06 22 18 85 74",
+        contact: "cineeffrance@gmail.com"
+    },
+    {
+        id: 2,
+        title: "Directeur de la publication du site",
+        author: "Nathan Michel - Développeur webmaster",
+        url : 'https://github.com/Squid-Nayth',
+        status: "",
+        tag: "",
+        location: "",
+        number: "",
+        contact: ""
+    },
+    {
+        id: 3,
+        title: "Le site est hébergé par",
+        author: "Hostinger",
+        url: 'https://www.hostinger.com/fr',
+        status: "Ltd au capital de 110.2 million d'€",
+        tag: "",
+        location: "Švitrigailos str. 34, Vilnius 03230 Lituanie",
+        number: "+370 64 50 33 78",
+        contact: "domains@hostinger.com"
+    },
+    {
+        id: 4,
+        title: "Le site a été crée par",
+        author: "Nathan Michel",
+        url: '',
+        status: "",
+        tag: "",
+        location: "",
+        number: "",
+        contact: ""
+    },
+    {
+        id: 5,
+        title: "Droit de propriété intellectuelle / Copyright",
+        author: "Eezy Inc.",
+        url: 'https://www.eezy.com/',
+        status: "",
+        tag: "",
+        location: "",
+        number: "",
+        contact: ""
+    },
 ];

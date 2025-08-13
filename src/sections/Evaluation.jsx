@@ -1,22 +1,13 @@
-import { useState } from 'react'
-import { Fragment } from 'react'
+import { useState, Fragment } from 'react'
 
-import { OptionsModels, RdvOptions } from '@constants/index.js'
-import { phoneModels } from '@constants/models.js'
-
+import Selection from '@components/Selection';
+import Container from '@components/Container';
 
 
-const Selection = ({ template = () => {} }) => {
-    return (
-        <div
-        className="absolute z-20 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg max-h-72 
-        overflow-y-auto animate-fade-in">
-            <ul className="divide-y divide-gray-100">
-                {template}
-            </ul>
-        </div>
-    );
-};
+import { OptionsModels, RdvOptions } from '@constants/index'
+import { phoneModels } from '@constants/models'
+
+
 
 function getModel(label) {
     for (const brand of phoneModels) {
@@ -31,7 +22,6 @@ function getModel(label) {
 function getBrand(brandName) {
     return phoneModels.find(b => b.brand === brandName) || null;
 }
-
 
 function getBrandImage(brandName) {
     if(!brandName) return null;
@@ -297,11 +287,11 @@ const Evaluation = () => {
                                     <h4 className='text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
                                     <p className="mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
                                     <figure className="cost-amount stat stat-reduced mb-4 text-center">
-                                        <span class="text-2xl font-semibold">
-                                            {(form.diagnostic && form.totalPrice === 35)? <span class="text-blue-700 font-bold">{form.totalPrice} €</span> : 
+                                        <span className="text-2xl font-semibold">
+                                            {(form.diagnostic && form.totalPrice === 35)? <span className="text-blue-700 font-bold">{form.totalPrice} €</span> : 
                                                 <>
-                                                <span class="line-through text-gray-400 mr-2">{form.totalPrice} €</span>
-                                                <span class="text-blue-700 font-bold">{form.totalPrice - (form.totalPrice * form.totalReduction)} €</span>
+                                                <span className="line-through text-gray-400 mr-2">{form.totalPrice} €</span>
+                                                <span className="text-blue-700 font-bold">{form.totalPrice - (form.totalPrice * form.totalReduction)} €</span>
                                                 </>
                                             }
                                             
@@ -347,8 +337,8 @@ const ReparationOption = ({ id, repairName, repairValue, logo, alternative, titl
                 <span className="text-gray-600 text-sm text-center">{description}</span>
             </div>
             <span className={priceStyle}>{(price)? price : "--"} €</span>
-            <span class="absolute top-2 right-2 hidden peer-checked:inline-block text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span className="absolute top-2 right-2 hidden peer-checked:inline-block text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/>
                 </svg>
             </span>

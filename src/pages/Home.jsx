@@ -6,6 +6,8 @@ import About from '@sections/About'
 import Satisfaction from '@sections/Satisfaction'
 import MapLocation from '@sections/MapLocation'
 import Footer from '@sections/Footer'
+
+
 import Whatsapp from '@components/Whatsapp'
 
 const Home = () => {

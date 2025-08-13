@@ -19,7 +19,7 @@ const MapLocation = () => {
                 </div>
                 <div className="space-y-6 flex flex-col items-center justify-center text-center">
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
-                        Passez à l’atelier ou appelez-nous, <span class="text-blue-600">nous sommes dispo !</span>
+                        Passez à l’atelier ou appelez-nous, <span className="text-blue-600">nous sommes dispo !</span>
                     </h2>
                     <div className="text-gray-700 space-y-2 text-base md:text-lg text-center">
                         <p><strong>Screenfix – Paris 13ᵉ</strong><br/>27 Boulevard de Port Royal, 75005 Paris
