@@ -139,14 +139,23 @@ const Evaluation = () => {
         );
     };
 
-    // Brand and Model selection states
     const [selectorState, setSelectState] = useState(0); // 0 = nothing, 1 = brand selector, 2 = model selector
     const [isEvaluated, setEvaluated] = useState(false)
+    const [totalPrice, setTotalPrice] = useState(0)
 
     const toggleBrandMenu = () => {(selectorState === 1)? setSelectState(0): setSelectState(1)}
     const toggleModelMenu = () => {(selectorState === 2)? setSelectState(0): setSelectState(2)}
     
     function handleEvaluationButton() {
+        const modelData = getModel(form.model);
+        if(!modelData) return;
+
+        let total = 0;
+        Object.keys(form).forEach(key => {
+            if(form[key] === true && modelData[key] != null)
+                total += modelData[key]
+        });
+        setTotalPrice(total);
         setEvaluated(true);
     }
 
@@ -178,6 +187,7 @@ const Evaluation = () => {
                                         model: resetModel
                                     };
                                 });
+                                setEvaluated(false);
                                 setSelectState(0);
                                 }}
                             />
@@ -202,6 +212,7 @@ const Evaluation = () => {
                                     model
                                     }));
                                     setSelectState(0);
+                                    setEvaluated(false)
                                 }}
                                 />
                             : null
@@ -233,7 +244,7 @@ const Evaluation = () => {
                                     <h4 className='cost-type text-xl font-bold mb-2 text-center'>Votre coût estimé</h4>
                                     <p className="cost-description mb-2 text-gray-700 text-center">Prix inclus : Main d'oeuvre + Garantie 3 mois.</p>
                                     <figure className="cost-amount stat stat-reduced mb-4 text-center">
-                                        <span className="stat-value text-2xl font-semibold">-- €</span>
+                                        <span className="stat-value text-2xl font-semibold">{totalPrice} €</span>
                                     </figure>
                                 </div>
                             </div>
