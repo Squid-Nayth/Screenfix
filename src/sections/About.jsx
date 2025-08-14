@@ -10,18 +10,35 @@ const About = () => {
     const [direction, setDirection] = useState("right");
 
     function IncrementIndex() {
-        setDirection("right");
+        setDirection("left");
         setImageIndex(prev => (prev === screenfixImage.length - 1 ? 0 : prev + 1));
     }
 
     function DecrementIndex() {
-        setDirection("left");
+        setDirection("right");
         setImageIndex(prev => (prev === 0 ? screenfixImage.length - 1 : prev - 1));
     }
 
     useEffect(() => {
         AOS.refresh();
     }, [imageIndex]);
+
+    // Setup automatic swiping
+    const initialTimer = 3
+    const [timer, setTimer] = useState(initialTimer);
+    useEffect(() => {
+        const countdown = setInterval(() => {
+        setTimer(prev => {
+            if (prev === 1) {
+                IncrementIndex();
+                return initialTimer;
+            }
+            return prev - 1;
+        });
+        }, 1000);
+
+        return () => clearInterval(countdown);
+    }, []);
 
     return (
         <section className="bg-white py-16 px-6 aos-init" data-aos="fade-up" id='about'>
@@ -34,7 +51,10 @@ const About = () => {
                     <div className="flex flex-row md:flex-col md:w-1/2 w-full items-center justify-center bg-white p-6 md:p-10">
                         <div className="relative w-full max-w-2xl h-80 flex items-center justify-center">
                             <button
-                                onClick={DecrementIndex}
+                                onClick={() => {
+                                    DecrementIndex()
+                                    setTimer(initialTimer)
+                                }}
                                 aria-label="Image précédente"
                                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"
                             >
@@ -55,6 +75,7 @@ const About = () => {
                             </button>
 
                             <img
+                                key={imageIndex}
                                 src={screenfixImage[imageIndex]}
                                 alt="Équipe Screenfix"
                                 data-aos={`fade-${direction}`}
@@ -63,7 +84,10 @@ const About = () => {
                             />
                             
                             <button
-                            onClick={IncrementIndex}
+                            onClick={() => {
+                                IncrementIndex()
+                                setTimer(initialTimer)
+                            }}
                                 aria-label="Image suivante"
                                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"
                             >
