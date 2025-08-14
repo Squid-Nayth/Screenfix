@@ -170,13 +170,13 @@ export const LegalMentionData = [
     {
         id: 4,
         title: "Le site a été crée par",
-        author: "Nathan Michel",
-        url: '',
-        status: "",
-        tag: "",
-        location: "",
-        number: "",
-        contact: ""
+        author: "EVA STUDIO",
+        url: 'https://www.eva-studio.dev',
+        status: "auto entreprise",
+        tag: "990 298 036 00015",
+        location: "22 RUE Henri Desbruères 91000 Évry-Courcouronnes",
+        number: "+33 7 62 90 69 70",
+        contact: "nathannkombe@gmail.com"
     },
     {
         id: 5,
