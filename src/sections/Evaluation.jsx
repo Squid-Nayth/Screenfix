@@ -340,10 +340,11 @@ const Evaluation = () => {
                         disabled={!isAnyCheckboxCheck()}
                         onClick={handleEvaluationButton}
                         className={EvaluateButtonStyle}>
-                                    Évaluer
+                                Évaluer
                         </button>
+                        
 
-                        <div className={(isEvaluated)? 'block' : 'hidden' }>
+                        <div id='eval-result' className={(isEvaluated)? 'block' : 'hidden' }>
                             <div className='cost-section bg-green-100 p-6 rounded shadow text-center mt-6 border border-green-200 flex 
                                             flex-col items-center'>
                                 <div className='block'>
@@ -360,6 +361,9 @@ const Evaluation = () => {
                                             
                                         </span>
                                     </figure>
+                                    <p className=' font-semibold text-red-600 mb-1 min-h-[1.2em] mt-2'>
+                                        {`-${form.totalReduction * 100}% de réduction`}
+                                    </p>
                                 </div>
                             </div>
                             <div className="w-full flex justify-center my-10">

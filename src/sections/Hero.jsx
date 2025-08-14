@@ -18,7 +18,7 @@ const Hero = () => {
 
                     // Calculer les positions top et left
                     const left = `${(Math.random() < 0.5)? Math.random() * 33 + 5 : Math.random() * 33 + 62}%`
-                    let top = `${(Math.random() < 0.5)? Math.random() * 45 + 10 : Math.random() * 45 + 20}%`
+                    let bottom = `${(Math.random() < 0.5)? Math.random() * 45 + 10 : Math.random() * 45 + 20}%`
 
                     return (
                     <img
@@ -27,7 +27,7 @@ const Hero = () => {
                         alt="Logo iPhone/Apple"
                         className={`z-10 absolute transition-all duration-700 ease-in-out will-change-transform 
                                 pointer-events-none opacity-32 size-15 animate-float-spin-${Math.min(4, 1 + Math.floor(Math.random() * 10))}`}
-                        style={{ top, left, willChange: "transform" }}
+                        style={{ bottom, left, willChange: "transform" }}
                     />
                     )
                 })}
