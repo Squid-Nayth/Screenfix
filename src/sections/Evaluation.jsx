@@ -78,7 +78,102 @@ const BrandSelection = ({ onSelect }) => {
     );
 };
 
+const RdvSection = ({onCheck}) => {
+        
+    const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
+    const initialPopups = {
+        fail: false,
+        success: false,
+        fatal:false,
+        alreadySent: false,
+    }
+    const [popups, setPopups] = useState(initialPopups)
 
+    function handleSendingButton() {
+        if(popups.success || popups.fail || popups.fatal) return
+
+        setPopups((prev) => ({
+            ...prev,
+            fail:!onCheck,
+            success:onCheck && !prev.fail,
+        }))
+
+    }
+
+    // Check what popup template to use
+    let actualPopup = 0
+    if(!onCheck) {
+        actualPopup
+    }
+    return (
+        <>
+        <div className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
+            {RdvOptions.map((item) => (
+                <div key={item.id} className="flex flex-col items-center">
+                <label htmlFor={item.htmlFor} className="block text-base font-medium mb-2 text-center">{item.title}</label>
+                <input
+                    type={item.type}
+                    name={item.htmlFor}
+                    value={rdvForm[item.htmlFor] || ""}
+                    onChange={(e) => {
+                    setRdvForm((prev) => ({
+                        ...prev,
+                        [item.htmlFor]: e.target.value
+                    }));
+                    }}
+                    className="w-full p-3 border border-gray-300 rounded-lg text-center"
+                    required
+                />
+                </div>
+            ))}
+
+            <button 
+            type="submit" 
+            className={`bg-gray-900 text-white text-lg font-medium py-3 px-8 
+                        rounded-full w-full shadow transition text-center 
+                        ${!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent ? "opacity-50 cursor-not-allowed" : " hover:bg-gray-800 cursor-pointer"}`}
+            disabled={!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent}
+            onClick={handleSendingButton}>
+                        Envoyer
+            </button>
+            <p className="mt-4 text-sm text-gray-500">
+                En remplissant notre formulaire, vous acceptez notre 
+                <a href="politique-confidentialite.html" target='_blank' className="underline hover:text-blue-600"> politique de confidentialité</a>.
+            </p>
+        </div>
+
+        {popups.success && !popups.alreadySent &&
+            <Popup
+                message="Votre demande a bien été envoyée. Vous recevrez un email de confirmation."
+                type="INFO"
+                duration={3000}
+                onClose={() => {
+                    setPopups((prev) => ({ ...prev, success:false, alreadySent:true}))
+
+                    // TODO: Handle email trasnfert inside the popup
+                }}
+            />
+        }
+        {popups.fail && !popups.alreadySent &&
+            <Popup
+                message="Merci d’évaluer votre produit avant de prendre rendez-vous."
+                type="WARNING"
+                duration={3000}
+                onClose={() => setPopups((prev) => ({ ...prev, fail:false}))}
+            />
+        }
+        {popups.fatal &&
+            <Popup
+                message="Erreur lors de l’envoi du mail. Merci de réessayer."
+                type="ERROR"
+                duration={3000}
+                onClose={() => setPopups((prev) => ({ ...prev, fatal:false}))}
+            />
+        }
+        </>
+        
+    );
+};
 
 const Evaluation = () => {
 
@@ -103,103 +198,6 @@ const Evaluation = () => {
     }
 
     const [isEvaluated, setEvaluated] = useState(false)
-
-    const RdvSection = () => {
-        
-        const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
-        const initialPopups = {
-            fail: false,
-            success: false,
-            fatal:false,
-            alreadySent: false,
-        }
-        const [popups, setPopups] = useState(initialPopups)
-
-        function handleSendingButton() {
-            if(popups.success || popups.fail || popups.fatal) return
-
-            setPopups((prev) => ({
-                ...prev,
-                fail:!isAnyCheckboxCheck(),
-                success:isAnyCheckboxCheck() && !prev.fail,
-            }))
-
-        }
-
-        // Check what popup template to use
-        let actualPopup = 0
-        if(!isAnyCheckboxCheck()) {
-            actualPopup
-        }
-        return (
-            <>
-            <div className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
-                {RdvOptions.map((item) => (
-                    <div key={item.id} className="flex flex-col items-center">
-                    <label htmlFor={item.htmlFor} className="block text-base font-medium mb-2 text-center">{item.title}</label>
-                    <input
-                        type={item.type}
-                        name={item.htmlFor}
-                        value={rdvForm[item.htmlFor] || ""}
-                        onChange={(e) => {
-                        setRdvForm((prev) => ({
-                            ...prev,
-                            [item.htmlFor]: e.target.value
-                        }));
-                        }}
-                        className="w-full p-3 border border-gray-300 rounded-lg text-center"
-                        required
-                    />
-                    </div>
-                ))}
-
-                <button 
-                type="submit" 
-                className={`bg-gray-900 text-white text-lg font-medium py-3 px-8 
-                            rounded-full w-full shadow transition text-center 
-                            ${!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent ? "opacity-50 cursor-not-allowed" : " hover:bg-gray-800 cursor-pointer"}`}
-                disabled={!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent}
-                onClick={handleSendingButton}>
-                            Envoyer
-                </button>
-                <p className="mt-4 text-sm text-gray-500">
-                    En remplissant notre formulaire, vous acceptez notre 
-                    <a href="politique-confidentialite.html" target='_blank' className="underline hover:text-blue-600"> politique de confidentialité</a>.
-                </p>
-            </div>
-
-            {popups.success && !popups.alreadySent &&
-                <Popup
-                    message="Votre demande a bien été envoyée. Vous recevrez un email de confirmation."
-                    type="INFO"
-                    duration={3000}
-                    onClose={() => {
-                        setPopups((prev) => ({ ...prev, success:false, alreadySent:true}))
-
-                        // TODO: Handle email trasnfert inside the popup
-                    }}
-                />
-            }
-            {popups.fail && !popups.alreadySent &&
-                <Popup
-                    message="Merci d’évaluer votre produit avant de prendre rendez-vous."
-                    type="WARNING"
-                    duration={3000}
-                    onClose={() => setPopups((prev) => ({ ...prev, fail:false}))}
-                />
-            }
-            {popups.fatal &&
-                <Popup
-                    message="Erreur lors de l’envoi du mail. Merci de réessayer."
-                    type="ERROR"
-                    duration={3000}
-                    onClose={() => setPopups((prev) => ({ ...prev, fatal:false}))}
-                />
-            }
-            </>
-            
-        );
-    };
 
     const EvalOptions = () => {
 
@@ -371,7 +369,7 @@ const Evaluation = () => {
                             </div>
                             <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Prenez rendez-vous</h2>
 
-                            <RdvSection />
+                            <RdvSection onCheck={isAnyCheckboxCheck()}/>
 
                         </div>
                     </div>
