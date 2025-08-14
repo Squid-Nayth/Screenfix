@@ -36,7 +36,7 @@ const ModelSelection = ({ brand, onSelect }) => {
     <Selection 
         template={brandData.generations.map((generation) => (
         <Fragment key={generation.generation}>
-            <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100">
+            <li className="px-4 py-2 font-semibold text-gray-700 bg-gray-100 relative">
             {generation.generation}
             </li>
             {generation.models.map((model) => (
@@ -109,14 +109,16 @@ const Evaluation = () => {
         const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
         const initialPopups = {
             fail: false,
-            success: false
+            alreadySent: false,
+            success: false,
         }
         const [popups, setPopups] = useState(initialPopups)
 
         function handleSendingButton() {
             setPopups((prev) => ({
-                ...popups,
-                success:true
+                ...prev,
+                success:true,
+                alreadySent:true
             }))
         }
 
@@ -152,15 +154,16 @@ const Evaluation = () => {
                 </button>
                 <p className="mt-4 text-sm text-gray-500">
                     En remplissant notre formulaire, vous acceptez notre 
-                    <a href="politique-confidentialite.html" className="underline hover:text-blue-600"> politique de confidentialité</a>.
+                    <a href="politique-confidentialite.html" target='_blank' className="underline hover:text-blue-600"> politique de confidentialité</a>.
                 </p>
             </div>
-            {popups.success && 
+
+            {popups.success &&
                 <Popup
                     message="Message popup test"
                     type="INFO"
                     duration={3000}
-                    onClose={() => setPopups((prev) => ({ ...popups, success:false}))}
+                    onClose={() => setPopups((prev) => ({ ...prev, success:false}))}
                 />
             }
             </>
@@ -234,6 +237,8 @@ const Evaluation = () => {
                                 ${(isAnyCheckboxCheck())? 'hover:bg-gray-800 cursor-pointer' : 'opacity-50'}`
 
     return (
+        <>
+        
         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
@@ -339,6 +344,7 @@ const Evaluation = () => {
                 </div>
             </div>
         </section>
+        </>
     );
 }
 

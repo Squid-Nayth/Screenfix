@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 
 const Popup = ({ message, type = "INFO", duration = 3000, onClose }) => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -20,13 +21,13 @@ const Popup = ({ message, type = "INFO", duration = 3000, onClose }) => {
 
     if (!visible) return null;
 
-    return(
-        <div
-            className={`fixed top-5 right-5 px-6 py-3 rounded-lg text-white shadow-lg ${colors[type]}`}
-            data-aos="fade-down"
+    return createPortal(
+        <div data-aos="fade-down"
+            className={`fixed top-20 left-1/2 -translate-x-1/2 px-6 py-3 rounded-4xl text-white shadow-lg ${colors[type]}`}
         >
             {message}
-        </div>
+        </div>,
+        document.body
     )
 }
 
