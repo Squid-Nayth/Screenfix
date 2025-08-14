@@ -1,6 +1,21 @@
-import screenfixTeamImage from '@assets/images/about/Workshop-01.jpeg'
+import { useState } from 'react'
+
+const screenfixImage = Object.values(
+  import.meta.glob("@assets/images/about/Workshop-*.jpeg", { eager: true })
+).map(module => module.default);
 
 const About = () => {
+    const [imageIndex, setImageIndex] = useState(0)
+
+    function IncrementIndex() {
+        setImageIndex(prev => (prev === screenfixImage.length - 1 ? 0 : prev + 1));
+    }
+
+    function DecrementIndex() {
+        setImageIndex(prev => (prev === 0 ? screenfixImage.length - 1 : prev - 1));
+    }
+
+
     return (
         <section className="bg-white py-16 px-6 aos-init" data-aos="fade-up" id='about'>
             <h5 className="text-4xl md:text-5xl font-bold text-center mb-2">Qui sommes-nous ?</h5>
@@ -12,6 +27,7 @@ const About = () => {
                     <div className="flex flex-row md:flex-col md:w-1/2 w-full items-center justify-center bg-white p-6 md:p-10">
                         <div className="relative w-full max-w-2xl h-80 flex items-center justify-center">
                             <button
+                                onClick={DecrementIndex}
                                 aria-label="Image précédente"
                                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"
                             >
@@ -30,15 +46,16 @@ const About = () => {
                                     />
                                 </svg>
                             </button>
-
+                            
                             <img
-                                src={screenfixTeamImage}
+                                src={screenfixImage[imageIndex]}
                                 alt="Équipe Screenfix"
                                 className="w-full h-80 object-cover bg-white rounded-2xl shadow-md border border-gray-200 transition-all duration-700 opacity-100"
                                 style={{ willChange: 'opacity, transform' }}
                             />
-
+                            
                             <button
+                            onClick={IncrementIndex}
                                 aria-label="Image suivante"
                                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-blue-100 rounded-full p-2 shadow transition"
                             >
