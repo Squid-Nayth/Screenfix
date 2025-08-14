@@ -109,23 +109,31 @@ const Evaluation = () => {
         const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
         const initialPopups = {
             fail: false,
-            alreadySent: false,
             success: false,
+            fatal:false,
+            alreadySent: false,
         }
         const [popups, setPopups] = useState(initialPopups)
 
         function handleSendingButton() {
+            if(popups.success || popups.fail || popups.fatal) return
+
             setPopups((prev) => ({
                 ...prev,
-                success:true,
-                alreadySent:true
+                fail:!isAnyCheckboxCheck(),
+                success:isAnyCheckboxCheck() && !prev.fail,
             }))
+
         }
 
+        // Check what popup template to use
+        let actualPopup = 0
+        if(!isAnyCheckboxCheck()) {
+            actualPopup
+        }
         return (
             <>
             <div className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
-                                
                 {RdvOptions.map((item) => (
                     <div key={item.id} className="flex flex-col items-center">
                     <label htmlFor={item.htmlFor} className="block text-base font-medium mb-2 text-center">{item.title}</label>
@@ -147,8 +155,10 @@ const Evaluation = () => {
 
                 <button 
                 type="submit" 
-                className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
-                        rounded-full w-full shadow transition text-center"
+                className={`bg-gray-900 text-white text-lg font-medium py-3 px-8 
+                            rounded-full w-full shadow transition text-center 
+                            ${!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent ? "opacity-50 cursor-not-allowed" : " hover:bg-gray-800 cursor-pointer"}`}
+                disabled={!Object.values(rdvForm).every(value => value.trim() !== "") || popups.alreadySent}
                 onClick={handleSendingButton}>
                             Envoyer
                 </button>
@@ -158,12 +168,32 @@ const Evaluation = () => {
                 </p>
             </div>
 
-            {popups.success &&
+            {popups.success && !popups.alreadySent &&
                 <Popup
-                    message="Message popup test"
+                    message="Votre demande a bien été envoyée. Vous recevrez un email de confirmation."
                     type="INFO"
                     duration={3000}
-                    onClose={() => setPopups((prev) => ({ ...prev, success:false}))}
+                    onClose={() => {
+                        setPopups((prev) => ({ ...prev, success:false, alreadySent:true}))
+
+                        // TODO: Handle email trasnfert inside the popup
+                    }}
+                />
+            }
+            {popups.fail && !popups.alreadySent &&
+                <Popup
+                    message="Merci d’évaluer votre produit avant de prendre rendez-vous."
+                    type="WARNING"
+                    duration={3000}
+                    onClose={() => setPopups((prev) => ({ ...prev, fail:false}))}
+                />
+            }
+            {popups.fatal &&
+                <Popup
+                    message="Erreur lors de l’envoi du mail. Merci de réessayer."
+                    type="ERROR"
+                    duration={3000}
+                    onClose={() => setPopups((prev) => ({ ...prev, fatal:false}))}
                 />
             }
             </>
@@ -234,7 +264,7 @@ const Evaluation = () => {
 
     let EvaluateButtonStyle = `bg-gray-900  text-white text-lg font-medium py-3 px-8 
                                 rounded-full w-full shadow transition text-center 
-                                ${(isAnyCheckboxCheck())? 'hover:bg-gray-800 cursor-pointer' : 'opacity-50'}`
+                                ${(isAnyCheckboxCheck())? 'hover:bg-gray-800 cursor-pointer' : 'opacity-50 cursor-not-allowed'}`
 
     return (
         <>
@@ -308,7 +338,9 @@ const Evaluation = () => {
                         <EvalOptions />
 
 
-                        <button type="submit" onClick={(isAnyCheckboxCheck())? handleEvaluationButton : null}
+                        <button type="submit" 
+                        disabled={!isAnyCheckboxCheck()}
+                        onClick={handleEvaluationButton}
                         className={EvaluateButtonStyle}>
                                     Évaluer
                         </button>
