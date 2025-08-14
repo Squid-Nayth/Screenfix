@@ -29,8 +29,20 @@
     }
   }
 
-  .animate-float-spin {
+  .animate-float-spin-1 {
     animation: floatSpin 3s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-2 {
+    animation: floatSpin 5s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-3 {
+    animation: floatSpin 7s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-4 {
+    animation: floatSpin 8s linear infinite;
     transform-origin: center center;
   }
 }

@@ -11,18 +11,26 @@ const Hero = () => {
     return (
         <section className="block bg-white py-20 md:py-28 text-center font-sans relative overflow-visible" data-aos="fade-up">
 
-            <div class="pointer-events-none select-none absolute inset-0 w-full h-full">
-                <img 
-                    src="/iphone/iphone-SE-2022.png"
-                    alt="Logo iPhone/Apple"
-                    className='z-10 absolute transition-all duration-700 ease-in-out will-change-transform 
-                    pointer-events-none opacity-32 size-15 animate-float-spin'
-                    style={{ 
-                        top: `${Math.random() * 45 + 10}%`,
-                        left: `${Math.random() * 33 + (Math.random() < 0.5)? 5 : 62 }%`,
-                        willChange: "transform" 
-                    }}
-                />
+            <div class="hidden sm:flex pointer-events-none select-none absolute inset-0 w-full h-full">
+                {Array.from({ length: logoCount }).map((_, i) => {
+                    // Pick a random picture
+                    const src = floatingIcons[Math.floor(Math.random() * floatingIcons.length)]
+
+                    // Calculer les positions top et left
+                    const left = `${(Math.random() < 0.5)? Math.random() * 33 + 5 : Math.random() * 33 + 62}%`
+                    let top = `${(Math.random() < 0.5)? Math.random() * 45 + 10 : Math.random() * 45 + 20}%`
+
+                    return (
+                    <img
+                        key={i}
+                        src={src}
+                        alt="Logo iPhone/Apple"
+                        className={`z-10 absolute transition-all duration-700 ease-in-out will-change-transform 
+                                pointer-events-none opacity-32 size-15 animate-float-spin-${Math.min(4, 1 + Math.floor(Math.random() * 10))}`}
+                        style={{ top, left, willChange: "transform" }}
+                    />
+                    )
+                })}
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 leading-tight relative z-20 text-center">
                 Profitez d'une réduction sur vos réparation
