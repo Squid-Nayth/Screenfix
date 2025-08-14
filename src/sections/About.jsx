@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import AOS from "aos";
 
 const screenfixImage = Object.values(
   import.meta.glob("@assets/images/about/Workshop-*.jpeg", { eager: true })
@@ -6,15 +7,21 @@ const screenfixImage = Object.values(
 
 const About = () => {
     const [imageIndex, setImageIndex] = useState(0)
+    const [direction, setDirection] = useState("right");
 
     function IncrementIndex() {
+        setDirection("right");
         setImageIndex(prev => (prev === screenfixImage.length - 1 ? 0 : prev + 1));
     }
 
     function DecrementIndex() {
+        setDirection("left");
         setImageIndex(prev => (prev === 0 ? screenfixImage.length - 1 : prev - 1));
     }
 
+    useEffect(() => {
+        AOS.refresh();
+    }, [imageIndex]);
 
     return (
         <section className="bg-white py-16 px-6 aos-init" data-aos="fade-up" id='about'>
@@ -46,10 +53,11 @@ const About = () => {
                                     />
                                 </svg>
                             </button>
-                            
+
                             <img
                                 src={screenfixImage[imageIndex]}
                                 alt="Équipe Screenfix"
+                                data-aos={`fade-${direction}`}
                                 className="w-full h-80 object-cover bg-white rounded-2xl shadow-md border border-gray-200 transition-all duration-700 opacity-100"
                                 style={{ willChange: 'opacity, transform' }}
                             />
