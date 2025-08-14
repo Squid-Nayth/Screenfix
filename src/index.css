@@ -10,8 +10,13 @@
     @apply hidden;
   }
 
-  .wrap-nav-active {
-    
+  .wrap-navbar-button {
+    @apply w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white 
+        text-gray-900 text-lg font-medium text-center transition;
+  }
+
+  .wrap-navbar-special {
+    @apply w-full py-3 rounded-lg border border-blue-600 bg-white text-blue-700 text-lg font-semibold transition hover:bg-blue-50 text-center
   }
   
 }
