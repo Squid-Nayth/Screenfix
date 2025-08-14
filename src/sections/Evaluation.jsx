@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react'
 
 import Selection from '@components/Selection'
-import Container from '@components/Container'
+import Popup from '@components/Popup'
 
 
 import { OptionsModels, RdvOptions } from '@constants/index'
@@ -105,9 +105,23 @@ const Evaluation = () => {
     const [isEvaluated, setEvaluated] = useState(false)
 
     const RdvSection = () => {
+        
         const [rdvForm, setRdvForm] = useState({ ...Object.fromEntries( RdvOptions.map(rdvOpt => [rdvOpt.htmlFor, '']) ) });
+        const initialPopups = {
+            fail: false,
+            success: false
+        }
+        const [popups, setPopups] = useState(initialPopups)
+
+        function handleSendingButton() {
+            setPopups((prev) => ({
+                ...popups,
+                success:true
+            }))
+        }
 
         return (
+            <>
             <div className='max-w-lg mx-auto bg-white p-8 rounded-2xl shadow border border-gray-100 space-y-6 text-center'>
                                 
                 {RdvOptions.map((item) => (
@@ -129,15 +143,28 @@ const Evaluation = () => {
                     </div>
                 ))}
 
-                <button type="submit" className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
-                                                rounded-full w-full shadow transition text-center">
-                                                    Envoyer
+                <button 
+                type="submit" 
+                className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium py-3 px-8 
+                        rounded-full w-full shadow transition text-center"
+                onClick={handleSendingButton}>
+                            Envoyer
                 </button>
                 <p className="mt-4 text-sm text-gray-500">
                     En remplissant notre formulaire, vous acceptez notre 
                     <a href="politique-confidentialite.html" className="underline hover:text-blue-600"> politique de confidentialité</a>.
                 </p>
             </div>
+            {popups.success && 
+                <Popup
+                    message="Message popup test"
+                    type="INFO"
+                    duration={3000}
+                    onClose={() => setPopups((prev) => ({ ...popups, success:false}))}
+                />
+            }
+            </>
+            
         );
     };
 
