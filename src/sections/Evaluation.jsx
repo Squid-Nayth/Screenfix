@@ -267,9 +267,7 @@ const Evaluation = () => {
                                 ${(isAnyCheckboxCheck())? 'hover:bg-gray-800 cursor-pointer' : 'opacity-50 cursor-not-allowed'}`
 
     return (
-        <>
-        
-        <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
+         <section className="w-screen max-w-none py-20 px-0 bg-white flex justify-center" data-aos="fade-up" id='eval'>
             <div className="w-full max-w-none flex flex-col items-center">
                 <h2 className="text-4xl font-bold text-center mb-12 tracking-tight">Évaluez votre réparation</h2>
                 
@@ -376,7 +374,6 @@ const Evaluation = () => {
                 </div>
             </div>
         </section>
-        </>
     );
 }
 
