@@ -3,19 +3,27 @@ Copyright (c) 2025 EVA STUDIO, Allan Meyland. All rights reserved.
 This is a private repository developed and owned by EVA STUDIO and Allan Meyland.
 
 OWNERSHIP
-* The SOURCE CODE and all related intellectual property rights remain the exclusive property of the Authors.
-* The FINAL PRODUCT (the delivered website in its functional form) is licensed for use by Screenfix only.
+* The SOURCE CODE and all related intellectual property rights remain 
+  the exclusive property of the Authors.
+* The FINAL PRODUCT (the delivered website in its functional form) is 
+  licensed for use by Screenfix only.
 
 GRANT OF USE
-* Screenfix is granted a NON-TRANSFERABLE, NON-EXCLUSIVE LICENSE to use the final product for their business purposes.
-* This license DOES NOT grant Screenfix ownership or rights to reuse, redistribute, sublicense, or modify the source code outside of the agreed project scope.
+* Screenfix is granted a NON-TRANSFERABLE, NON-EXCLUSIVE LICENSE to use 
+  the final product for their business purposes.
+* This license DOES NOT grant Screenfix ownership or rights to reuse, 
+  redistribute, sublicense, or modify the source code outside of the agreed 
+  project scope.
 
 RESTRICTIONS
 * The repository is PRIVATE and may not be shared, distribued, or made public.
-* No part of the source code may be copied, reused, or incorporated into other projects without the prior written consent of the Authors.
+* No part of the source code may be copied, reused, or incorporated into 
+  other projects without the prior written consent of the Authors.
 
 CREDITS
-All rights reserved to EVA STUDIO and Allan Meyland (Lead developer) as original authors of the codebase.
+All rights reserved to EVA STUDIO and Allan Meyland (Lead developer) 
+as original authors of the codebase.
 
 
-THE AUTHORS ARE NOT RESPONSIBLE FOR MANY PRODUCT DISFUNCTIONEMENT SUCH AS BUGS, SECURITY VULNERABILITIES, MILICIOUS USES OR DATA LOSS.
+THE AUTHORS ARE NOT RESPONSIBLE FOR MANY PRODUCT DISFUNCTIONEMENT SUCH AS BUGS, 
+SECURITY VULNERABILITIES, MILICIOUS USES OR DATA LOSS.
