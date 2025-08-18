@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer components {
+
+  .navbar-button {
+    @apply hover:text-blue-600 transition;
+  }
+  
+  .wrap-nav {
+    @apply hidden;
+  }
+
+  .wrap-navbar-button {
+    @apply w-full py-3 rounded-lg border border-gray-300 bg-gray-100 hover:bg-blue-600 hover:text-white 
+        text-gray-900 text-lg font-medium text-center transition;
+  }
+
+  .wrap-navbar-special {
+    @apply w-full py-3 rounded-lg border border-blue-600 bg-white text-blue-700 text-lg font-semibold transition hover:bg-blue-50 text-center
+  }
+  
+}
+
+@layer utilities {
+   @keyframes floatSpin {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+    100% {
+      transform: translateY(0) rotate(360deg);
+    }
+  }
+
+  .animate-float-spin-1 {
+    animation: floatSpin 3s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-2 {
+    animation: floatSpin 5s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-3 {
+    animation: floatSpin 7s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-float-spin-4 {
+    animation: floatSpin 8s linear infinite;
+    transform-origin: center center;
+  }
+}
