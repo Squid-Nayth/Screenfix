@@ -1,7 +1,7 @@
 # Screenfix - Official Website
 <p align="center">
   <a href="https://screenfix.fr">
-    <img width="300" height="300" src="assets/images/screenfix-banner.png" alt="Screenfix Logo" />
+    <img width="300" height="300" src="public/screenfix-banner.png" alt="Screenfix Logo" />
   </a>
 </p>
 
