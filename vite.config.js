@@ -9,6 +9,11 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/setupTests.js", // to setup jest-dom
+  },
   resolve: {
     alias: {
       '@assets': path.resolve(__dirname, './assets'),
@@ -17,5 +22,5 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@sections': path.resolve(__dirname, './src/sections')
     }
-  }
+  },
 })
