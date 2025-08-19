@@ -40,7 +40,7 @@ Before starting to contribute, you have to ensure that the actual issue you are 
 ### Be mindful on your commits
 Try to make simple PRs that handle one specific topic. Just like for reporting issues, it's better to open 3 different PRs that each address a different issue than one big PR with three commits. This makes it easier to review, approve, and merge the changes independently.
 
-When updating your fork with upstream changes, please use git pull --rebase to avoid creating "merge commits". Those commits unnecessarily pollute the git history when coming from PRs.
+When updating your fork with upstream changes, please use ``git pull --rebase`` to avoid creating "merge commits". Those commits unnecessarily pollute the git history when coming from PRs.
 
 Also try to make commits that bring the engine from one stable state to another stable state, i.e. if your first commit has a bug that you fixed in the second commit, try to merge them together before making your pull request. this includes fixing build issues or typos, fixing fatal compilion issues, etc.
 
@@ -56,7 +56,7 @@ It should be written in English, starting with a capital letter, and usually wit
 - Fixed a bug where the user is stuck on the landing page
 - Frontend: Added a Header section
 
-You cannot use very vague prefixes such as ``update`` or ``Misc`` because they are not allowed.
+You cannot use very vague prefixes such as ``Update`` or ``Misc`` because they are not allowed.
 
 If your commit fixes a reported issue, please include it in the description of the PR (not in the title, or the commit message) using one of the [GitHub closing keywords](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) such as "Fixed #1234" or "Added #1234". This will cause the issue to be closed automatically if the PR is merged. Adding it to the commit message is easier, but adds a lot of unnecessary updates in the issue distracting from the thread.
 
@@ -90,7 +90,7 @@ This project is using **Vitest** as a framework for testing. You can locally run
 ## Licensing
 By contributing, you agree that your contributions will be licensed under the [license](COPYRIGHT.txt) defined at the root of the repository.
 
-only the Authors of this repository will be credited in the legal mentions of the website.
+only the company under this repository will be credited in the legal mentions of the website.
 
 You need to agree to the License and the terms inside this document to start contributing to the project.
 
