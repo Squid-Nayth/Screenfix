@@ -3,7 +3,7 @@ This document is a listing of the most important points to the Team of this repo
 
 This project is built with **React + Vite + TailwindCSS**, and will later integrate **MySQL** and **MongoDB**.
 
-> Before contributing, please go read the [getting started](README.md#▶️-getting-started) section of the ``README.md``.
+> Before contributing, please go read the [getting started](README.md#-getting-started) section of the ``README.md``.
 ## Table of Content
 - [Code Style](#code-style)
 - [Branches](#branches)
